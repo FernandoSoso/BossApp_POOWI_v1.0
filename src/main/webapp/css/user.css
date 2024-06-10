@@ -1,0 +1,70 @@
+@import url('global.css');
+#user-body{
+    background-color: var(--branco) var(--preto-25p);
+    color: var(--preto);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-container{
+    width: 700px;
+    height: fit-content;
+    background-color: var(--branco);
+    border-radius: 10px;
+    border: 1px solid var(--branco-20p-escuro);
+    padding: 30px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-image{
+    width: 300px;
+    height: 270px;
+    border-radius: 25px;
+    background-color: var(--branco-20p-escuro);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.user-login{
+    width: 300px;
+    height: 270px;
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+}
+
+.user-signin{
+    width: 300px;
+    height: 370px;
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+}
+
+.user-titulo{
+    width: 100%;
+    font-family: var(--fonte-titulo);
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--preto);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-inputs{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}

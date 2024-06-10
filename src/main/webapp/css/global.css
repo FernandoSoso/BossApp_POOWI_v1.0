@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700&display=swap');
+:root {
+    /*Cores*/
+    --branco: #f3f3f3;
+    --branco-5p-escuro: #e8e8e8;
+    --branco-10p-escuro: #dedede;
+    --branco-15p-escuro: #d3d3d3;
+    --branco-20p-escuro: #c8c8c8;
+    --preto: #1c1c1c;
+    --preto-5p-claro: #272727;
+    --preto-10p-claro: #313131;
+    --preto-15p-claro: #3c3c3c;
+    --preto-20p-claro: #474747;
+    --preto-25p-claro: #525252;
+    --preto-35p-claro: #676767;
+    --preto-50p-claro: #878787;
+    --preto-75p: rgba(28, 28, 28, 0.75);
+    --preto-50p: rgba(28, 28, 28, 0.5);
+    --preto-25p: rgba(28, 28, 28, 0.25);
+    --preto-15p: rgba(28, 28, 28, 0.15);
+    --preto-10p: rgba(28, 28, 28, 0.1);
+    --verde: #1f7947;
+    --verde-20p-escuro: #1f673f;
+    --verde-40p-escuro: #1e5436;
+    --verde-60p-escuro: #1d412d;
+    --verde-80p-escuro: #1c2e24;
+    --verde-20p-claro: #4a926a;
+    --verde-40p-claro: #74aa8c;
+    --verde-60p-claro: #9ec2ae;
+    --verde-80p-claro: #c8dad0;
+    --verde-20p: rgba(31, 121, 71, 0.2);
+    --verde-40p: rgba(31, 121, 71, 0.4);
+    --vermelho: #b62828;
+    --vermelho-20p-escuro: #982626;
+    --vermelho-40p-escuro: #782323;
+    --vermelho-20p-claro: #c35151;
+    --vermelho-40p-claro: #ce7979;
+    --vermelho-20p: rgba(182, 40, 40, 0.2);
+    --vermelho-40p: rgba(182, 40, 40, 0.4);
+    --azul: #3393c5;
+    --azul-20p-escuro: #2f7ca4;
+    --azul-40p-escuro: #2a6381;
+    --azul-20p-claro: #5aa7cf;
+    --azul-40p-claro: #80b9d7;
+    --azul-20p: rgba(51, 147, 197, 0.2);
+    --azul-40p: rgba(51, 147, 197, 0.4);
+    --amarelo: #e4dc14;
+    --amarelho-20p-escuro: #bcb616;
+    --amarelo-40p-escuro: #948f17;
+    --amarelo-20p-claro: #e7e141;
+    --amarelo-40p-claro: #eae56d;
+    --amarelo-20p: rgba(228, 220, 20, 0.2);
+    --amarelo-40p: rgba(228, 220, 20, 0.4);
+    --transparente: transparent;
+
+    /*Fontes*/
+    --fonte-titulo: 'Rubik', sans-serif;
+    --fonte-texto: 'Poppins', sans-serif;
+}
+
+body{
+    font-family: var(--fonte-texto);
+    margin: 0;
+    padding: 0;
+    background-color: var(--branco);
+    color: var(--preto);
+    width: 100vw;
+    height: 100vh;
+}
+
+/*Botões*/
+/*Cadastrar*/
+.cadastrar-button{
+    background-color: var(--verde);
+    border: 1px solid var(--preto-15p);
+    border-radius: 50px;
+    padding: 5px 35px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 25px;
+    font-family: var(--fonte-titulo);
+    font-weight: bold;
+    color: var(--branco);
+    text-transform: uppercase;
+    min-width: 150px;
+    min-height: 40px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cadastrar-button:hover{
+    background-color: var(--verde-40p-escuro);
+}
+
+/*Visualizar*/
+.visualizar-button{
+    background-color: var(--azul);
+    border-radius: 5px;
+    padding: 0 5px;
+    cursor: pointer;
+    transition: 0.1s;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-decoration: none;
+}
+
+.visualizar-button .visualizar-texto {
+    font-size: 10px;
+    font-family: var(--fonte-titulo);
+    font-weight: 700;
+    color: var(--branco);
+    text-transform: uppercase;
+}
+
+.visualizar-button .visualizar-svg {
+    stroke: var(--branco);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    width: 16px;
+    height: 20px;
+}
+
+.visualizar-button:hover{
+    background-color: var(--azul-40p-escuro);
+}
+
+/*Sair*/
+.sair-button{
+    border: 1px solid var(--vermelho);
+    border-radius: 5px;
+    padding: 0 5px;
+    cursor: pointer;
+    transition: 0.1s;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-decoration: none;
+    color: var(--vermelho);
+}
+
+.sair-button:hover{
+    background-color: var(--vermelho);
+    color: var(--branco);
+}
+
+/*Trocar usuario*/
+.tradeUser{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: var(--fonte-titulo);
+    color: var(--preto-50p);
+    background-color: var(--branco-5p-escuro);
+    border: 1px solid var(--branco-20p-escuro);
+    border-radius: 50px;
+    width: 200px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.tradeUser:hover{
+    background-color: var(--verde-40p-escuro);
+    color: var(--branco);
+}
+
+/*Cadastro modal para tabela*/
+.cadastrar-upper-button {
+    font-weight: bold;
+    color: var(--branco);
+    font-size: 26px;
+    text-transform: uppercase;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--verde);
+    border: none;
+    border-radius: 10px 10px 0 0;
+}
+
+.cadastrar-upper-button:hover {
+    background-color: var(--verde-40p-escuro);
+}
+
+/*Inputs*/
+/*Text*/
+.input-text-container{
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+
+.input-text{
+    min-width: 100px;
+    min-height: 40px;
+    max-height: 40px;
+    width: 100%;
+    padding: 5px 20px;
+    border: 1px solid var(--branco-20p-escuro);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-family: var(--fonte-texto);
+    font-size: 14px;
+    background-color: var(--branco);
+    color: var(--preto-75p);
+    box-sizing: border-box;
+}
+
+.input-text-label{
+    font-family: var(--fonte-texto);
+    font-size: 14px;
+    color: var(--preto-50p);
+    margin-bottom: 5px;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    transition: top 0.3s, font-size 0.3s, color 0.3s;
+    display: flex;
+}
+
+.input-text:focus + .input-text-label {
+    top: 10%;
+    font-size: 10px;
+    color: var(--verde-20p-escuro);
+}
+
+.input-text:focus {
+    border: 1px solid var(--verde-20p-escuro);
+}
+
+/*Checkbox*/
+.input-checkbox-container{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.input-checkbox{
+    min-width: 20px;
+    min-height: 20px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--branco-20p-escuro);
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.input-checkbox:checked{
+    background-color: var(--verde);
+}
+
+.input-select{
+    min-width: 100px;
+    min-height: 40px;
+    max-height: 40px;
+    width: 100%;
+    padding: 5px 20px;
+    border: 1px solid var(--branco-20p-escuro);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-family: var(--fonte-texto);
+    font-size: 14px;
+    background-color: var(--branco);
+    color: var(--preto-75p);
+    box-sizing: border-box;
+}
+
+.input-select-label{
+    font-family: var(--fonte-texto);
+    font-size: 14px;
+    color: var(--preto-50p);
+    margin-bottom: 5px;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    transition: top 0.3s, font-size 0.3s, color 0.3s;
+    display: flex;
+}
+
+.asterisco{
+    all: inherit;
+    color: var(--vermelho);
+}
