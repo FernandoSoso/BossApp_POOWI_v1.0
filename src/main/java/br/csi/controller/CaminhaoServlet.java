@@ -1,6 +1,5 @@
 package br.csi.controller;
 
-import br.csi.model.Caminhao;
 import br.csi.service.CaminhaoService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,8 +9,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 @WebServlet("/caminhao")
 public class CaminhaoServlet extends HttpServlet {
@@ -34,17 +31,18 @@ public class CaminhaoServlet extends HttpServlet {
         String status = req.getParameter("status");
         String motorista = req.getParameter("motorista");
 
-        if (new CaminhaoService().insert(placa, modelo, marca, Integer.parseInt(ano), Integer.parseInt(capacidade), Double.parseDouble(percentualMotorista), status, Integer.parseInt(motorista))){
+        if (new CaminhaoService().insert(placa, modelo, marca, ano, capacidade, percentualMotorista, status, motorista)){
             req.setAttribute("mensagem", "Caminhão cadastrado com sucesso!");
+            req.setAttribute("erro", "false");
 
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/caminhao.jsp?error=false");
+            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/caminhao.jsp");
             rd.forward(req, resp);
         } else {
             req.setAttribute("mensagem", "Erro ao cadastrar caminhão!");
-
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/caminhao.jsp?error=true");
-            rd.forward(req, resp);
+            req.setAttribute("erro", "true");
         }
+
+        doGet(req, resp);
     }
 
     @Override
@@ -57,16 +55,14 @@ public class CaminhaoServlet extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (new CaminhaoService().delete(Integer.parseInt(req.getParameter("codCaminhao")))){
+        if (new CaminhaoService().delete(req.getParameter("codCaminhao"))){
             req.setAttribute("mensagem", "Caminhão deletado com sucesso!");
-
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/caminhao.jsp?error=false");
-            rd.forward(req, resp);
+            req.setAttribute("erro", "false");
         } else {
             req.setAttribute("mensagem", "Erro ao deletar caminhão!");
-
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/caminhao.jsp?error=true");
-            rd.forward(req, resp);
+            req.setAttribute("erro", "true");
         }
+
+        doGet(req, resp);
     }
 }

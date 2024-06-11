@@ -36,6 +36,7 @@ public class Motorista_CaminhaoDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -77,6 +78,7 @@ public class Motorista_CaminhaoDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -111,6 +113,7 @@ public class Motorista_CaminhaoDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -145,6 +148,7 @@ public class Motorista_CaminhaoDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -178,6 +182,7 @@ public class Motorista_CaminhaoDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();

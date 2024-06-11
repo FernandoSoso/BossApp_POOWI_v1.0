@@ -67,15 +67,70 @@
                                     </svg>
                                 </a>
                             </td>
-                            <td class="col"><p><c:out value="${caminhao.placa}"/></p></td>
-                            <td class="col"><p><c:out value="${caminhao.marca}"/></p></td>
-                            <td class="col"><p><c:out value="${caminhao.modelo}"/></p></td>
-                            <td class="col"><p><c:out value="${caminhao.ano}"/></p></td>
-                            <td class="col"><p><c:out value="${caminhao.capacidade}"/></p></td>
                             <td class="col">
-                                <div class="status">
-                                    <c:out value="${caminhao.status}"/>
-                                </div>
+                                <c:choose>
+                                    <c:when test="${empty caminhao.placa}">
+                                        <p style="width: 100%;text-align: center;">-</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p>${caminhao.placa}</p>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td class="col">
+                                <c:choose>
+                                    <c:when test="${empty caminhao.marca}">
+                                        <p style="width: 100%;text-align: center;">-</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p>${caminhao.marca}</p>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td class="col">
+                                <c:choose>
+                                    <c:when test="${empty caminhao.modelo}">
+                                        <p style="width: 100%;text-align: center;">-</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p>${caminhao.modelo}</p>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td class="col">
+                                <c:choose>
+                                    <c:when test="${caminhao.ano == -1}">
+                                        <p style="width: 100%;text-align: center;">-</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p>${caminhao.ano}</p>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td class="col">
+                                <c:choose>
+                                    <c:when test="${caminhao.capacidade == -1}">
+                                        <p style="width: 100%;text-align: center;">-</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p>${caminhao.capacidade}</p>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td class="col">
+                                <c:choose>
+                                    <c:when test="${caminhao.status == 'a'}">
+                                        <div class="status-badge">
+                                            <p>Disponível</p>
+                                        </div>
+                                    </c:when>
+                                    <c:when test="${caminhao.status == 'b'}">
+                                        <div class="status-badge">
+                                            <p>Indisponível</p>
+                                        </div>
+                                    </c:when>
+                                </c:choose>
+
                             </td>
                         </tr>
                     </c:forEach>
@@ -98,12 +153,12 @@
             </div>
             <div class="body-modal">
                 <h6 class="aviso-campos-obrigatorios">
-                    Campos marcados com <p class="asterisco">*</p> são obrigatórios!
+                    Campos marcados com * são obrigatórios!
                 </h6>
                 <form action="caminhao" method="post" class="cadastrar-container">
                     <div class="input-container">
                         <div class="input-text-container">
-                            <label for="placa" class="input-text-label"><p class="asterisco">*</p>placa</label>
+                            <label for="placa" class="input-text-label">*placa</label>
                             <input type="text" name="placa" id="placa" class="input-text" required>
                         </div>
                         <div class="input-text-container">
@@ -120,22 +175,21 @@
                         </div>
                         <div class="input-text-container">
                             <label for="motorista" class="input-text-label">motorista</label>
-                            <input type="number" step="1" name="motorista" id="motorista" class="input-text">
+                            <input type="number" min="0" step="1" name="motorista" id="motorista" class="input-text">
                         </div>
                         <div class="input-text-container">
-                            <label for="percentualMotorista" class="input-text-label"><p class="asterisco">*</p>percentual do motorista</label>
-                            <input type="number" step="0.1" name="percentualMotorista" id="percentualMotorista" class="input-text" required>
+                            <label for="percentualMotorista" class="input-text-label">*percentual do motorista</label>
+                            <input type="number" min="0" max="100" step="0.1" name="percentualMotorista" id="percentualMotorista" class="input-text" required>
                         </div>
                         <div class="input-text-container">
                             <label for="capacidade" class="input-text-label">capacidade</label>
-                            <input type="text" name="capacidade" id="capacidade" class="input-text">
+                            <input type="number" min="0" max="1000000" name="capacidade" id="capacidade" class="input-text">
                         </div>
                         <div class="input-text-container">
-                            <label for="status" class="input-select-label"><p class="asterisco">*</p>estado</label>
+                            <label for="status" class="input-select-label">*estado</label>
                             <select id="status" name="status" class="input-select">
-                                <option value="" selected></option>
-                                <option value="a" >Disponivel</option>
-                                <option value="b">Indisponivel</option>
+                                <option value="d" selected>Disponivel</option>
+                                <option value="i" >Indisponivel</option>
                             </select>
                         </div>
                     </div>

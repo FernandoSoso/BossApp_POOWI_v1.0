@@ -26,17 +26,19 @@ public class SigninServlet extends HttpServlet {
         String senha = req.getParameter("senha");
         String permissao = req.getParameter("permissao");
 
-        if (new UsuarioService().cadastrar(nome, email, senha, permissao)) {
+        String mensagem = new UsuarioService().cadastrar(nome, email, senha, permissao);
+
+        if (mensagem.equals("1")) {
+            req.setAttribute("mensagem", "Usuário cadastrado com sucesso!");
+            req.setAttribute("erro", "false");
+
             RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/home.jsp");
             rd.forward(req, resp);
         } else {
-            req.setAttribute("nome", nome);
-            req.setAttribute("email", email);
-            req.setAttribute("permissao", permissao);
-            System.out.println("Campos obrigatórios inválidos!");
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/signin.jsp?erro=true");
-            req.setAttribute("erro", "Campos obrigatórios inválidos!");
-            rd.forward(req, resp);
+            req.setAttribute("mensagem", mensagem);
+            req.setAttribute("erro", "true");
+
+            doGet(req, resp);
         }
     }
 }

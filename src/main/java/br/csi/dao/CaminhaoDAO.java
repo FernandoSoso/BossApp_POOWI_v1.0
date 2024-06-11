@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import java.util.logging.Level;
@@ -46,6 +47,7 @@ public class CaminhaoDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -88,6 +90,7 @@ public class CaminhaoDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -110,7 +113,7 @@ public class CaminhaoDAO {
                     "(placa, marca, modelo, ano, capacidade, percentual_motorista, status) " +
                     "values (?, ?, ?, ?, ?, ?, ?)";
 
-            stmt = db.getConexao().prepareStatement(query);
+            stmt = db.getConexao().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             stmt.setString(1, caminhao.getPlaca());
             stmt.setString(2, caminhao.getMarca());
@@ -126,11 +129,18 @@ public class CaminhaoDAO {
                 throw new SQLException("Erro ao inserir caminhão. Nenhuma linha inserida.");
             }
 
-            return stmt.getGeneratedKeys().getInt(1);
+            ResultSet generatedKeys = stmt.getGeneratedKeys();
+
+            if (generatedKeys.next()) {
+                return generatedKeys.getInt(1);
+            } else {
+                throw new SQLException("Erro ao inserir caminhao, nenhum código foi retornado.");
+            }
         } catch (SQLException e) {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -170,6 +180,7 @@ public class CaminhaoDAO {
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
 
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -201,6 +212,7 @@ public class CaminhaoDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();

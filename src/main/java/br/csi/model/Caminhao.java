@@ -20,12 +20,9 @@ public class Caminhao {
     public Caminhao() {
     }
 
-    public Caminhao(int cod, @NotNull String placa, String marca, String modelo, int ano, int capacidade, double percentualMotorista, String status) {
+    public Caminhao(int cod, String placa, String marca, String modelo, int ano, int capacidade, double percentualMotorista, String status) {
         if (placa.isBlank() || status.isBlank() || percentualMotorista < 0 || percentualMotorista > 100 || cod < 0){
             throw new IllegalArgumentException("Campos obrigatórios inválidos!");
-        }
-        else if (ano < 0 || capacidade < 0){
-            throw new IllegalArgumentException("Campos não obrigatórios inválidos");
         }
 
         this.cod = cod;
@@ -38,15 +35,11 @@ public class Caminhao {
         this.status = status;
     }
 
-    public Caminhao(@NotNull String placa, String marca, String modelo, int ano, int capacidade, double percentualMotorista, String status) {
+    public Caminhao(String placa, String marca, String modelo, int ano, int capacidade, double percentualMotorista, String status) {
         if (placa.isBlank() || status.isBlank() || percentualMotorista < 0 || percentualMotorista > 100){
             throw new IllegalArgumentException("Campos obrigatórios inválidos ou não preenchidos");
         }
-        else if (ano < 0 || capacidade < 0){
-            throw new IllegalArgumentException("Campos não obrigatórios inválidos");
-        }
 
-        this.cod = -1;
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;

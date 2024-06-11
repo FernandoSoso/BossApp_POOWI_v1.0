@@ -11,8 +11,8 @@ public class Usuario {
     private String permissao;
     private boolean ativo;
 
-    public Usuario(int cod, @NotNull String cod_externo, @NotNull String nome, @NotNull String email, @NotNull String senha, boolean ativo, @NotNull String permissao) {
-        if (cod <= 0 || cod_externo.isBlank() || cod_externo.length() > 128 || nome.isBlank() || nome.length() > 50 || email.isBlank() || email.length() > 50 || senha.isBlank() || senha.length() > 64 || permissao.isBlank()){
+    public Usuario(int cod, String cod_externo, String nome, String email, String senha, boolean ativo, String permissao) {
+        if (cod <= 0 || cod_externo.isBlank() || cod_externo.length() > 128 || nome.isBlank() || nome.length() > 100 || email.isBlank() || email.length() > 50 || senha.isBlank() || senha.length() > 64 || permissao.isBlank()){
             throw new IllegalArgumentException("Campos obrigatórios inválidos!");
         }
         else if (!(permissao.equals("ADMIN") || permissao.equals("USER"))){
@@ -28,12 +28,9 @@ public class Usuario {
         this.permissao = permissao;
     }
 
-    public Usuario(@NotNull String nome, @NotNull String email, @NotNull String senha, @NotNull String permissao) {
-        if (nome.isBlank() || nome.length() > 50 || email.isBlank() || email.length() > 50 || senha.isBlank() || senha.length() > 64 || permissao.isBlank()){
+    public Usuario(String nome, String email, String senha, String permissao) {
+        if (nome.isBlank() || nome.length() > 100 || email.isBlank() || email.length() > 50 || senha.isBlank() || senha.length() > 64 || permissao.isBlank()){
             throw new IllegalArgumentException("Campos obrigatórios inválidos!");
-        }
-        else if (!(permissao.equals("ADMIN") || !(permissao.equals("USER")))){
-            throw new IllegalArgumentException("Permissão inválida!");
         }
 
         this.nome = nome;

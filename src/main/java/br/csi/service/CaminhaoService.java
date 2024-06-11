@@ -41,19 +41,56 @@ public class CaminhaoService {
         return caminhao;
     }
 
-    public boolean insert(@NotNull String placa, String marca, String modelo, int ano, int capacidade, @NotNull double percentualMotorista, @NotNull String status, int codMotorista) {
-        Caminhao caminhao = new Caminhao(placa, marca, modelo, ano, capacidade, percentualMotorista, status);
-        int codCaminhao = caminhaoDAO.insert(caminhao);
+    public boolean insert(String placa, String marca, String modelo, String ano, String capacidade, String percentualMotorista, String status, String codMotorista) {
+        int anoNumero;
+        int capacidadeNumero;
+        double percentualMotoristaNumero;
 
-        if (codMotorista == -1){
-            return codCaminhao != -1;
+        if (ano.isBlank()){
+            anoNumero = -1;
         }
         else{
-            return trocarRelacionamento(codMotorista, codCaminhao) && codCaminhao != -1;
+            anoNumero = Integer.parseInt(ano);
+        }
+
+        if (capacidade.isBlank()){
+            capacidadeNumero = -1;
+        }
+        else{
+            capacidadeNumero = Integer.parseInt(capacidade);
+        }
+
+        if (percentualMotorista.isBlank()){
+            percentualMotoristaNumero = 0;
+        }
+        else{
+            percentualMotoristaNumero = Double.parseDouble(percentualMotorista);
+        }
+
+        Caminhao caminhao = new Caminhao(placa, marca, modelo, anoNumero, capacidadeNumero, percentualMotoristaNumero, status);
+        int codCaminhao = caminhaoDAO.insert(caminhao);
+
+        if (codCaminhao == -1){
+            return false;
+        }
+        else{
+            if (codMotorista.isBlank()){
+                return true;
+            }
+            else{
+                int codMotoristaNumero = Integer.parseInt(codMotorista);
+                if (codMotoristaNumero <= 0){
+                    return true;
+                }
+                else {
+                    return trocarRelacionamento(codMotoristaNumero, codCaminhao);
+                }
+            }
         }
     }
 
     private boolean trocarRelacionamento(int codMotorista, int codCaminhao) {
+
         Motorista_Caminhao relacaoNova = new Motorista_Caminhao(codMotorista, codCaminhao);
         Motorista_Caminhao relacaoAntiga = motorista_caminhaoDAO.selectByCod_motorista(codMotorista);
 
@@ -69,26 +106,85 @@ public class CaminhaoService {
         return motorista_caminhaoDAO.insert(relacaoNova);
     }
 
-    public boolean update(int codCaminhao, @NotNull String placa, String marca, String modelo, int ano, int capacidade, @NotNull double percentualMotorista, @NotNull String status, int codMotorista) {
-        Caminhao caminhao = new Caminhao(codCaminhao, placa, marca, modelo, ano, capacidade, percentualMotorista, status);
+    public boolean update(int codCaminhao, @NotNull String placa, String marca, String modelo, String ano, String capacidade, @NotNull String percentualMotorista, @NotNull String status, String codMotorista) {
+        int anoNumero;
+        int capacidadeNumero;
+        double percentualMotoristaNumero;
 
-        return caminhaoDAO.update(caminhao) && trocarRelacionamento(codMotorista, codCaminhao);
-
-    }
-
-    public boolean delete(int codCaminhao){
-        Motorista_Caminhao relacao = motorista_caminhaoDAO.selectByCod_motorista(codCaminhao);
-
-        if (caminhaoDAO.selectUnique(codCaminhao) == null){
-            throw new IllegalArgumentException("Caminhão não encontrado");
+        if (ano.isBlank()){
+            anoNumero = -1;
         }
         else{
-            if (relacao != null){
-                return caminhaoDAO.delete(codCaminhao) && motorista_caminhaoDAO.delete(relacao);
+            anoNumero = Integer.parseInt(ano);
+        }
+
+        if (capacidade.isBlank()){
+            capacidadeNumero = -1;
+        }
+        else{
+            capacidadeNumero = Integer.parseInt(capacidade);
+        }
+
+        if (percentualMotorista.isBlank()){
+            percentualMotoristaNumero = 0;
+        }
+        else{
+            percentualMotoristaNumero = Double.parseDouble(percentualMotorista);
+        }
+
+        Caminhao caminhao = new Caminhao(codCaminhao, placa, marca, modelo, anoNumero, capacidadeNumero, percentualMotoristaNumero, status);
+
+        if (caminhaoDAO.update(caminhao)){
+            if (codMotorista.isBlank()){
+                return true;
             }
             else{
-                return caminhaoDAO.delete(codCaminhao);
+                int codMotoristaNumero = Integer.parseInt(codMotorista);
+
+                if (codMotoristaNumero <= 0){
+                    return true;
+                }
+                else {
+                    return trocarRelacionamento(codMotoristaNumero, codCaminhao);
+                }
             }
         }
+        else{
+            return false;
+        }
+    }
+
+    public boolean delete(String codCaminhao){
+        if (codCaminhao.isBlank()){
+            return false;
+        }
+        else {
+            int codCaminhaoNumero = Integer.parseInt(codCaminhao);
+            if (codCaminhaoNumero <= 0){
+                return false;
+            }
+            else {
+                Motorista_Caminhao relacao = motorista_caminhaoDAO.selectByCod_motorista(codCaminhaoNumero);
+
+                if (caminhaoDAO.selectUnique(codCaminhaoNumero) == null){
+                    throw new IllegalArgumentException("Caminhão não encontrado");
+                }
+                else{
+                    if (relacao != null){
+                        if (motorista_caminhaoDAO.delete(relacao)) {
+                            return caminhaoDAO.delete(codCaminhaoNumero);
+                        }
+                        else{
+                            return false;
+                        }
+                    }
+                    else{
+                        return caminhaoDAO.delete(codCaminhaoNumero);
+                    }
+                }
+            }
+        }
+
+
     }
 }

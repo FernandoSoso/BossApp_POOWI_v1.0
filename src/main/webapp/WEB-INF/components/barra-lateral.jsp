@@ -2,9 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
 <div class="barra-lateral">
-    <div class="logo">
-        <img src="<%=request.getContextPath()%>/img/logo.png" alt="Logo do aplicativo">
-    </div>
+    <a style="text-decoration: none" href="home">
+        <div class="logo">
+            <img src="<%=request.getContextPath()%>/img/logo.png" alt="Logo do aplicativo">
+        </div>
+
+    </a>
     <div class="menu">
         <ul>
             <li>

@@ -13,6 +13,39 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UsuarioDAO {
+
+    public boolean existsEmail (String email){
+        ConectaDB db = new ConectaDB();
+        PreparedStatement stmt = null;
+
+        try{
+            String query = "SELECT * FROM usuario where email = ?";
+
+            stmt = db.getConexao().prepareStatement(query);
+            stmt.setString(1, email);
+
+            ResultSet rs = stmt.executeQuery();
+
+            return rs.next();
+
+        } catch (SQLException e) {
+            Logger logger = Logger.getLogger(this.getClass().getName());
+            logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
+        } finally {
+            db.closeConexao();
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    Logger logger = Logger.getLogger(this.getClass().getName());
+                    logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
+                }
+            }
+        }
+
+        return false;
+    }
+
     public ArrayList<Usuario> selectAll() {
         ConectaDB db = new ConectaDB();
         ArrayList<Usuario> todosUsuarios = new ArrayList<>();
@@ -41,6 +74,7 @@ public class UsuarioDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -81,6 +115,7 @@ public class UsuarioDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -115,6 +150,7 @@ public class UsuarioDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -152,6 +188,7 @@ public class UsuarioDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -184,6 +221,7 @@ public class UsuarioDAO {
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
 
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();

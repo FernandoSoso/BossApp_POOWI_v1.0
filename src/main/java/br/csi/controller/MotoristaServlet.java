@@ -23,24 +23,21 @@ public class MotoristaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String nome = req.getParameter("nome");
-        String cpf = req.getParameter("cpf");
         String endereco = req.getParameter("endereco");
         String telefonePrincipal = req.getParameter("telefonePrincipal");
         String telefoneAlternativo = req.getParameter("telefoneAlternativo");
         String telefoneAlternativo2 = req.getParameter("telefoneAlternativo2");
         String codCaminhao = req.getParameter("codCaminhao");
 
-        if (new MotoristaService().insert(nome, cpf, endereco, telefonePrincipal, telefoneAlternativo, telefoneAlternativo2, Integer.parseInt(codCaminhao))){
+        if (new MotoristaService().insert(nome, endereco, telefonePrincipal, telefoneAlternativo, telefoneAlternativo2, codCaminhao)){
             req.setAttribute("mensagem", "Motorista cadastrado com sucesso!");
-
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/motorista.jsp?error=false");
-            rd.forward(req, resp);
+            req.setAttribute("erro", "false");
         } else {
             req.setAttribute("mensagem", "Erro ao cadastrar motorista!");
-
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/motorista.jsp?error=true");
-            rd.forward(req, resp);
+            req.setAttribute("erro", "true");
         }
+
+        doGet(req, resp);
     }
 
     @Override
@@ -53,17 +50,15 @@ public class MotoristaServlet extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (new MotoristaService().delete(Integer.parseInt(req.getParameter("codMotorista")))){
+        if (new MotoristaService().delete(req.getParameter("codMotorista"))){
             req.setAttribute("mensagem", "Motorista deletado com sucesso!");
-
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/motorista.jsp?error=false");
-            rd.forward(req, resp);
+            req.setAttribute("erro", "false");
         } else {
             req.setAttribute("mensagem", "Erro ao deletar motorista!");
-
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/motorista.jsp?error=true");
-            rd.forward(req, resp);
+            req.setAttribute("erro", "true");
         }
+
+        doGet(req, resp);
     }
 
 }

@@ -13,7 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MotoristaDAO {
-
     public ArrayList<Motorista> selectAll() {
         ConectaDB db = new ConectaDB();
         ArrayList<Motorista> todosMotoristas = new ArrayList<>();
@@ -31,7 +30,6 @@ public class MotoristaDAO {
                         new Motorista(
                                 rs.getInt("cod"),
                                 rs.getString("nome"),
-                                rs.getString("cpf"),
                                 rs.getString("endereco"),
                                 rs.getString("telefone_principal"),
                                 rs.getString("telefone_alternativo"),
@@ -44,6 +42,7 @@ public class MotoristaDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -74,7 +73,6 @@ public class MotoristaDAO {
             return new Motorista(
                             rs.getInt("cod"),
                             rs.getString("nome"),
-                            rs.getString("cpf"),
                             rs.getString("endereco"),
                             rs.getString("telefonePrincipal"),
                             rs.getString("telefoneAlternativo"),
@@ -85,6 +83,7 @@ public class MotoristaDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -104,17 +103,16 @@ public class MotoristaDAO {
 
         try {
             String query = "INSERT INTO motorista " +
-                    "(nome, cpf, endereco, telefone_principal, telefone_alternativo, telefone_alternativo2) " +
-                    "VALUES (?, ?, ?, ?, ?, ?)";
+                    "(nome, endereco, telefone_principal, telefone_alternativo, telefone_alternativo2) " +
+                    "VALUES (?, ?, ?, ?, ?)";
 
             stmt = db.getConexao().prepareStatement(query);
 
             stmt.setString(1, motorista.getNome());
-            stmt.setString(2, motorista.getCpf());
-            stmt.setString(3, motorista.getEndereco());
-            stmt.setString(4, motorista.getTelefonePrincipal());
-            stmt.setString(5, motorista.getTelefoneAlternativo());
-            stmt.setString(6, motorista.getTelefoneAlternativo2());
+            stmt.setString(2, motorista.getEndereco());
+            stmt.setString(3, motorista.getTelefonePrincipal());
+            stmt.setString(4, motorista.getTelefoneAlternativo());
+            stmt.setString(5, motorista.getTelefoneAlternativo2());
 
             int linhasAfetadas = stmt.executeUpdate();
 
@@ -127,6 +125,7 @@ public class MotoristaDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -145,17 +144,16 @@ public class MotoristaDAO {
 
         try {
             String query = "UPDATE motorista SET " +
-                    "nome = ?, cpf = ?, endereco = ?, telefone_principal = ?, telefone_alternativo = ?, telefone_alternativo2 = ? " +
+                    "nome = ?, endereco = ?, telefone_principal = ?, telefone_alternativo = ?, telefone_alternativo2 = ? " +
                     "WHERE cod = ?";
 
             stmt = db.getConexao().prepareStatement(query);
             stmt.setString(1, motorista.getNome());
-            stmt.setString(2, motorista.getCpf());
-            stmt.setString(3, motorista.getEndereco());
-            stmt.setString(4, motorista.getTelefonePrincipal());
-            stmt.setString(5, motorista.getTelefoneAlternativo());
-            stmt.setString(6, motorista.getTelefoneAlternativo2());
-            stmt.setInt(7, motorista.getCod());
+            stmt.setString(2, motorista.getEndereco());
+            stmt.setString(3, motorista.getTelefonePrincipal());
+            stmt.setString(4, motorista.getTelefoneAlternativo());
+            stmt.setString(5, motorista.getTelefoneAlternativo2());
+            stmt.setInt(6, motorista.getCod());
 
             int linhasAfetadas = stmt.executeUpdate();
 
@@ -164,6 +162,7 @@ public class MotoristaDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();
@@ -194,6 +193,7 @@ public class MotoristaDAO {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
         } finally {
+            db.closeConexao();
             if (stmt != null) {
                 try {
                     stmt.close();

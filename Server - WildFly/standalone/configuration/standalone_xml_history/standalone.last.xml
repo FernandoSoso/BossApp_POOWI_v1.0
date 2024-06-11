@@ -519,4 +519,9 @@
             <remote-destination host="${jboss.mail.server.host:localhost}" port="${jboss.mail.server.port:25}"/>
         </outbound-socket-binding>
     </socket-binding-group>
+    <deployments>
+        <deployment name="BossApp_POOWI" runtime-name="BossApp_POOWI.war">
+            <fs-exploded path="C:\Users\ferna\OneDrive\Área de Trabalho\BossApp_POOWI\target\BossApp_POOWI"/>
+        </deployment>
+    </deployments>
 </server>

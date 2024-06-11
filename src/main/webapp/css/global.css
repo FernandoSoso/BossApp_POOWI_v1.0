@@ -230,21 +230,18 @@ body{
 
 .input-text-label{
     font-family: var(--fonte-texto);
-    font-size: 14px;
-    color: var(--preto-50p);
+    /*font-size: 14px;*/
+    color: var(--preto-75p);
     margin-bottom: 5px;
     position: absolute;
-    top: 50%;
+    /*top: 50%;*/
     left: 20px;
     transform: translateY(-50%);
     transition: top 0.3s, font-size 0.3s, color 0.3s;
     display: flex;
-}
-
-.input-text:focus + .input-text-label {
-    top: 10%;
+    top: 10px;
     font-size: 10px;
-    color: var(--verde-20p-escuro);
+    /*color: var(--verde-20p-escuro);*/
 }
 
 .input-text:focus {
@@ -293,18 +290,19 @@ body{
 
 .input-select-label{
     font-family: var(--fonte-texto);
-    font-size: 14px;
-    color: var(--preto-50p);
+    /*font-size: 14px;*/
+    color: var(--preto-75p);
     margin-bottom: 5px;
     position: absolute;
-    top: 50%;
+    /*top: 50%;*/
     left: 20px;
     transform: translateY(-50%);
     transition: top 0.3s, font-size 0.3s, color 0.3s;
     display: flex;
+    top: 10px;
+    font-size: 10px;
 }
 
 .asterisco{
-    all: inherit;
     color: var(--vermelho);
 }
