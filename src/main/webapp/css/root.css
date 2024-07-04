@@ -1,0 +1,58 @@
+:root {
+    /*Cores*/
+    --branco: #f3f3f3;
+    --branco-5-escuro: #e8e8e8;
+    --branco-10-escuro: #dedede;
+    --branco-15-escuro: #d3d3d3;
+    --branco-20-escuro: #c8c8c8;
+    --preto: #1c1c1c;
+    --preto-5-claro: #272727;
+    --preto-10-claro: #313131;
+    --preto-15-claro: #3c3c3c;
+    --preto-20-claro: #474747;
+    --preto-25-claro: #525252;
+    --preto-35-claro: #676767;
+    --preto-50-claro: #878787;
+    --preto-75: rgba(28, 28, 28, 0.75);
+    --preto-50: rgba(28, 28, 28, 0.5);
+    --preto-25: rgba(28, 28, 28, 0.25);
+    --preto-15: rgba(28, 28, 28, 0.15);
+    --preto-10: rgba(28, 28, 28, 0.1);
+    --verde: #1f7947;
+    --verde-20-escuro: #1f673f;
+    --verde-40-escuro: #1e5436;
+    --verde-60-escuro: #1d412d;
+    --verde-80-escuro: #1c2e24;
+    --verde-20-claro: #4a926a;
+    --verde-40-claro: #74aa8c;
+    --verde-60-claro: #9ec2ae;
+    --verde-80-claro: #c8dad0;
+    --verde-20: rgba(31, 121, 71, 0.2);
+    --verde-40: rgba(31, 121, 71, 0.4);
+    --vermelho: #b62828;
+    --vermelho-20-escuro: #982626;
+    --vermelho-40-escuro: #782323;
+    --vermelho-20-claro: #c35151;
+    --vermelho-40-claro: #ce7979;
+    --vermelho-20: rgba(182, 40, 40, 0.2);
+    --vermelho-40: rgba(182, 40, 40, 0.4);
+    --azul: #3393c5;
+    --azul-20-escuro: #2f7ca4;
+    --azul-40-escuro: #2a6381;
+    --azul-20-claro: #5aa7cf;
+    --azul-40-claro: #80b9d7;
+    --azul-20: rgba(51, 147, 197, 0.2);
+    --azul-40: rgba(51, 147, 197, 0.4);
+    --amarelo: #e4dc14;
+    --amarelho-20-escuro: #bcb616;
+    --amarelo-40-escuro: #948f17;
+    --amarelo-20-claro: #e7e141;
+    --amarelo-40-claro: #eae56d;
+    --amarelo-20: rgba(228, 220, 20, 0.2);
+    --amarelo-40: rgba(228, 220, 20, 0.4);
+    --transparente: transparent;
+
+    /*Fontes*/
+    --fonte-titulo: 'Rubik', sans-serif;
+    --fonte-texto: 'Poppins', sans-serif;
+}

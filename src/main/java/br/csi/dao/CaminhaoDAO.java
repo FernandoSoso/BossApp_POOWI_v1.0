@@ -15,15 +15,16 @@ import java.util.logging.Logger;
 
 public class CaminhaoDAO {
 
-    public ArrayList<Caminhao> selectAll() {
+    public ArrayList<Caminhao> selectAll(int offset) {
         ConectaDB db = new ConectaDB();
         ArrayList<Caminhao> todosCaminhoes = new ArrayList<>();
         PreparedStatement stmt = null;
 
         try{
-            String query = "SELECT * FROM caminhao";
+            String query = "SELECT * FROM caminhao limit 15 offset ?";
 
             stmt = db.getConexao().prepareStatement(query);
+            stmt.setInt(1, offset);
 
             ResultSet rs = stmt.executeQuery();
 
@@ -37,12 +38,11 @@ public class CaminhaoDAO {
                                 rs.getInt("ano"),
                                 rs.getInt("capacidade"),
                                 rs.getDouble("percentual_motorista"),
-                                rs.getString("status")
+                                rs.getString("estado")
                         );
                 todosCaminhoes.add(caminhao);
             }
 
-            stmt.close();
         } catch (SQLException e) {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
@@ -74,18 +74,21 @@ public class CaminhaoDAO {
 
             ResultSet rs = stmt.executeQuery();
 
-            rs.next();
-
-            return new Caminhao(
-                    rs.getInt("cod"),
-                    rs.getString("placa"),
-                    rs.getString("marca"),
-                    rs.getString("modelo"),
-                    rs.getInt("ano"),
-                    rs.getInt("capacidade"),
-                    rs.getDouble("percentualMotorista"),
-                    rs.getString("status")
-            );
+            if (rs.next()){
+                return new Caminhao(
+                        rs.getInt("cod"),
+                        rs.getString("placa"),
+                        rs.getString("marca"),
+                        rs.getString("modelo"),
+                        rs.getInt("ano"),
+                        rs.getInt("capacidade"),
+                        rs.getDouble("percentual_motorista"),
+                        rs.getString("estado")
+                );
+            }
+            else {
+                return null;
+            }
         }catch (SQLException e){
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
@@ -110,7 +113,7 @@ public class CaminhaoDAO {
 
         try {
             String query = "Insert into caminhao " +
-                    "(placa, marca, modelo, ano, capacidade, percentual_motorista, status) " +
+                    "(placa, marca, modelo, ano, capacidade, percentual_motorista, estado) " +
                     "values (?, ?, ?, ?, ?, ?, ?)";
 
             stmt = db.getConexao().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -121,7 +124,7 @@ public class CaminhaoDAO {
             stmt.setInt(4, caminhao.getAno());
             stmt.setInt(5, caminhao.getCapacidade());
             stmt.setDouble(6, caminhao.getPercentualMotorista());
-            stmt.setString(7, caminhao.getStatus());
+            stmt.setString(7, caminhao.getEstado());
 
             int linhasAfetadas = stmt.executeUpdate();
 
@@ -159,7 +162,7 @@ public class CaminhaoDAO {
         PreparedStatement stmt = null;
 
         try {
-            String query = "UPDATE caminhao SET placa = ?, marca = ?, modelo = ?, ano = ?, capacidade = ?, percentual_motorista = ?, status = ? WHERE cod = ?";
+            String query = "UPDATE caminhao SET placa = ?, marca = ?, modelo = ?, ano = ?, capacidade = ?, percentual_motorista = ?, estado = ? WHERE cod = ?";
 
             stmt = db.getConexao().prepareStatement(query);
 
@@ -169,7 +172,7 @@ public class CaminhaoDAO {
             stmt.setInt(4, caminhao.getAno());
             stmt.setInt(5, caminhao.getCapacidade());
             stmt.setDouble(6, caminhao.getPercentualMotorista());
-            stmt.setString(7, caminhao.getStatus());
+            stmt.setString(7, caminhao.getEstado());
             stmt.setInt(8, caminhao.getCod());
 
             int linhasAfetadas = stmt.executeUpdate();

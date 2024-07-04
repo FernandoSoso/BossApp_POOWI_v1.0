@@ -1,22 +1,15 @@
 package br.csi.model;
 
-import org.jetbrains.annotations.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 public class Usuario {
-    private int cod;
-    private String cod_externo;
-    private String nome;
-    private String email;
-    private String senha;
-    private String permissao;
-    private boolean ativo;
 
     public Usuario(int cod, String cod_externo, String nome, String email, String senha, boolean ativo, String permissao) {
         if (cod <= 0 || cod_externo.isBlank() || cod_externo.length() > 128 || nome.isBlank() || nome.length() > 100 || email.isBlank() || email.length() > 50 || senha.isBlank() || senha.length() > 64 || permissao.isBlank()){
             throw new IllegalArgumentException("Campos obrigatórios inválidos!");
-        }
-        else if (!(permissao.equals("ADMIN") || permissao.equals("USER"))){
-            throw new IllegalArgumentException("Permissão inválida!");
         }
 
         this.cod = cod;
@@ -40,53 +33,13 @@ public class Usuario {
         this.ativo = true;
     }
 
-    public String getCod_externo() {
-        return cod_externo;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
-
-    public String getPermissao() {
-        return permissao;
-    }
-
-    public void setPermissao(String permissao) {
-        this.permissao = permissao;
-    }
-
-    public int getCod() {
-        return cod;
-    }
+    private int cod;
+    private String cod_externo;
+    private String nome;
+    private String email;
+    private String senha;
+    private String permissao;
+    private boolean ativo;
 
     @Override
     public String toString() {

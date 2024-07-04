@@ -7,21 +7,23 @@ import org.jetbrains.annotations.NotNull;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MotoristaDAO {
-    public ArrayList<Motorista> selectAll() {
+    public ArrayList<Motorista> selectAll(int offset) {
         ConectaDB db = new ConectaDB();
         ArrayList<Motorista> todosMotoristas = new ArrayList<>();
         PreparedStatement stmt = null;
 
         try{
-            String query = "SELECT * FROM motorista";
+            String query = "SELECT * FROM motorista LIMIT 15 OFFSET ?";
 
             stmt = db.getConexao().prepareStatement(query);
+            stmt.setInt(1, offset);
 
             ResultSet rs = stmt.executeQuery();
 
@@ -74,9 +76,9 @@ public class MotoristaDAO {
                             rs.getInt("cod"),
                             rs.getString("nome"),
                             rs.getString("endereco"),
-                            rs.getString("telefonePrincipal"),
-                            rs.getString("telefoneAlternativo"),
-                            rs.getString("telefoneAlternativo2")
+                            rs.getString("telefone_principal"),
+                            rs.getString("telefone_alternativo"),
+                            rs.getString("telefone_alternativo2")
                     );
 
         } catch (SQLException e) {
@@ -106,7 +108,7 @@ public class MotoristaDAO {
                     "(nome, endereco, telefone_principal, telefone_alternativo, telefone_alternativo2) " +
                     "VALUES (?, ?, ?, ?, ?)";
 
-            stmt = db.getConexao().prepareStatement(query);
+            stmt = db.getConexao().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             stmt.setString(1, motorista.getNome());
             stmt.setString(2, motorista.getEndereco());
@@ -120,7 +122,16 @@ public class MotoristaDAO {
                 throw new SQLException("Erro ao inserir motorista. Nenhuma linha inserida.");
             }
 
-            return stmt.getGeneratedKeys().getInt(1);
+            ResultSet generatedKeys = stmt.getGeneratedKeys();
+
+            if (generatedKeys.next()) {
+                return generatedKeys.getInt(1);
+            }
+            else {
+                throw new SQLException("Erro ao inserir motorista. Nenhum código retornado.");
+            }
+
+
         } catch (SQLException e) {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);

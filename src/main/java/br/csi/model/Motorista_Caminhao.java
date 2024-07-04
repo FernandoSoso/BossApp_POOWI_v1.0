@@ -1,12 +1,14 @@
 package br.csi.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.sql.Date;
 import java.util.ArrayList;
 
+@Getter
+@Setter
 public class Motorista_Caminhao {
-    private final int codMotorista;
-    private final int codCaminhao;
-    private Date dataInicio;
 
     public Motorista_Caminhao(int codMotorista, int codCaminhao, Date dataInicio) {
         this.codMotorista = codMotorista;
@@ -19,19 +21,7 @@ public class Motorista_Caminhao {
         this.codCaminhao = codCaminhao;
     }
 
-    public int getCodMotorista() {
-        return codMotorista;
-    }
-
-    public int getCodCaminhao() {
-        return codCaminhao;
-    }
-
-    public Date getDataInicio() {
-        return dataInicio;
-    }
-
-    public void setDataInicio(Date dataInicio) {
-        this.dataInicio = dataInicio;
-    }
+    private final int codMotorista;
+    private final int codCaminhao;
+    private Date dataInicio;
 }

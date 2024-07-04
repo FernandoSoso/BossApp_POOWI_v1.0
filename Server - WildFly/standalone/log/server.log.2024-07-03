@@ -1,0 +1,1177 @@
+2024-07-03 23:43:20,657 INFO  [org.jboss.modules] (main) JBoss Modules version 2.1.5.Final
+2024-07-03 23:43:22,668 INFO  [org.jboss.msc] (main) JBoss MSC version 1.5.4.Final
+2024-07-03 23:43:22,674 INFO  [org.jboss.threads] (main) JBoss Threads version 2.4.0.Final
+2024-07-03 23:43:22,746 INFO  [org.jboss.as] (MSC service thread 1-1) WFLYSRV0049: WildFly Full 32.0.1.Final (WildFly Core 24.0.1.Final) starting
+2024-07-03 23:43:22,747 DEBUG [org.jboss.as.config] (MSC service thread 1-1) Configured system properties:
+	file.encoding = UTF-8
+	file.separator = \
+	java.awt.headless = true
+	java.class.path = C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\jboss-modules.jar
+	java.class.version = 66.0
+	java.home = C:\Users\ferna\.jdks\openjdk-22
+	java.io.tmpdir = C:\Users\ferna\AppData\Local\Temp\
+	java.library.path = C:\Users\ferna\.jdks\openjdk-22\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\ferna\AppData\Local\pnpm;C:\Users\ferna\AppData\Local\Microsoft\WindowsApps;C:\Users\ferna\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2023.3.5\bin;;C:\Users\ferna\AppData\Roaming\npm;.
+	java.net.preferIPv4Stack = true
+	java.runtime.name = OpenJDK Runtime Environment
+	java.runtime.version = 22+36-2370
+	java.security.manager = allow
+	java.specification.name = Java Platform API Specification
+	java.specification.vendor = Oracle Corporation
+	java.specification.version = 22
+	java.util.logging.manager = org.jboss.logmanager.LogManager
+	java.vendor = Oracle Corporation
+	java.vendor.url = https://java.oracle.com/
+	java.vendor.url.bug = https://bugreport.java.com/bugreport/
+	java.version = 22
+	java.version.date = 2024-03-19
+	java.vm.compressedOopsMode = 32-bit
+	java.vm.info = mixed mode, sharing
+	java.vm.name = OpenJDK 64-Bit Server VM
+	java.vm.specification.name = Java Virtual Machine Specification
+	java.vm.specification.vendor = Oracle Corporation
+	java.vm.specification.version = 22
+	java.vm.vendor = Oracle Corporation
+	java.vm.version = 22+36-2370
+	javax.management.builder.initial = org.jboss.as.jmx.PluggableMBeanServerBuilder
+	jboss.home.dir = C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly
+	jboss.host.name = fernando
+	jboss.modules.system.pkgs = org.jboss.byteman
+	jboss.node.name = fernando
+	jboss.qualified.host.name = fernando
+	jboss.server.base.dir = C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\standalone
+	jboss.server.config.dir = C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\standalone\configuration
+	jboss.server.data.dir = C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\standalone\data
+	jboss.server.log.dir = C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\standalone\log
+	jboss.server.name = fernando
+	jboss.server.persist.config = true
+	jboss.server.temp.dir = C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\standalone\tmp
+	jdk.debug = release
+	jdk.serialFilter = maxbytes=10485760;maxdepth=128;maxarray=100000;maxrefs=300000
+	line.separator = 
+
+	logging.configuration = file:C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\standalone\configuration/logging.properties
+	module.path = C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\modules
+	native.encoding = Cp1252
+	org.jboss.boot.log.file = C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\standalone\log\server.log
+	org.jboss.resolver.warning = true
+	os.arch = amd64
+	os.name = Windows 11
+	os.version = 10.0
+	path.separator = ;
+	program.name = standalone.bat
+	stderr.encoding = Cp1252
+	stdout.encoding = Cp1252
+	sun.arch.data.model = 64
+	sun.boot.library.path = C:\Users\ferna\.jdks\openjdk-22\bin
+	sun.cpu.endian = little
+	sun.cpu.isalist = amd64
+	sun.io.unicode.encoding = UnicodeLittle
+	sun.java.command = C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\jboss-modules.jar -mp C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\modules org.jboss.as.standalone -Djboss.home.dir=C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly
+	sun.java.launcher = SUN_STANDARD
+	sun.jnu.encoding = Cp1252
+	sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+	sun.os.patch.level = 
+	user.country = BR
+	user.dir = C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\bin
+	user.home = C:\Users\ferna
+	user.language = pt
+	user.name = ferna
+	user.script = 
+	user.timezone = America/Sao_Paulo
+	user.variant = 
+2024-07-03 23:43:22,747 DEBUG [org.jboss.as.config] (MSC service thread 1-1) VM Arguments: -Dprogram.name=standalone.bat -Xms64M -Xmx512M -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Djdk.serialFilter=maxbytes=10485760;maxdepth=128;maxarray=100000;maxrefs=300000 --add-exports=java.desktop/sun.awt=ALL-UNNAMED --add-exports=java.naming/com.sun.jndi.ldap=ALL-UNNAMED --add-exports=java.naming/com.sun.jndi.url.ldap=ALL-UNNAMED --add-exports=java.naming/com.sun.jndi.url.ldaps=ALL-UNNAMED --add-exports=jdk.naming.dns/com.sun.jndi.dns=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.security=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.management/javax.management=ALL-UNNAMED --add-opens=java.naming/javax.naming=ALL-UNNAMED -Djava.security.manager=allow -Dorg.jboss.boot.log.file=C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\standalone\log\server.log -Dlogging.configuration=file:C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\standalone\configuration/logging.properties 
+2024-07-03 23:43:24,719 INFO  [org.wildfly.security] (Controller Boot Thread) ELY00001: WildFly Elytron version 2.4.2.Final
+2024-07-03 23:43:25,419 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 13) WFLYCTL0028: Attribute 'cluster' in the resource at address '/subsystem=ejb3/service=remote' is deprecated, and may be removed in a future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2024-07-03 23:43:25,485 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0039: Creating http management service using socket-binding (management-http)
+2024-07-03 23:43:25,507 INFO  [org.xnio] (MSC service thread 1-1) XNIO version 3.8.15.Final
+2024-07-03 23:43:25,513 INFO  [org.xnio.nio] (MSC service thread 1-1) XNIO NIO Implementation Version 3.8.15.Final
+2024-07-03 23:43:25,545 INFO  [org.wildfly.extension.elytron.oidc._private] (ServerService Thread Pool -- 53) WFLYOIDC0001: Activating WildFly Elytron OIDC Subsystem
+2024-07-03 23:43:25,546 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 55) WFLYCLINF0001: Activating Infinispan subsystem.
+2024-07-03 23:43:25,549 INFO  [org.wildfly.extension.health] (ServerService Thread Pool -- 54) WFLYHEALTH0001: Activating Base Health Subsystem
+2024-07-03 23:43:25,551 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 74) WFLYTX0013: The node-identifier attribute on the /subsystem=transactions is set to the default value. This is a danger for environments running multiple servers. Please make sure the attribute value is unique.
+2024-07-03 23:43:25,552 INFO  [org.wildfly.extension.microprofile.jwt.smallrye] (ServerService Thread Pool -- 66) WFLYJWT0001: Activating MicroProfile JWT Subsystem
+2024-07-03 23:43:25,554 INFO  [org.wildfly.extension.microprofile.config.smallrye] (ServerService Thread Pool -- 65) WFLYCONF0001: Activating MicroProfile Config Subsystem
+2024-07-03 23:43:25,560 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 62) WFLYJSF0007: Activated the following Jakarta Server Faces Implementations: [main]
+2024-07-03 23:43:25,567 INFO  [org.jboss.as.jaxrs] (ServerService Thread Pool -- 57) WFLYRS0016: RESTEasy version 6.2.9.Final
+2024-07-03 23:43:25,574 INFO  [org.wildfly.extension.metrics] (ServerService Thread Pool -- 64) WFLYMETRICS0001: Activating Base Metrics Subsystem
+2024-07-03 23:43:25,597 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 67) WFLYNAM0001: Activating Naming Subsystem
+2024-07-03 23:43:25,600 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 76) WFLYWS0002: Activating WebServices Extension
+2024-07-03 23:43:25,615 INFO  [org.jboss.as.connector] (MSC service thread 1-8) WFLYJCA0009: Starting Jakarta Connectors Subsystem (WildFly/IronJacamar 3.0.9.Final)
+2024-07-03 23:43:25,622 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 56) WFLYIO001: Worker 'default' has auto-configured to 32 IO threads with 256 max task threads based on your 16 available processors
+2024-07-03 23:43:25,668 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 44) WFLYJCA0004: Deploying JDBC-compliant driver class org.h2.Driver (version 2.2)
+2024-07-03 23:43:25,699 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0003: Undertow 2.3.13.Final starting
+2024-07-03 23:43:25,721 WARN  [org.wildfly.extension.elytron] (MSC service thread 1-5) WFLYELY00023: KeyStore file 'C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\standalone\configuration\application.keystore' does not exist. Used blank.
+2024-07-03 23:43:25,740 INFO  [org.jboss.remoting] (MSC service thread 1-6) JBoss Remoting version 5.0.28.Final
+2024-07-03 23:43:25,790 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 75) WFLYUT0014: Creating file handler for path 'C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly/welcome-content' with options [directory-listing: 'false', follow-symlink: 'false', case-sensitive: 'true', safe-symlink-paths: '[]']
+2024-07-03 23:43:25,826 INFO  [org.jboss.as.ejb3] (MSC service thread 1-3) WFLYEJB0481: Strict pool slsb-strict-max-pool is using a max instance size of 64 (per class), which is derived from thread worker pool sizing.
+2024-07-03 23:43:25,826 INFO  [org.jboss.as.ejb3] (MSC service thread 1-2) WFLYEJB0482: Strict pool mdb-strict-max-pool is using a max instance size of 64 (per class), which is derived from the number of CPUs on this host.
+2024-07-03 23:43:26,005 INFO  [org.jboss.as.ejb3] (MSC service thread 1-7) WFLYEJB0493: Jakarta Enterprise Beans subsystem suspension complete
+2024-07-03 23:43:33,592 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0018: Started Driver service with driver-name = h2
+2024-07-03 23:43:33,600 WARN  [org.wildfly.extension.elytron] (MSC service thread 1-5) WFLYELY01084: KeyStore C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\standalone\configuration\application.keystore not found, it will be auto-generated on first use with a self-signed certificate for host localhost
+2024-07-03 23:43:33,609 INFO  [org.jboss.as.naming] (MSC service thread 1-7) WFLYNAM0003: Starting Naming Service
+2024-07-03 23:43:33,612 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-8) WFLYMAIL0001: Bound mail session [java:jboss/mail/Default]
+2024-07-03 23:43:33,624 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) WFLYUT0012: Started server default-server.
+2024-07-03 23:43:33,625 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) Queuing requests.
+2024-07-03 23:43:33,627 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0018: Host default-host starting
+2024-07-03 23:43:33,632 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-5) WFLYUT0006: Undertow HTTP listener default listening on 127.0.0.1:8080
+2024-07-03 23:43:33,666 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) WFLYJCA0001: Bound data source [java:jboss/datasources/ExampleDS]
+2024-07-03 23:43:33,710 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0006: Undertow HTTPS listener https listening on 127.0.0.1:8443
+2024-07-03 23:43:33,887 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-2) WFLYDS0013: Started FileSystemDeploymentService for directory C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\Server - WildFly\standalone\deployments
+2024-07-03 23:43:33,940 INFO  [org.jboss.ws.common.management] (MSC service thread 1-3) JBWS022052: Starting JBossWS 7.1.0.Final (Apache CXF 4.0.4) 
+2024-07-03 23:43:34,055 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0212: Resuming server
+2024-07-03 23:43:34,061 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://127.0.0.1:9990/management
+2024-07-03 23:43:34,062 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://127.0.0.1:9990
+2024-07-03 23:43:34,063 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Full 32.0.1.Final (WildFly Core 24.0.1.Final) started in 17533ms - Started 281 of 523 services (319 services are lazy, passive or on-demand) - Server configuration file in use: standalone.xml
+2024-07-03 23:43:35,051 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) WFLYSRV0027: Starting deployment of "BossApp_POOWI" (runtime-name: "BossApp_POOWI.war")
+2024-07-03 23:43:36,002 WARN  [org.jboss.modules.define] (MSC service thread 1-3) Failed to define class javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/PermittedTaglibsTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:19)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.processComponentConfig(InterceptorAnnotationProcessor.java:67)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.deploy(InterceptorAnnotationProcessor.java:60)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 28 more
+
+2024-07-03 23:43:36,031 WARN  [org.jboss.modules.define] (MSC service thread 1-3) Failed to define class javax.servlet.jsp.jstl.tlv.ScriptFreeTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/ScriptFreeTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:19)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.processComponentConfig(InterceptorAnnotationProcessor.java:67)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.deploy(InterceptorAnnotationProcessor.java:60)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 28 more
+
+2024-07-03 23:43:36,159 WARN  [org.jboss.modules.define] (MSC service thread 1-4) Failed to define class javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/PermittedTaglibsTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.EEModuleConfigurationProcessor.deploy(EEModuleConfigurationProcessor.java:63)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1363)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 26 more
+
+2024-07-03 23:43:36,160 WARN  [org.jboss.as.ee] (MSC service thread 1-4) WFLYEE0007: Not installing optional component javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV due to an exception (enable DEBUG log level to see the cause)
+2024-07-03 23:43:36,168 WARN  [org.jboss.modules.define] (MSC service thread 1-4) Failed to define class javax.servlet.jsp.jstl.tlv.ScriptFreeTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/ScriptFreeTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.EEModuleConfigurationProcessor.deploy(EEModuleConfigurationProcessor.java:63)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1363)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 26 more
+
+2024-07-03 23:43:36,169 WARN  [org.jboss.as.ee] (MSC service thread 1-4) WFLYEE0007: Not installing optional component javax.servlet.jsp.jstl.tlv.ScriptFreeTLV due to an exception (enable DEBUG log level to see the cause)
+2024-07-03 23:43:36,228 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.7)
+2024-07-03 23:43:36,283 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0018: Started Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
+2024-07-03 23:43:36,372 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 32) WFLYUT0021: Registered web context: '/BossApp_POOWI' for server 'default-server'
+2024-07-03 23:43:36,399 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0010: Deployed "BossApp_POOWI" (runtime-name : "BossApp_POOWI.war")
+2024-07-03 23:47:12,818 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) WFLYJCA0019: Stopped Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
+2024-07-03 23:47:12,818 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 32) WFLYUT0022: Unregistered web context: '/BossApp_POOWI' from server 'default-server'
+2024-07-03 23:47:12,862 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0028: Stopped deployment BossApp_POOWI (runtime-name: BossApp_POOWI.war) in 47ms
+2024-07-03 23:47:12,876 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0009: Undeployed "BossApp_POOWI" (runtime-name: "BossApp_POOWI.war")
+2024-07-03 23:47:12,917 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) WFLYSRV0027: Starting deployment of "BossApp_POOWI" (runtime-name: "BossApp_POOWI.war")
+2024-07-03 23:47:13,631 WARN  [org.jboss.modules.define] (MSC service thread 1-5) Failed to define class javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/PermittedTaglibsTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:19)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.processComponentConfig(InterceptorAnnotationProcessor.java:67)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.deploy(InterceptorAnnotationProcessor.java:60)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 28 more
+
+2024-07-03 23:47:13,642 WARN  [org.jboss.modules.define] (MSC service thread 1-5) Failed to define class javax.servlet.jsp.jstl.tlv.ScriptFreeTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/ScriptFreeTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:19)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.processComponentConfig(InterceptorAnnotationProcessor.java:67)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.deploy(InterceptorAnnotationProcessor.java:60)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 28 more
+
+2024-07-03 23:47:13,660 WARN  [org.jboss.modules.define] (MSC service thread 1-7) Failed to define class javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/PermittedTaglibsTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.EEModuleConfigurationProcessor.deploy(EEModuleConfigurationProcessor.java:63)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1363)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 26 more
+
+2024-07-03 23:47:13,660 WARN  [org.jboss.as.ee] (MSC service thread 1-7) WFLYEE0007: Not installing optional component javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV due to an exception (enable DEBUG log level to see the cause)
+2024-07-03 23:47:13,666 WARN  [org.jboss.modules.define] (MSC service thread 1-7) Failed to define class javax.servlet.jsp.jstl.tlv.ScriptFreeTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/ScriptFreeTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.EEModuleConfigurationProcessor.deploy(EEModuleConfigurationProcessor.java:63)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1363)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 26 more
+
+2024-07-03 23:47:13,666 WARN  [org.jboss.as.ee] (MSC service thread 1-7) WFLYEE0007: Not installing optional component javax.servlet.jsp.jstl.tlv.ScriptFreeTLV due to an exception (enable DEBUG log level to see the cause)
+2024-07-03 23:47:13,676 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.7)
+2024-07-03 23:47:13,684 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) WFLYJCA0018: Started Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
+2024-07-03 23:47:13,691 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 99) WFLYUT0021: Registered web context: '/BossApp_POOWI' for server 'default-server'
+2024-07-03 23:47:13,726 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0010: Deployed "BossApp_POOWI" (runtime-name : "BossApp_POOWI.war")
+2024-07-03 23:47:44,570 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) WFLYJCA0019: Stopped Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
+2024-07-03 23:47:44,571 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 99) WFLYUT0022: Unregistered web context: '/BossApp_POOWI' from server 'default-server'
+2024-07-03 23:47:44,584 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) WFLYSRV0028: Stopped deployment BossApp_POOWI (runtime-name: BossApp_POOWI.war) in 14ms
+2024-07-03 23:47:44,596 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0009: Undeployed "BossApp_POOWI" (runtime-name: "BossApp_POOWI.war")
+2024-07-03 23:47:44,629 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) WFLYSRV0027: Starting deployment of "BossApp_POOWI" (runtime-name: "BossApp_POOWI.war")
+2024-07-03 23:47:44,793 WARN  [org.jboss.modules.define] (MSC service thread 1-7) Failed to define class javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/PermittedTaglibsTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:19)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.processComponentConfig(InterceptorAnnotationProcessor.java:67)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.deploy(InterceptorAnnotationProcessor.java:60)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 28 more
+
+2024-07-03 23:47:44,801 WARN  [org.jboss.modules.define] (MSC service thread 1-7) Failed to define class javax.servlet.jsp.jstl.tlv.ScriptFreeTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/ScriptFreeTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:19)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.processComponentConfig(InterceptorAnnotationProcessor.java:67)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.deploy(InterceptorAnnotationProcessor.java:60)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 28 more
+
+2024-07-03 23:47:44,822 WARN  [org.jboss.modules.define] (MSC service thread 1-7) Failed to define class javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/PermittedTaglibsTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.EEModuleConfigurationProcessor.deploy(EEModuleConfigurationProcessor.java:63)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1363)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 26 more
+
+2024-07-03 23:47:44,823 WARN  [org.jboss.as.ee] (MSC service thread 1-7) WFLYEE0007: Not installing optional component javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV due to an exception (enable DEBUG log level to see the cause)
+2024-07-03 23:47:44,830 WARN  [org.jboss.modules.define] (MSC service thread 1-7) Failed to define class javax.servlet.jsp.jstl.tlv.ScriptFreeTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/ScriptFreeTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.EEModuleConfigurationProcessor.deploy(EEModuleConfigurationProcessor.java:63)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1363)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 26 more
+
+2024-07-03 23:47:44,831 WARN  [org.jboss.as.ee] (MSC service thread 1-7) WFLYEE0007: Not installing optional component javax.servlet.jsp.jstl.tlv.ScriptFreeTLV due to an exception (enable DEBUG log level to see the cause)
+2024-07-03 23:47:44,841 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.7)
+2024-07-03 23:47:44,847 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) WFLYJCA0018: Started Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
+2024-07-03 23:47:44,857 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 122) WFLYUT0021: Registered web context: '/BossApp_POOWI' for server 'default-server'
+2024-07-03 23:47:44,870 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0010: Deployed "BossApp_POOWI" (runtime-name : "BossApp_POOWI.war")
+2024-07-03 23:48:56,962 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) WFLYJCA0019: Stopped Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
+2024-07-03 23:48:56,963 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 123) WFLYUT0022: Unregistered web context: '/BossApp_POOWI' from server 'default-server'
+2024-07-03 23:48:56,975 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0028: Stopped deployment BossApp_POOWI (runtime-name: BossApp_POOWI.war) in 12ms
+2024-07-03 23:48:56,992 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0009: Undeployed "BossApp_POOWI" (runtime-name: "BossApp_POOWI.war")
+2024-07-03 23:48:57,025 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0027: Starting deployment of "BossApp_POOWI" (runtime-name: "BossApp_POOWI.war")
+2024-07-03 23:48:57,172 WARN  [org.jboss.modules.define] (MSC service thread 1-5) Failed to define class javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/PermittedTaglibsTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:19)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.processComponentConfig(InterceptorAnnotationProcessor.java:67)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.deploy(InterceptorAnnotationProcessor.java:60)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 28 more
+
+2024-07-03 23:48:57,176 WARN  [org.jboss.modules.define] (MSC service thread 1-5) Failed to define class javax.servlet.jsp.jstl.tlv.ScriptFreeTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/ScriptFreeTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:19)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.processComponentConfig(InterceptorAnnotationProcessor.java:67)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.deploy(InterceptorAnnotationProcessor.java:60)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 28 more
+
+2024-07-03 23:48:57,199 WARN  [org.jboss.modules.define] (MSC service thread 1-1) Failed to define class javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/PermittedTaglibsTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.EEModuleConfigurationProcessor.deploy(EEModuleConfigurationProcessor.java:63)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1363)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 26 more
+
+2024-07-03 23:48:57,199 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV due to an exception (enable DEBUG log level to see the cause)
+2024-07-03 23:48:57,205 WARN  [org.jboss.modules.define] (MSC service thread 1-1) Failed to define class javax.servlet.jsp.jstl.tlv.ScriptFreeTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/ScriptFreeTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.EEModuleConfigurationProcessor.deploy(EEModuleConfigurationProcessor.java:63)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1363)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 26 more
+
+2024-07-03 23:48:57,205 WARN  [org.jboss.as.ee] (MSC service thread 1-1) WFLYEE0007: Not installing optional component javax.servlet.jsp.jstl.tlv.ScriptFreeTLV due to an exception (enable DEBUG log level to see the cause)
+2024-07-03 23:48:57,213 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.7)
+2024-07-03 23:48:57,219 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0018: Started Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
+2024-07-03 23:48:57,227 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 139) WFLYUT0021: Registered web context: '/BossApp_POOWI' for server 'default-server'
+2024-07-03 23:48:57,238 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0010: Deployed "BossApp_POOWI" (runtime-name : "BossApp_POOWI.war")
+2024-07-03 23:49:42,596 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) WFLYJCA0019: Stopped Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
+2024-07-03 23:49:42,596 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 139) WFLYUT0022: Unregistered web context: '/BossApp_POOWI' from server 'default-server'
+2024-07-03 23:49:42,609 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0028: Stopped deployment BossApp_POOWI (runtime-name: BossApp_POOWI.war) in 13ms
+2024-07-03 23:49:42,618 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0009: Undeployed "BossApp_POOWI" (runtime-name: "BossApp_POOWI.war")
+2024-07-03 23:49:42,648 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) WFLYSRV0027: Starting deployment of "BossApp_POOWI" (runtime-name: "BossApp_POOWI.war")
+2024-07-03 23:49:42,793 WARN  [org.jboss.modules.define] (MSC service thread 1-6) Failed to define class javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/PermittedTaglibsTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:19)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.processComponentConfig(InterceptorAnnotationProcessor.java:67)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.deploy(InterceptorAnnotationProcessor.java:60)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 28 more
+
+2024-07-03 23:49:42,800 WARN  [org.jboss.modules.define] (MSC service thread 1-6) Failed to define class javax.servlet.jsp.jstl.tlv.ScriptFreeTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/ScriptFreeTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:19)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.processComponentConfig(InterceptorAnnotationProcessor.java:67)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.deploy(InterceptorAnnotationProcessor.java:60)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 28 more
+
+2024-07-03 23:49:42,820 WARN  [org.jboss.modules.define] (MSC service thread 1-8) Failed to define class javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/PermittedTaglibsTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.EEModuleConfigurationProcessor.deploy(EEModuleConfigurationProcessor.java:63)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1363)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 26 more
+
+2024-07-03 23:49:42,821 WARN  [org.jboss.as.ee] (MSC service thread 1-8) WFLYEE0007: Not installing optional component javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV due to an exception (enable DEBUG log level to see the cause)
+2024-07-03 23:49:42,827 WARN  [org.jboss.modules.define] (MSC service thread 1-8) Failed to define class javax.servlet.jsp.jstl.tlv.ScriptFreeTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/ScriptFreeTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.EEModuleConfigurationProcessor.deploy(EEModuleConfigurationProcessor.java:63)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1363)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 26 more
+
+2024-07-03 23:49:42,828 WARN  [org.jboss.as.ee] (MSC service thread 1-8) WFLYEE0007: Not installing optional component javax.servlet.jsp.jstl.tlv.ScriptFreeTLV due to an exception (enable DEBUG log level to see the cause)
+2024-07-03 23:49:42,837 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.7)
+2024-07-03 23:49:42,845 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) WFLYJCA0018: Started Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
+2024-07-03 23:49:42,855 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 148) WFLYUT0021: Registered web context: '/BossApp_POOWI' for server 'default-server'
+2024-07-03 23:49:42,868 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0010: Deployed "BossApp_POOWI" (runtime-name : "BossApp_POOWI.war")
+2024-07-03 23:50:08,313 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0019: Stopped Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
+2024-07-03 23:50:08,313 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 148) WFLYUT0022: Unregistered web context: '/BossApp_POOWI' from server 'default-server'
+2024-07-03 23:50:08,324 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) WFLYSRV0028: Stopped deployment BossApp_POOWI (runtime-name: BossApp_POOWI.war) in 11ms
+2024-07-03 23:50:08,333 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0009: Undeployed "BossApp_POOWI" (runtime-name: "BossApp_POOWI.war")
+2024-07-03 23:50:08,361 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0027: Starting deployment of "BossApp_POOWI" (runtime-name: "BossApp_POOWI.war")
+2024-07-03 23:50:08,500 WARN  [org.jboss.modules.define] (MSC service thread 1-4) Failed to define class javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/PermittedTaglibsTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:19)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.processComponentConfig(InterceptorAnnotationProcessor.java:67)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.deploy(InterceptorAnnotationProcessor.java:60)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 28 more
+
+2024-07-03 23:50:08,504 WARN  [org.jboss.modules.define] (MSC service thread 1-4) Failed to define class javax.servlet.jsp.jstl.tlv.ScriptFreeTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/ScriptFreeTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:19)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.processComponentConfig(InterceptorAnnotationProcessor.java:67)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.deploy(InterceptorAnnotationProcessor.java:60)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 28 more
+
+2024-07-03 23:50:08,521 WARN  [org.jboss.modules.define] (MSC service thread 1-2) Failed to define class javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/PermittedTaglibsTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.EEModuleConfigurationProcessor.deploy(EEModuleConfigurationProcessor.java:63)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1363)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 26 more
+
+2024-07-03 23:50:08,521 WARN  [org.jboss.as.ee] (MSC service thread 1-2) WFLYEE0007: Not installing optional component javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV due to an exception (enable DEBUG log level to see the cause)
+2024-07-03 23:50:08,529 WARN  [org.jboss.modules.define] (MSC service thread 1-2) Failed to define class javax.servlet.jsp.jstl.tlv.ScriptFreeTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/ScriptFreeTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.EEModuleConfigurationProcessor.deploy(EEModuleConfigurationProcessor.java:63)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1363)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 26 more
+
+2024-07-03 23:50:08,529 WARN  [org.jboss.as.ee] (MSC service thread 1-2) WFLYEE0007: Not installing optional component javax.servlet.jsp.jstl.tlv.ScriptFreeTLV due to an exception (enable DEBUG log level to see the cause)
+2024-07-03 23:50:08,534 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.7)
+2024-07-03 23:50:08,541 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) WFLYJCA0018: Started Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
+2024-07-03 23:50:08,551 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 174) WFLYUT0021: Registered web context: '/BossApp_POOWI' for server 'default-server'
+2024-07-03 23:50:08,563 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0010: Deployed "BossApp_POOWI" (runtime-name : "BossApp_POOWI.war")
+2024-07-03 23:50:26,193 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0019: Stopped Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
+2024-07-03 23:50:26,194 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 174) WFLYUT0022: Unregistered web context: '/BossApp_POOWI' from server 'default-server'
+2024-07-03 23:50:26,204 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) WFLYSRV0028: Stopped deployment BossApp_POOWI (runtime-name: BossApp_POOWI.war) in 10ms
+2024-07-03 23:50:26,214 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0009: Undeployed "BossApp_POOWI" (runtime-name: "BossApp_POOWI.war")
+2024-07-03 23:50:26,243 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) WFLYSRV0027: Starting deployment of "BossApp_POOWI" (runtime-name: "BossApp_POOWI.war")
+2024-07-03 23:50:26,370 WARN  [org.jboss.modules.define] (MSC service thread 1-3) Failed to define class javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/PermittedTaglibsTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:19)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.processComponentConfig(InterceptorAnnotationProcessor.java:67)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.deploy(InterceptorAnnotationProcessor.java:60)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 28 more
+
+2024-07-03 23:50:26,374 WARN  [org.jboss.modules.define] (MSC service thread 1-3) Failed to define class javax.servlet.jsp.jstl.tlv.ScriptFreeTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/ScriptFreeTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:19)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.processComponentConfig(InterceptorAnnotationProcessor.java:67)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.InterceptorAnnotationProcessor.deploy(InterceptorAnnotationProcessor.java:60)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 28 more
+
+2024-07-03 23:50:26,388 WARN  [org.jboss.modules.define] (MSC service thread 1-6) Failed to define class javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/PermittedTaglibsTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.EEModuleConfigurationProcessor.deploy(EEModuleConfigurationProcessor.java:63)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1363)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 26 more
+
+2024-07-03 23:50:26,388 WARN  [org.jboss.as.ee] (MSC service thread 1-6) WFLYEE0007: Not installing optional component javax.servlet.jsp.jstl.tlv.PermittedTaglibsTLV due to an exception (enable DEBUG log level to see the cause)
+2024-07-03 23:50:26,391 WARN  [org.jboss.modules.define] (MSC service thread 1-6) Failed to define class javax.servlet.jsp.jstl.tlv.ScriptFreeTLV in Module "deployment.BossApp_POOWI.war" from Service Module Loader: java.lang.NoClassDefFoundError: Failed to link javax/servlet/jsp/jstl/tlv/ScriptFreeTLV (Module "deployment.BossApp_POOWI.war" from Service Module Loader): javax/servlet/jsp/tagext/TagLibraryValidator
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1023)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1100)
+	at org.jboss.modules.ModuleClassLoader.doDefineOrLoadClass(ModuleClassLoader.java:351)
+	at org.jboss.modules.ModuleClassLoader.defineClass(ModuleClassLoader.java:482)
+	at org.jboss.modules.ModuleClassLoader.loadClassLocal(ModuleClassLoader.java:276)
+	at org.jboss.modules.ModuleClassLoader$1.loadClassLocal(ModuleClassLoader.java:79)
+	at org.jboss.modules.Module.loadModuleClass(Module.java:798)
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:192)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.utils.ClassLoadingUtils.loadClass(ClassLoadingUtils.java:26)
+	at org.jboss.as.ee@32.0.1.Final//org.jboss.as.ee.component.deployers.EEModuleConfigurationProcessor.deploy(EEModuleConfigurationProcessor.java:63)
+	at org.jboss.as.server@24.0.1.Final//org.jboss.as.server.deployment.DeploymentUnitPhaseService.start(DeploymentUnitPhaseService.java:172)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1617)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1580)
+	at org.jboss.msc@1.5.4.Final//org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1438)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1990)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+	at org.jboss.threads@2.4.0.Final//org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1363)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibraryValidator from [Module "deployment.BossApp_POOWI.war" from Service Module Loader]
+	at org.jboss.modules.ModuleClassLoader.findClass(ModuleClassLoader.java:200)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClassUnchecked(ConcurrentClassLoader.java:408)
+	at org.jboss.modules.ConcurrentClassLoader.performLoadClass(ConcurrentClassLoader.java:396)
+	at org.jboss.modules.ConcurrentClassLoader.loadClass(ConcurrentClassLoader.java:115)
+	... 26 more
+
+2024-07-03 23:50:26,392 WARN  [org.jboss.as.ee] (MSC service thread 1-6) WFLYEE0007: Not installing optional component javax.servlet.jsp.jstl.tlv.ScriptFreeTLV due to an exception (enable DEBUG log level to see the cause)
+2024-07-03 23:50:26,398 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.7)
+2024-07-03 23:50:26,403 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0018: Started Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
+2024-07-03 23:50:26,416 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 148) WFLYUT0021: Registered web context: '/BossApp_POOWI' for server 'default-server'
+2024-07-03 23:50:26,426 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0010: Deployed "BossApp_POOWI" (runtime-name : "BossApp_POOWI.war")

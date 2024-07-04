@@ -521,7 +521,7 @@
     </socket-binding-group>
     <deployments>
         <deployment name="BossApp_POOWI" runtime-name="BossApp_POOWI.war" enabled="false">
-            <fs-exploded path="C:\Users\ferna\OneDrive\Área de Trabalho\BossApp_POOWI\target\BossApp_POOWI"/>
+            <fs-exploded path="C:\Users\ferna\OneDrive\Área de Trabalho\Projetos\BossApp_POOWI\target\BossApp_POOWI"/>
         </deployment>
     </deployments>
 </server>

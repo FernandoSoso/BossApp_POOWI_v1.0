@@ -100,17 +100,16 @@ public class UsuarioDAO {
 
             ResultSet rs = stmt.executeQuery();
 
-            rs.next();
-
-            return new Usuario(
-                            rs.getInt("cod"),
-                            rs.getString("cod_externo"),
-                            rs.getString("nome"),
-                            rs.getString("email"),
-                            rs.getString("senha"),
-                            rs.getBoolean("ativo"),
-                            rs.getString(("permissao")));
-
+            if (rs.next()){
+                return new Usuario(
+                        rs.getInt("cod"),
+                        rs.getString("cod_externo"),
+                        rs.getString("nome"),
+                        rs.getString("email"),
+                        rs.getString("senha"),
+                        rs.getBoolean("ativo"),
+                        rs.getString("permissao"));
+            }
         } catch (SQLException e) {
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
@@ -134,7 +133,7 @@ public class UsuarioDAO {
         PreparedStatement stmt = null;
 
         try {
-            String query = "INSERT INTO usuario (nome, email, senha, ativo) VALUES (?, ?, ?, ?)";
+            String query = "INSERT INTO usuario (nome, email, senha, ativo, permissao) VALUES (?, ?, ?, ?, ?)";
 
             stmt = db.getConexao().prepareStatement(query);
 
@@ -142,6 +141,7 @@ public class UsuarioDAO {
             stmt.setString(2, usuario.getEmail());
             stmt.setString(3, usuario.getSenha());
             stmt.setBoolean(4, usuario.isAtivo());
+            stmt.setString(5, usuario.getPermissao());
 
             int linhasAfetadas = stmt.executeUpdate();
 

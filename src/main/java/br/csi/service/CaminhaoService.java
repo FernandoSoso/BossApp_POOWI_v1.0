@@ -7,32 +7,38 @@ import br.csi.model.Caminhao;
 import br.csi.model.Motorista_Caminhao;
 import org.jetbrains.annotations.NotNull;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class CaminhaoService {
     private final CaminhaoDAO caminhaoDAO = new CaminhaoDAO();
     private final Motorista_CaminhaoDAO motorista_caminhaoDAO = new Motorista_CaminhaoDAO();
 
-    public ArrayList<Caminhao> selectAll() {
-        ArrayList<Caminhao> caminhoes = caminhaoDAO.selectAll();
-        int i = 0;
-        while (i < caminhoes.size()){
-            Caminhao caminhao = caminhoes.get(i);
-            if (caminhao.getMotorista() == null){
-                Motorista_Caminhao relacao = motorista_caminhaoDAO.selectByCod_caminhao(caminhao.getCod());
-                if (relacao != null){
-                    caminhao.setMotorista(new MotoristaDAO().selectUnique(relacao.getCodMotorista()));
-                }
-            }
-            i++;
+    public ArrayList<Caminhao> selectAll(String offset) {
+        if (offset == null){
+            return caminhaoDAO.selectAll(0);
         }
-
-        return caminhoes;
+        else if (offset.isBlank()){
+            return caminhaoDAO.selectAll(0);
+        }
+        else{
+            int numOffset = Integer.parseInt(offset);
+            return caminhaoDAO.selectAll(numOffset);
+        }
     }
 
-    public Caminhao selectUnique(int cod) {
-        Caminhao caminhao = caminhaoDAO.selectUnique(cod);
+    public Caminhao selectUnique(@NotNull String cod) {
+        int codNumero;
+        if (cod.isBlank()){
+            return null;
+        }
+        else {
+            codNumero = Integer.parseInt(cod);
+            if (codNumero <= 0){
+                return null;
+            }
+        }
+
+        Caminhao caminhao = caminhaoDAO.selectUnique(codNumero);
         if (caminhao.getMotorista() == null){
             Motorista_Caminhao relacao = motorista_caminhaoDAO.selectByCod_caminhao(caminhao.getCod());
             caminhao.setMotorista(new MotoristaDAO().selectUnique(relacao.getCodMotorista()));
@@ -41,10 +47,22 @@ public class CaminhaoService {
         return caminhao;
     }
 
-    public boolean insert(String placa, String marca, String modelo, String ano, String capacidade, String percentualMotorista, String status, String codMotorista) {
+    public boolean persist(@NotNull String operacao, String codCaminhao,@NotNull String placa, String marca, String modelo, String ano, String capacidade, @NotNull String percentualMotorista, @NotNull String status, String codMotorista) {
+        if (!validarCampos(operacao,placa, marca, modelo, ano, capacidade, percentualMotorista, status)){
+            return false;
+        }
+
+        int codCaminhaoNumero;
         int anoNumero;
         int capacidadeNumero;
         double percentualMotoristaNumero;
+
+        if(marca.isBlank()){
+            marca = null;
+        }
+        if(modelo.isBlank()){
+            modelo = null;
+        }
 
         if (ano.isBlank()){
             anoNumero = -1;
@@ -67,26 +85,32 @@ public class CaminhaoService {
             percentualMotoristaNumero = Double.parseDouble(percentualMotorista);
         }
 
-        Caminhao caminhao = new Caminhao(placa, marca, modelo, anoNumero, capacidadeNumero, percentualMotoristaNumero, status);
-        int codCaminhao = caminhaoDAO.insert(caminhao);
-
-        if (codCaminhao == -1){
-            return false;
+        if (codCaminhao == null){
+            codCaminhaoNumero = -1;
+        }
+        else if (codCaminhao.isBlank()) {
+            codCaminhaoNumero = -1;
         }
         else{
-            if (codMotorista.isBlank()){
-                return true;
-            }
-            else{
-                int codMotoristaNumero = Integer.parseInt(codMotorista);
-                if (codMotoristaNumero <= 0){
-                    return true;
-                }
-                else {
-                    return trocarRelacionamento(codMotoristaNumero, codCaminhao);
-                }
+            codCaminhaoNumero = Integer.parseInt(codCaminhao);
+        }
+
+        Caminhao caminhao = new Caminhao(codCaminhaoNumero, placa, marca, modelo, anoNumero, capacidadeNumero, percentualMotoristaNumero, status);
+
+        if (operacao.equals("update")){
+            if (!caminhaoDAO.update(caminhao)){
+                return false;
             }
         }
+        else if (operacao.equals("insert")){
+            codCaminhaoNumero = caminhaoDAO.insert(caminhao);
+
+            if (codCaminhaoNumero < 0){
+                return false;
+            }
+        }
+
+        return gerarRelacionamento(codCaminhaoNumero, codMotorista);
     }
 
     private boolean trocarRelacionamento(int codMotorista, int codCaminhao) {
@@ -106,55 +130,27 @@ public class CaminhaoService {
         return motorista_caminhaoDAO.insert(relacaoNova);
     }
 
-    public boolean update(int codCaminhao, @NotNull String placa, String marca, String modelo, String ano, String capacidade, @NotNull String percentualMotorista, @NotNull String status, String codMotorista) {
-        int anoNumero;
-        int capacidadeNumero;
-        double percentualMotoristaNumero;
-
-        if (ano.isBlank()){
-            anoNumero = -1;
+    @NotNull
+    private Boolean gerarRelacionamento(int codCaminhao, String codMotorista) {
+        if (codMotorista == null){
+            return true;
+        }
+        else if (codMotorista.isBlank()){
+            return true;
         }
         else{
-            anoNumero = Integer.parseInt(ano);
-        }
+            int codMotoristaNumero = Integer.parseInt(codMotorista);
 
-        if (capacidade.isBlank()){
-            capacidadeNumero = -1;
-        }
-        else{
-            capacidadeNumero = Integer.parseInt(capacidade);
-        }
-
-        if (percentualMotorista.isBlank()){
-            percentualMotoristaNumero = 0;
-        }
-        else{
-            percentualMotoristaNumero = Double.parseDouble(percentualMotorista);
-        }
-
-        Caminhao caminhao = new Caminhao(codCaminhao, placa, marca, modelo, anoNumero, capacidadeNumero, percentualMotoristaNumero, status);
-
-        if (caminhaoDAO.update(caminhao)){
-            if (codMotorista.isBlank()){
+            if (codMotoristaNumero <= 0){
                 return true;
             }
-            else{
-                int codMotoristaNumero = Integer.parseInt(codMotorista);
-
-                if (codMotoristaNumero <= 0){
-                    return true;
-                }
-                else {
-                    return trocarRelacionamento(codMotoristaNumero, codCaminhao);
-                }
+            else {
+                return trocarRelacionamento(codMotoristaNumero, codCaminhao);
             }
-        }
-        else{
-            return false;
         }
     }
 
-    public boolean delete(String codCaminhao){
+    public boolean delete(@NotNull String codCaminhao){
         if (codCaminhao.isBlank()){
             return false;
         }
@@ -186,5 +182,19 @@ public class CaminhaoService {
         }
 
 
+    }
+
+    private boolean validarCampos(String operacao,String placa, String marca, String modelo, String ano, String capacidade, String percentualMotorista, String status){
+        if (!(operacao.equals("insert") || operacao.equals("update"))) {
+            return false;
+        }
+        else if (placa.isBlank()){
+            return false;
+        }
+        else if (placa.length() > 11 || marca.length() > 50 || modelo.length() > 50 || ano.length() > 4 || capacidade.length() > 5 || percentualMotorista.length() > 5 || status.length() > 1){
+            return false;
+        }
+
+        return true;
     }
 }

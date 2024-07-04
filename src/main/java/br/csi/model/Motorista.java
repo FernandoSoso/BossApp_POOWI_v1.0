@@ -1,29 +1,18 @@
 package br.csi.model;
 
-import org.jetbrains.annotations.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.Date;
 
+@Getter
+@Setter
 public class Motorista {
-    private int cod;
-    private String nome;
-    private String endereco;
-    private String telefonePrincipal;
-    private String telefoneAlternativo;
-    private String telefoneAlternativo2;
-    private Caminhao caminhao;
-    private Date dataCaminhao;
 
+    public Motorista() {
+    }
 
     public Motorista(int cod, String nome, String endereco, String telefonePrincipal, String telefoneAlternativo, String telefoneAlternativo2) {
-        if (nome.isBlank() || telefonePrincipal.isBlank() || telefonePrincipal.length() > 15 || cod <= 0){
-            throw new IllegalArgumentException("Campos obrigatórios inválidos!");
-        }
-        else if (endereco.length() > 100 || telefoneAlternativo.length() > 15 || telefoneAlternativo2.length() > 15){
-            throw new IllegalArgumentException("Campos não obrigatórios inválidos!");
-        }
-
         this.cod = cod;
         this.nome = nome;
         this.endereco = endereco;
@@ -32,82 +21,14 @@ public class Motorista {
         this.telefoneAlternativo2 = telefoneAlternativo2;
     }
 
-    public Motorista(@NotNull String nome, String endereco, @NotNull String telefonePrincipal, String telefoneAlternativo, String telefoneAlternativo2) {
-        if (nome.isBlank() || telefonePrincipal.isBlank() || telefonePrincipal.length() > 15){
-            throw new IllegalArgumentException("Campos obrigatórios inválidos!");
-        }
-        else if (endereco.length() > 100 || telefoneAlternativo.length() > 15 || telefoneAlternativo2.length() > 15){
-            throw new IllegalArgumentException("Campos não obrigatórios inválidos!");
-        }
-
-        this.cod = -1;
-        this.nome = nome;
-        this.endereco = endereco;
-        this.telefonePrincipal = telefonePrincipal;
-        this.telefoneAlternativo = telefoneAlternativo;
-        this.telefoneAlternativo2 = telefoneAlternativo2;
-    }
-
-    public int getCod() {
-        return cod;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getTelefonePrincipal() {
-        return telefonePrincipal;
-    }
-
-    public void setTelefonePrincipal(String telefonePrincipal) {
-        this.telefonePrincipal = telefonePrincipal;
-    }
-
-    public String getTelefoneAlternativo() {
-        return telefoneAlternativo;
-    }
-
-    public void setTelefoneAlternativo(String telefoneAlternativo) {
-        this.telefoneAlternativo = telefoneAlternativo;
-    }
-
-    public String getTelefoneAlternativo2() {
-        return telefoneAlternativo2;
-    }
-
-    public void setTelefoneAlternativo2(String telefoneAlternativo2) {
-        this.telefoneAlternativo2 = telefoneAlternativo2;
-    }
-
-
-    public Caminhao getCaminhao() {
-        return caminhao;
-    }
-
-    public void setCaminhao(Caminhao caminhao) {
-        this.caminhao = caminhao;
-    }
-
-    public Date getDataCaminhao() {
-        return dataCaminhao;
-    }
-
-    public void setDataCaminhao(Date dataCaminhao) {
-        this.dataCaminhao = dataCaminhao;
-    }
+    private int cod;
+    private String nome;
+    private String endereco;
+    private String telefonePrincipal;
+    private String telefoneAlternativo;
+    private String telefoneAlternativo2;
+    private Caminhao caminhao;
+    private Date dataCaminhao;
 
     @Override
     public String toString() {

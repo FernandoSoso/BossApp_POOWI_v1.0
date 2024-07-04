@@ -3,12 +3,14 @@ package br.csi.dao;
 import br.csi.model.Motorista_Caminhao;
 import br.csi.util.ConectaDB;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.time.LocalDate;
 
 public class Motorista_CaminhaoDAO {
     public Motorista_Caminhao selectByCod_motorista(int codMotorista) {
@@ -24,14 +26,16 @@ public class Motorista_CaminhaoDAO {
 
             ResultSet rs = stmt.executeQuery();
 
-            rs.next();
-
-            return new Motorista_Caminhao(
-                            rs.getInt("cod_motorista"),
-                            rs.getInt("cod_caminhao"),
-                            rs.getDate("data_inicio")
-                    );
-
+            if (rs.next()) {
+                return new Motorista_Caminhao(
+                        rs.getInt("cod_motorista"),
+                        rs.getInt("cod_caminhao"),
+                        rs.getDate("data_inicio")
+                );
+            }
+            else {
+                return null;
+            }
         }catch (SQLException e){
             Logger logger = Logger.getLogger(this.getClass().getName());
             logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
@@ -104,7 +108,7 @@ public class Motorista_CaminhaoDAO {
 
             stmt.setInt(1, relacao.getCodMotorista());
             stmt.setInt(2, relacao.getCodCaminhao());
-            stmt.setDate(3, relacao.getDataInicio());
+            stmt.setDate(3, Date.valueOf(LocalDate.now()));
 
             int linhasAfetadas = stmt.executeUpdate();
 
@@ -137,7 +141,7 @@ public class Motorista_CaminhaoDAO {
 
             stmt = db.getConexao().prepareStatement(query);
 
-            stmt.setDate(1, relacao.getDataInicio());
+            stmt.setDate(1, Date.valueOf(LocalDate.now()));
             stmt.setInt(2, relacao.getCodMotorista());
             stmt.setInt(3, relacao.getCodCaminhao());
 

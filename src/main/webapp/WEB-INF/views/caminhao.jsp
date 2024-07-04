@@ -14,141 +14,34 @@
     <meta charset="UTF-8">
     <title>Caminhao</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/root.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/global.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/view.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/table-page.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/modal.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/sidebar.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/inputs.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/buttons.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body id="view-body">
+<body id="page-body">
 
-<jsp:include page="../components/barra-lateral.jsp"/>
-
-<div class="view-container">
-    <div class="view-titulo">
-        <h1>Caminhões</h1>
-    </div>
-    <div class="view-tabela">
-        <div class="opcoes-container">
-            <button type="button" class="cadastrar-upper-button" data-toggle="modal" data-target="#cadastrarModal">
-                Cadastrar
-            </button>
-        </div>
-        <div class="container-tabela">
-            <div class="header"></div>
-            <div class="body">
-                <table class="table-striped">
-                    <tr class="row cabecalho">
-                        <th class="col"></th>
-                        <th class="col">Placa</th>
-                        <th class="col">Marca</th>
-                        <th class="col">Modelo</th>
-                        <th class="col">Ano</th>
-                        <th class="col">Capacidade</th>
-                        <th class="col">Estado</th>
-                    </tr>
-                    <c:forEach var="caminhao" items='${listaCaminhao}'>
-                        <c:set var="i" value="${i + 1}" scope="page" />
-                        <c:choose>
-                            <c:when test="${i%2 == 1}">
-                                <tr class="row linha-claro linha">
-                            </c:when>
-                            <c:otherwise>
-                                <tr class="row linha-escuro linha">
-                            </c:otherwise>
-                        </c:choose>
-                            <td class="col">
-                                <a class="visualizar-button">
-                                    <p class="visualizar-texto">visualizar</p>
-                                    <svg class="visualizar-svg" width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M5.41174 11.4375V3.46875C5.41174 3.09579 5.55119 2.7381 5.7994 2.47438C6.04761 2.21066 6.38425 2.0625 6.73527 2.0625C7.08629 2.0625 7.42294 2.21066 7.67115 2.47438C7.91936 2.7381 8.0588 3.09579 8.0588 3.46875V10.5M8.0588 10.0312V8.15625C8.0588 7.78329 8.19824 7.4256 8.44645 7.16188C8.69466 6.89816 9.03131 6.75 9.38233 6.75C9.73335 6.75 10.07 6.89816 10.3182 7.16188C10.5664 7.4256 10.7059 7.78329 10.7059 8.15625V10.5M10.7059 9.09375C10.7059 8.72079 10.8453 8.3631 11.0935 8.09938C11.3417 7.83566 11.6784 7.6875 12.0294 7.6875C12.3804 7.6875 12.7171 7.83566 12.9653 8.09938C13.2135 8.3631 13.3529 8.72079 13.3529 9.09375V10.5"></path>
-                                        <path d="M13.3529 10.0312C13.3529 9.65829 13.4924 9.3006 13.7406 9.03688C13.9888 8.77316 14.3254 8.625 14.6765 8.625C15.0275 8.625 15.3641 8.77316 15.6123 9.03688C15.8606 9.3006 16 9.65829 16 10.0312V14.25C16 15.7418 15.4422 17.1726 14.4494 18.2275C13.4565 19.2824 12.11 19.875 10.7059 19.875H8.94118H9.12471C8.24794 19.8752 7.38487 19.644 6.61299 19.2021C5.8411 18.7603 5.18457 18.1218 4.70235 17.3437L4.52941 17.0625C4.25412 16.6138 3.28765 14.8238 1.63 11.6925C1.46099 11.3733 1.41584 10.9967 1.50416 10.6426C1.59248 10.2886 1.80731 9.9852 2.10294 9.79688C2.41797 9.59661 2.78686 9.51368 3.15123 9.56123C3.5156 9.60877 3.85465 9.78407 4.11471 10.0594L5.41176 11.4375M2.76471 2.0625L1.88235 1.125M1.88235 5.8125H1M10.7059 2.0625L11.5882 1.125M11.5882 4.875H12.4706"></path>
-                                    </svg>
-                                </a>
-                            </td>
-                            <td class="col">
-                                <c:choose>
-                                    <c:when test="${empty caminhao.placa}">
-                                        <p style="width: 100%;text-align: center;">-</p>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <p>${caminhao.placa}</p>
-                                    </c:otherwise>
-                                </c:choose>
-                            </td>
-                            <td class="col">
-                                <c:choose>
-                                    <c:when test="${empty caminhao.marca}">
-                                        <p style="width: 100%;text-align: center;">-</p>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <p>${caminhao.marca}</p>
-                                    </c:otherwise>
-                                </c:choose>
-                            </td>
-                            <td class="col">
-                                <c:choose>
-                                    <c:when test="${empty caminhao.modelo}">
-                                        <p style="width: 100%;text-align: center;">-</p>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <p>${caminhao.modelo}</p>
-                                    </c:otherwise>
-                                </c:choose>
-                            </td>
-                            <td class="col">
-                                <c:choose>
-                                    <c:when test="${caminhao.ano == -1}">
-                                        <p style="width: 100%;text-align: center;">-</p>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <p>${caminhao.ano}</p>
-                                    </c:otherwise>
-                                </c:choose>
-                            </td>
-                            <td class="col">
-                                <c:choose>
-                                    <c:when test="${caminhao.capacidade == -1}">
-                                        <p style="width: 100%;text-align: center;">-</p>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <p>${caminhao.capacidade}</p>
-                                    </c:otherwise>
-                                </c:choose>
-                            </td>
-                            <td class="col">
-                                <c:choose>
-                                    <c:when test="${caminhao.status == 'a'}">
-                                        <div class="status-badge">
-                                            <p>Disponível</p>
-                                        </div>
-                                    </c:when>
-                                    <c:when test="${caminhao.status == 'b'}">
-                                        <div class="status-badge">
-                                            <p>Indisponível</p>
-                                        </div>
-                                    </c:when>
-                                </c:choose>
-
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </table>
-            </div>
-            <div class="footer"></div>
-        </div>
-    </div>
-</div>
+<jsp:include page="../components/sidebar.jsp"/>
+<jsp:include page="../components/table.jsp"/>
 
 <!-- Modal de cadastro-->
-<div class="modal fade" id="cadastrarModal" tabindex="-1" role="dialog" aria-labelledby="titulo-modal" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="cadastrarModal" tabindex="-1" role="dialog" aria-labelledby="titulo-modal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="header-modal">
                 <h5 class="titulo-modal" id="titulo-modal">Cadastrar caminhao</h5>
                 <button type="button" class="fechar-modal" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <svg aria-hidden="true" width="35" height="36" viewBox="0 0 35 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.67196 7.17184C7.08218 6.76175 7.63848 6.53137 8.21853 6.53137C8.79857 6.53137 9.35487 6.76175 9.76509 7.17184L17.5001 14.9068L25.2351 7.17184C25.6477 6.77337 26.2002 6.55288 26.7738 6.55787C27.3473 6.56285 27.896 6.79291 28.3016 7.19849C28.7071 7.60407 28.9372 8.15272 28.9422 8.72628C28.9472 9.29983 28.7267 9.8524 28.3282 10.265L20.5932 18L28.3282 25.735C28.7267 26.1475 28.9472 26.7001 28.9422 27.2737C28.9372 27.8472 28.7071 28.3959 28.3016 28.8014C27.896 29.207 27.3473 29.4371 26.7738 29.4421C26.2002 29.4471 25.6477 29.2266 25.2351 28.8281L17.5001 21.0931L9.76509 28.8281C9.35252 29.2266 8.79995 29.4471 8.2264 29.4421C7.65284 29.4371 7.10419 29.207 6.69861 28.8014C6.29303 28.3959 6.06297 27.8472 6.05799 27.2737C6.05301 26.7001 6.27349 26.1475 6.67196 25.735L14.407 18L6.67196 10.265C6.26187 9.85475 6.03149 9.29845 6.03149 8.7184C6.03149 8.13836 6.26187 7.58206 6.67196 7.17184Z" fill="#1C1C1C" fill-opacity="0.5"></path>
+                    </svg>
+
                 </button>
             </div>
             <div class="body-modal">
@@ -157,41 +50,60 @@
                 </h6>
                 <form action="caminhao" method="post" class="cadastrar-container">
                     <div class="input-container">
-                        <div class="input-text-container">
-                            <label for="placa" class="input-text-label">*placa</label>
-                            <input type="text" name="placa" id="placa" class="input-text" required>
+                        <input type="hidden" value="insert" name="operacao" id="operacao">
+
+                        <div class="wrapper-input">
+                            <div class="input-text-container">
+                                <label for="placa" class="input-text-label">*placa</label>
+                                <input type="text" maxlength="11" name="placa" id="placa" class="input-text" required>
+                            </div>
+                            <div class="input-text-container">
+                                <label for="marca" class="input-text-label">marca</label>
+                                <input type="text" maxlength="50" name="marca" id="marca" class="input-text">
+                            </div>
                         </div>
-                        <div class="input-text-container">
-                            <label for="modelo" class="input-text-label">modelo</label>
-                            <input type="text" name="modelo" id="modelo" class="input-text">
+
+                        <div class="wrapper-input">
+                            <div class="input-text-container">
+                                <label for="modelo" class="input-text-label">modelo</label>
+                                <input type="text" maxlength="50" name="modelo" id="modelo" class="input-text">
+                            </div>
+                            <div class="input-text-container">
+                                <label for="ano" class="input-text-label">ano</label>
+                                <input type="number" minlength="4" maxlength="4" min="1900" max="2100" step="1" name="ano" id="ano" class="input-text">
+                            </div>
                         </div>
-                        <div class="input-text-container">
-                            <label for="marca" class="input-text-label">marca</label>
-                            <input type="text" name="marca" id="marca" class="input-text">
+
+                        <div class="wrapper-input">
+                            <div class="input-text-container">
+                                <label for="motorista" class="input-select-label">motorista</label>
+                                <select id="motorista" name="motorista" class="input-select">
+                                    <option value="-1" selected>Sem motorista</option>
+                                    <c:forEach var="motorista" items='${listaMotorista}'>
+                                        <option value="${motorista.cod}">${motorista.nome}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="input-text-container">
+                                <label for="percentualMotorista" class="input-text-label">*percentual do motorista</label>
+                                <input type="number" min="0" max="100" step="0.1" name="percentualMotorista" id="percentualMotorista" class="input-text" required>
+                            </div>
                         </div>
-                        <div class="input-text-container">
-                            <label for="ano" class="input-text-label">ano</label>
-                            <input type="number" min="1900" max="2100" step="1" name="ano" id="ano" class="input-text">
+
+                        <div class="wrapper-input">
+                            <div class="input-text-container">
+                                <label for="capacidade" class="input-text-label">capacidade</label>
+                                <input type="number" min="0" max="100000" name="capacidade" id="capacidade" class="input-text">
+                            </div>
+                            <div class="input-text-container">
+                                <label for="status" class="input-select-label">*estado</label>
+                                <select id="status" name="status" class="input-select">
+                                    <option value="d" selected>Disponivel</option>
+                                    <option value="i" >Indisponivel</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="input-text-container">
-                            <label for="motorista" class="input-text-label">motorista</label>
-                            <input type="number" min="0" step="1" name="motorista" id="motorista" class="input-text">
-                        </div>
-                        <div class="input-text-container">
-                            <label for="percentualMotorista" class="input-text-label">*percentual do motorista</label>
-                            <input type="number" min="0" max="100" step="0.1" name="percentualMotorista" id="percentualMotorista" class="input-text" required>
-                        </div>
-                        <div class="input-text-container">
-                            <label for="capacidade" class="input-text-label">capacidade</label>
-                            <input type="number" min="0" max="1000000" name="capacidade" id="capacidade" class="input-text">
-                        </div>
-                        <div class="input-text-container">
-                            <label for="status" class="input-select-label">*estado</label>
-                            <select id="status" name="status" class="input-select">
-                                <option value="d" selected>Disponivel</option>
-                                <option value="i" >Indisponivel</option>
-                            </select>
-                        </div>
+
                     </div>
                     <button type="submit" class="cadastrar-button">Cadastrar</button>
                 </form>
@@ -201,4 +113,25 @@
     </div>
 </div>
 </body>
+
+<script src="<%=request.getContextPath()%>/js/table.js"></script>
+<script>
+    const entidade = 'caminhao';
+    const tableTitleId = 'page-title';
+    const tableHeadId = 'table-header';
+    const tableBodyId = 'table-body';
+    const incrementId = 'increment';
+    const decrementId = 'decrement';
+    const cols = [
+        "placa",
+        "marca",
+        "modelo",
+        "ano",
+        "capacidade",
+        "estado",
+    ];
+    const maxItens = 15;
+
+    inicializarTabela(entidade, tableTitleId, tableHeadId, tableBodyId, cols, maxItens);
+</script>
 </html>

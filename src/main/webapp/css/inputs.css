@@ -1,0 +1,118 @@
+/*Text*/
+.input-text-container{
+    position: relative;
+    width: 100%;
+    /*height: 40px;*/
+    height: fit-content;
+}
+
+.input-text{
+    min-width: 100px;
+    min-height: 40px;
+    max-height: 40px;
+    width: 100%;
+    padding: 5px 20px;
+    border: 1px solid var(--branco-20-escuro);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-family: var(--fonte-texto);
+    font-size: 14px;
+    background-color: var(--branco);
+    color: var(--preto-75);
+    box-sizing: border-box;
+}
+
+.input-text-label{
+    font-family: var(--fonte-texto);
+    /*font-size: 14px;*/
+    color: var(--preto-75);
+    margin-bottom: 5px;
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 20px;*/
+    /*transform: translateY(-50%);*/
+    /*transition: top 0.3s, font-size 0.3s, color 0.3s;*/
+    /*display: flex;*/
+    /*top: 10px;*/
+    font-size: 14px;
+    /*color: var(--verde-20p-escuro);*/
+    text-transform: capitalize;
+}
+
+.input-text:focus {
+    border: 1px solid var(--verde-20-escuro);
+}
+
+/*Checkbox*/
+.input-checkbox-container{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.input-checkbox{
+    min-width: 20px;
+    min-height: 20px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--branco-20-escuro);
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.input-checkbox:checked{
+    background-color: var(--verde);
+}
+
+.input-select{
+    min-width: 100px;
+    min-height: 40px;
+    max-height: 40px;
+    width: 100%;
+    padding: 5px 20px;
+    border: 1px solid var(--branco-20-escuro);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-family: var(--fonte-texto);
+    font-size: 14px;
+    background-color: var(--branco);
+    color: var(--preto-75);
+    box-sizing: border-box;
+}
+
+.input-select-label{
+    font-family: var(--fonte-texto);
+    /*font-size: 14px;*/
+    color: var(--preto-75);
+    margin-bottom: 5px;
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 20px;*/
+    /*transform: translateY(-50%);*/
+    /*transition: top 0.3s, font-size 0.3s, color 0.3s;*/
+    /*display: flex;*/
+    /*top: 10px;*/
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.asterisco{
+    color: var(--vermelho);
+}
+
+.modal{
+    --bs-modal-width: 800px;
+}
+
+.fechar-modal{
+    border: none;
+    display: flex;
+}
+
+.fechar-modal span{
+    width: 20px;
+    height: 20px;
+}
