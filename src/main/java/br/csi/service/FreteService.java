@@ -6,6 +6,7 @@ import br.csi.dao.MotoristaDAO;
 import br.csi.model.Caminhao;
 import br.csi.model.Frete;
 import br.csi.model.Motorista;
+import br.csi.util.ParamConverter;
 import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
@@ -16,33 +17,27 @@ public class FreteService {
     private final FreteDAO freteDAO = new FreteDAO();
     private final MotoristaDAO motoristaDAO = new MotoristaDAO();
     private final CaminhaoDAO caminhaoDAO = new CaminhaoDAO();
+    private final ParamConverter paramConverter = new ParamConverter();
 
     public ArrayList<Frete> selectAll(String offset) {
-        if (offset == null){
-            return freteDAO.selectAll(0);
-        }
-        else if (offset.isBlank()){
+        Integer offsetNumber = paramConverter.convertStringToInt(offset);
+
+        if (offsetNumber == null){
             return freteDAO.selectAll(0);
         }
         else{
-            int numOffset = Integer.parseInt(offset);
-            return freteDAO.selectAll(numOffset);
+            return freteDAO.selectAll(offsetNumber);
         }
     }
 
-    public Frete selectUnique(@NotNull String cod) {
-        int codNumero;
-        if (cod.isBlank()){
+    public Frete selectUnique(@NotNull String codFrete) {
+        Integer codFreteNumber = paramConverter.convertStringToInt(codFrete);
+
+        if (codFreteNumber == null || codFreteNumber <= 0){
             return null;
         }
-        else {
-            codNumero = Integer.parseInt(cod);
-            if (codNumero <= 0){
-                return null;
-            }
-        }
 
-        Frete frete = freteDAO.selectUnique(codNumero);
+        Frete frete = freteDAO.selectUnique(codFreteNumber);
 
         if (frete.getMotorista().getCod() > 0){
             Motorista motorista = motoristaDAO.selectUnique(frete.getMotorista().getCod());
@@ -57,96 +52,65 @@ public class FreteService {
         return frete;
     }
 
-    public boolean persist(@NotNull String operacao, String cod,@NotNull  String origem, String origem_data,@NotNull  String destino, String destino_data, double valor_tonelada, double peso, String observacao,@NotNull  String estado, int cod_Motorista, int cod_Caminhao) {
-        int numCod;
-        Date origem_data_date = null;
-        Date destino_data_date = null;
+    public boolean persist(@NotNull String operacao, String codFrete, @NotNull String origem, String origem_data, @NotNull String destino,
+                           String destino_data, @NotNull String valorTonelada, @NotNull String peso, String observacao, @NotNull  String estado,
+                           String codMotorista, String codCaminhao) {
 
-        if (!validarCampos(operacao, origem, destino, valor_tonelada, peso, observacao, estado, cod_Motorista, cod_Caminhao)){
+        if (!validarCampos(operacao, origem, destino, valorTonelada, peso, observacao, estado, codMotorista, codCaminhao)){
             return false;
         }
 
-        if (origem_data != null){
-            if (!origem_data.isBlank()){
-                try {
-                    origem_data_date = new SimpleDateFormat("dd/MM/yyyy").parse(origem_data);
-                } catch (Exception e) {
-                    return false;
-                }
-            }
-        }
+        Integer codFreteNumber = paramConverter.convertStringToInt(codFrete);
+        Integer codMotoristaNumber = paramConverter.convertStringToInt(codMotorista);
+        Integer codCaminhaoNumber = paramConverter.convertStringToInt(codCaminhao);
+        Double valorToneladaNumber = paramConverter.convertStringToDouble(valorTonelada);
+        Double pesoNumber = paramConverter.convertStringToDouble(peso);
+        Date origemDataDate = paramConverter.convertStringToDate(origem_data);
+        Date destinoDataDate = paramConverter.convertStringToDate(destino_data);
+        observacao = paramConverter.convertBlankStringToNull(observacao);
 
-        if (destino_data != null){
-            if (!destino_data.isBlank()){
-                try {
-                    destino_data_date = new SimpleDateFormat("dd/MM/yyyy").parse(destino_data);
-                } catch (Exception e) {
-                    return false;
-                }
-            }
-        }
-
-        if (observacao.isBlank()){
-            observacao = null;
-        }
-
-        if (cod == null){
-            numCod = -1;
-        }
-        else if (cod.isBlank()){
-            numCod = -1;
-        }
-        else{
-            numCod = Integer.parseInt(cod);
-        }
-        Caminhao caminhao = new Caminhao(cod_Caminhao, null, null, null, 0, 0, 0, null);
-        Motorista motorista = new Motorista(cod_Motorista, null, null, null, null, null);
-        Frete frete = new Frete(numCod, origem, origem_data_date, destino, destino_data_date, valor_tonelada, peso, observacao, estado, motorista, caminhao);
+        Caminhao caminhao = new Caminhao(codCaminhaoNumber);
+        Motorista motorista = new Motorista(codMotoristaNumber);
+        Frete frete = new Frete(codFreteNumber, origem, origemDataDate, destino, destinoDataDate, valorToneladaNumber, pesoNumber, observacao, estado, motorista, caminhao);
 
         if (operacao.equals("update")){
             return freteDAO.update(frete);
         }
         else if (operacao.equals("insert")){
-            int codFrete = freteDAO.insert(frete);
-
-            return codFrete >= 0;
+            return freteDAO.insert(frete) >= 0;
         }
 
         return true;
     }
 
-    public boolean delete(@NotNull String cod){
-        if (cod.isBlank()){
+    public boolean delete(@NotNull String codFrete){
+        Integer codFreteNumber = paramConverter.convertStringToInt(codFrete);
+
+        if (codFreteNumber == null || codFreteNumber <= 0){
             return false;
         }
         else{
-            int codNumero = Integer.parseInt(cod);
-            if (codNumero <= 0){
-                return false;
+            if (freteDAO.selectUnique(codFreteNumber) == null){
+                throw new IllegalArgumentException("Motorista não encontrado");
             }
-            else {
-                if (freteDAO.selectUnique(codNumero) == null){
-                    throw new IllegalArgumentException("Motorista não encontrado");
-                }
-                else{
-                        return freteDAO.delete(codNumero);
-                }
+            else{
+                    return freteDAO.delete(codFreteNumber);
             }
         }
     }
 
 
-    private boolean validarCampos(String operacao, String origem, String destino, double valor_tonelada, double peso, String observacao, String estado, int cod_Motorista, int cod_Caminhao){
+    private boolean validarCampos(String operacao, String origem, String destino, String valor_tonelada,
+                                  String peso, String observacao, String estado, String cod_Motorista, String cod_Caminhao){
         if (!(operacao.equals("insert") || operacao.equals("update"))) {
             return false;
         }
-        else if (origem.isBlank() || origem.length() > 50 || destino.isBlank() || destino.length() > 50 || observacao.length() > 1024 || estado.length() > 1 || estado.isBlank()){
-            return false;
-        }
-        else if (peso <= 0 || valor_tonelada <= 0 || cod_Motorista <= 0 || cod_Caminhao <= 0){
-            return false;
-        }
+        else if (origem.isBlank() || origem.length() > 50 || destino.isBlank() || destino.length() > 50 || observacao.length() > 1024
+                || estado.length() > 20 || estado.isBlank() || cod_Motorista.isBlank() || cod_Caminhao.isBlank() ||
+                valor_tonelada.isBlank() || peso.isBlank()){
 
-        return true;
+            return false;
+        }
+        else return estado.equals("PENDENTE") || estado.equals("CONCLUIDO");
     }
 }

@@ -2,10 +2,13 @@
 #page-body {
     background-color: var(--branco);
     display: flex;
+    /*overflow-x: hidden;*/
+    overflow-y: hidden;
+    width: 100vw;
 }
 
 .table-page-container {
-    width: 100%;
+    width: calc(100vw - 150px - 10px);
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -26,6 +29,7 @@
 .main-container {
     display: flex;
     flex-direction: column;
+    min-width: 750px;
 }
 
 .options-container {
@@ -37,7 +41,6 @@
 
 .table-container{
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     border: 1px solid var(--branco-20-escuro);
@@ -58,19 +61,26 @@
 
 .table-container-body{
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
+.table-container-header{
+    display: flex;
+    justify-content: space-between;
+}
+
 #table-body{
     width: 100%;
-    height: calc(100vh - 100px - 50px);
     border-collapse: collapse;
     padding: 0;
     margin: 0;
+    overflow-x: auto;
+    overflow-y: scroll;
+    height: 100vw;
+    max-height: calc(100vh - 368px);
 }
 
 #table-body tr, #table-header tr{
@@ -118,11 +128,6 @@
     border-bottom: 1px solid var(--branco-20-escuro);
 }
 
-#table-body{
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
 #table-body tr{
     height: 80px;
     transition: 0.2s;
@@ -148,6 +153,7 @@
     height: 100%;
     overflow-y: scroll;
     text-transform: uppercase;
+    align-content: center;
 }
 
 .table-container-footer{

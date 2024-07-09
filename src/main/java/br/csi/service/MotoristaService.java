@@ -5,6 +5,7 @@ import br.csi.dao.MotoristaDAO;
 import br.csi.dao.Motorista_CaminhaoDAO;
 import br.csi.model.Motorista;
 import br.csi.model.Motorista_Caminhao;
+import br.csi.util.ParamConverter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -13,80 +14,88 @@ public class MotoristaService {
 
     private final MotoristaDAO motoristaDAO = new MotoristaDAO();
     private final Motorista_CaminhaoDAO motorista_caminhaoDAO = new Motorista_CaminhaoDAO();
+    private final ParamConverter paramConverter = new ParamConverter();
 
     public ArrayList<Motorista> selectAll(String offset) {
-        if (offset == null){
-            return null;
-        }
-        else if (offset.isBlank()){
+        Integer offsetNumber = paramConverter.convertStringToInt(offset);
+
+        if (offsetNumber == null){
             return null;
         }
         else {
-            int offsetNumero = Integer.parseInt(offset);
-            return motoristaDAO.selectAll(offsetNumero);
+            return motoristaDAO.selectAll(offsetNumber);
         }
     }
 
-    public Motorista selectUnique(int cod) {
-        Motorista motorista = motoristaDAO.selectUnique(cod);
+    public Motorista selectUnique(@NotNull String codMotorista) {
+        Integer codMotoristaNumber = paramConverter.convertStringToInt(codMotorista);
 
-        if (motorista.getCaminhao() == null){
-            Motorista_Caminhao relacao = motorista_caminhaoDAO.selectByCod_caminhao(motorista.getCod());
-            motorista.setCaminhao(new CaminhaoDAO().selectUnique(relacao.getCodMotorista()));
+        if (codMotoristaNumber == null || codMotoristaNumber <= 0){
+            return null;
         }
+        else{
+            Motorista motorista = motoristaDAO.selectUnique(codMotoristaNumber);
 
-        return motorista;
+            Motorista_Caminhao relacao = motorista_caminhaoDAO.selectByCod_motorista(motorista.getCod());
+
+            if (relacao != null){
+                motorista.setCaminhao(new CaminhaoDAO().selectUnique(relacao.getCodCaminhao()));
+            }
+            return motorista;
+        }
     }
 
-    public boolean persist(@NotNull String operacao, String codMotorista, @NotNull String nome,  String endereco, String telefonePrincipal, @NotNull String telefoneAlternativo, String telefoneAlternativo2, String codCaminhao) {
-        int codMotoristaNumero;
-
+    public boolean persist(@NotNull String operacao, String codMotorista, @NotNull String nome,  String endereco,
+                           String telefonePrincipal, @NotNull String telefoneAlternativo, String telefoneAlternativo2,
+                           String codCaminhao) {
         if (!validarCampos(operacao,nome, endereco, telefonePrincipal, telefoneAlternativo, telefoneAlternativo2)){
             return false;
         }
 
-        if(endereco.isBlank()){
-            endereco = null;
-        }
+        Integer codMotoristaNumber = paramConverter.convertStringToInt(codMotorista);
+        Integer codCaminhaoNumber = paramConverter.convertStringToInt(codCaminhao);
+        endereco = paramConverter.convertBlankStringToNull(endereco);
+        telefoneAlternativo = paramConverter.convertBlankStringToNull(telefoneAlternativo);
+        telefoneAlternativo2 = paramConverter.convertBlankStringToNull(telefoneAlternativo2);
 
-        if(telefoneAlternativo.isBlank()){
-            telefoneAlternativo = null;
-        }
-
-        if(telefoneAlternativo2.isBlank()){
-            telefoneAlternativo2 = null;
-        }
-
-        if (codMotorista == null){
-            codMotoristaNumero = -1;
-        }
-        else if (codMotorista.isBlank()){
-            codMotoristaNumero = -1;
-        }
-        else{
-            codMotoristaNumero = Integer.parseInt(codMotorista);
-        }
-
-
-        Motorista motorista = new Motorista(codMotoristaNumero,nome, endereco, telefonePrincipal, telefoneAlternativo, telefoneAlternativo2);
+        Motorista motorista = new Motorista(codMotoristaNumber,nome, endereco, telefonePrincipal, telefoneAlternativo, telefoneAlternativo2);
 
         if (operacao.equals("update")){
-            if (!motoristaDAO.update(motorista)){
-                return false;
-            }
+            return motoristaDAO.update(motorista);
         }
         else if (operacao.equals("insert")){
-            codMotoristaNumero = motoristaDAO.insert(motorista);
-
-            if (codMotoristaNumero < 0){
-                return false;
-            }
+            return motoristaDAO.insert(motorista) < 0;
         }
 
-        return gerarRelacionamento(codMotoristaNumero, codCaminhao);
+        return gerarRelacionamento(codMotoristaNumber, codCaminhaoNumber);
     }
 
-    private boolean trocarRelacionamento(int codMotorista, int codCaminhao) {
+
+    public boolean delete(@NotNull String codMotorista){
+        Integer codMotoristaNumber = paramConverter.convertStringToInt(codMotorista);
+
+        if (codMotoristaNumber == null || codMotoristaNumber <= 0){
+            return false;
+        }
+        else{
+            if (motoristaDAO.selectUnique(codMotoristaNumber) == null){
+                throw new IllegalArgumentException("Motorista não encontrado");
+            }
+            else{
+                Motorista_Caminhao relacao = motorista_caminhaoDAO.selectByCod_motorista(codMotoristaNumber);
+
+                if (relacao != null){
+                    if (!motorista_caminhaoDAO.delete(relacao)) {
+                        return false;
+                    }
+                }
+
+                return motoristaDAO.delete(codMotoristaNumber);
+            }
+        }
+    }
+
+    private boolean trocarRelacionamento(Integer codMotorista, Integer codCaminhao) {
         Motorista_Caminhao relacaoNova = new Motorista_Caminhao(codMotorista, codCaminhao);
         Motorista_Caminhao relacaoAntiga = motorista_caminhaoDAO.selectByCod_caminhao(codCaminhao);
 
@@ -103,38 +112,14 @@ public class MotoristaService {
 
     }
 
-    public boolean delete(@NotNull String codMotorista){
-        if (codMotorista.isBlank()){
-            return false;
+    private boolean gerarRelacionamento(Integer codMotorista, Integer codCaminhao){
+        if (codCaminhao == null || codCaminhao <= 0){
+            return true;
         }
         else{
-            int codMotoristaNumero = Integer.parseInt(codMotorista);
-            if (codMotoristaNumero <= 0){
-                return false;
-            }
-            else {
-                if (motoristaDAO.selectUnique(codMotoristaNumero) == null){
-                    throw new IllegalArgumentException("Motorista não encontrado");
-                }
-                else{
-                    Motorista_Caminhao relacao = motorista_caminhaoDAO.selectByCod_motorista(codMotoristaNumero);
-
-                    if (relacao != null){
-                        if (motorista_caminhaoDAO.delete(relacao)) {
-                            return motoristaDAO.delete(codMotoristaNumero);
-                        }
-                        else{
-                            return false;
-                        }
-                    }
-                    else{
-                        return motoristaDAO.delete(codMotoristaNumero);
-                    }
-                }
-            }
+            return trocarRelacionamento(codMotorista, codCaminhao);
         }
     }
-
 
     private boolean validarCampos(String operacao,String nome, String endereco, String telefonePrincipal, String telefoneAlternativo, String telefoneAlternativo2){
         if (!(operacao.equals("insert") || operacao.equals("update"))) {
@@ -143,29 +128,7 @@ public class MotoristaService {
         else if (nome.isBlank() || telefonePrincipal.isBlank() ){
             return false;
         }
-        else if (endereco.length() > 100 || telefoneAlternativo.length() > 15 || telefoneAlternativo2.length() > 15 || telefonePrincipal.length() > 15){
-            return false;
-        }
-
-        return true;
-    }
-
-    private boolean gerarRelacionamento(int codMotorista, String codCaminhao){
-        if (codCaminhao == null){
-            return true;
-        }
-        else if (codCaminhao.isBlank()){
-            return true;
-        }
-        else{
-            int codCaminhaoNumero = Integer.parseInt(codCaminhao);
-
-            if (codCaminhaoNumero <= 0){
-                return true;
-            }
-            else {
-                return trocarRelacionamento(codMotorista, codCaminhaoNumero);
-            }
-        }
+        else return endereco.length() <= 100 && telefoneAlternativo.length() <= 15 && telefoneAlternativo2.length() <= 15
+                    && telefonePrincipal.length() <= 15;
     }
 }

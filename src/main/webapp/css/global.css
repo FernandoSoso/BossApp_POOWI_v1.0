@@ -14,3 +14,25 @@ body{
 a{
     text-decoration: none;
 }
+
+/* Personaliza a barra de rolagem */
+::-webkit-scrollbar {
+    width: 10px; /* Largura da barra de rolagem */
+    background: var(--branco-5-escuro); /* Cor de fundo */
+}
+
+/* Personaliza o fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+    background: var(--branco-5-escuro); /* Cor de fundo */
+    border-left: 1px solid var(--branco-20-escuro);
+}
+
+/* Personaliza o manipulador da barra de rolagem */
+::-webkit-scrollbar-thumb {
+    background: var(--branco-20-escuro); /* Cor do manipulador */
+}
+
+/* Altera a cor do manipulador ao passar o mouse */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--preto-50-claro); /* Cor de fundo */
+}

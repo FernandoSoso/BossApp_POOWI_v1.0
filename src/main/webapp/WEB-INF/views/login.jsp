@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
+
+<!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -17,6 +19,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/inputs.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/buttons.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/user-page.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body id="user-body">
@@ -33,15 +36,16 @@
             <h1>Acessar</h1>
         </div>
         <div class="container-inputs">
-            <div class="input-text-container">
-                <label for="email" class="input-text-label">Email</label>
-                <input type="text" name="email" id="email" class="input-text" required>
+            <div class="input-container">
+                <input type="text" name="email" id="email" class="input-text" value="" required>
+                <label for="email" class="input-label">Email</label>
             </div>
 
-            <div class="input-text-container">
-                <label for="senha" class="input-text-label">Senha</label>
-                <input type="password" name="senha" id="senha" class="input-text" required minlength="8"><br>
+            <div class="input-container">
+                <input type="password" name="senha" id="senha" class="input-text" minlength="8" value="" required>
+                <label for="senha" class="input-label">Senha</label>
             </div>
+
             <div class="input-checkbox-container">
                 <input type="checkbox" name="lembrar" id="lembrar" class="input-checkbox">
                 <label for="lembrar" class="input-checkbox-label">Lembrar acesso</label>
@@ -51,4 +55,8 @@
     </form>
 </div>
 </body>
+
+<script src="<%=request.getContextPath()%>/js/input.js"></script>
+
+<script></script>
 </html>

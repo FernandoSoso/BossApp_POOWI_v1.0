@@ -11,7 +11,7 @@ import java.util.Date;
 @Setter
 public class Frete {
 
-    public Frete(int cod, String origem, Date origem_data, String destino, Date destino_data, double valor_tonelada, double peso, String observacao, String estado, Motorista motorista, Caminhao caminhao) {
+    public Frete(Integer cod, String origem, Date origem_data, String destino, Date destino_data, Double valor_tonelada, Double peso, String observacao, String estado, Motorista motorista, Caminhao caminhao) {
         this.cod = cod;
         this.origem = origem;
         this.origem_data = origem_data;
@@ -25,13 +25,13 @@ public class Frete {
         this.caminhao = caminhao;
     }
 
-    private int cod;
+    private Integer cod;
     private String origem;
     private Date origem_data;
     private String destino;
     private Date destino_data;
-    private double valor_tonelada;
-    private double peso;
+    private Double valor_tonelada;
+    private Double peso;
     private String observacao;
     private String estado;
     private Motorista motorista;

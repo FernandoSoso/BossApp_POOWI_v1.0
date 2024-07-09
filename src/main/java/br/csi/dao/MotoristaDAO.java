@@ -20,7 +20,7 @@ public class MotoristaDAO {
         PreparedStatement stmt = null;
 
         try{
-            String query = "SELECT * FROM motorista LIMIT 15 OFFSET ?";
+            String query = "SELECT * FROM motorista LIMIT 16 OFFSET ?";
 
             stmt = db.getConexao().prepareStatement(query);
             stmt.setInt(1, offset);

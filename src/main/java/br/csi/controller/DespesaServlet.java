@@ -32,4 +32,22 @@ public class DespesaServlet extends HttpServlet {
 
         resp.getWriter().write(json);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String operacao = req.getParameter("operacao");
+        String codDespesa = req.getParameter("codDespesa");
+        String tipo = req.getParameter("tipo");
+        String valor = req.getParameter("valor");
+        String dataInsercao = req.getParameter("dataInsercao");
+        String codFrete = req.getParameter("codFrete");
+
+        if (new DespesaService().persist(operacao, codDespesa, tipo, valor, dataInsercao, codFrete)){
+            req.setAttribute("mensagem", "Operação realizada com sucesso!");
+            req.setAttribute("erro", "false");
+        } else {
+            req.setAttribute("mensagem", "Erro ao realizar operação!");
+            req.setAttribute("erro", "true");
+        }
+    }
 }

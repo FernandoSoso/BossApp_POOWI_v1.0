@@ -25,7 +25,7 @@
 }
 
 /*Visualizar*/
-.visualizar-button{
+.show-details-button{
     background-color: var(--azul);
     border-radius: 5px;
     padding: 0 5px;
@@ -39,9 +39,6 @@
     justify-content: center;
     gap: 5px;
     text-decoration: none;
-}
-
-.visualizar-button .visualizar-texto {
     font-size: 10px;
     font-family: var(--fonte-titulo);
     font-weight: 700;
@@ -49,16 +46,12 @@
     text-transform: uppercase;
 }
 
-.visualizar-button .visualizar-svg {
-    stroke: var(--branco);
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+.show-details-button img {
     width: 16px;
     height: 20px;
 }
 
-.visualizar-button:hover{
+.show-details-button:hover{
     background-color: var(--azul-40-escuro);
 }
 
@@ -92,7 +85,20 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+}
+.nav-button-active{
     cursor: pointer;
+    background: var(--verde-60-claro);
+}
+
+.nav-button-active:hover{
+    background: var(--verde);
+}
+
+.nav-button-disabled{
+    cursor: not-allowed;
+    background: var(--branco-20-escuro, #C8C8C8);
+    pointer-events: none;
 }
 
 .limiter{
@@ -106,9 +112,6 @@
     text-decoration: none;
 }
 
-.incrementar-decrementar-end{
-    background: var(--branco-20-escuro, #C8C8C8);
-}
 
 #nav-buttons-container{
     display: flex;
@@ -116,20 +119,25 @@
     align-items: center;
 }
 
+#nav-buttons-line{
+    height: 24px;
+    width: 1px;
+    background: var(--verde);
+}
+
 #increment{
     border-radius: 0 50px 50px 0;
     border-top: 1px solid var(--preto-15, rgba(28, 28, 28, 0.15));
     border-right: 1px solid var(--preto-15, rgba(28, 28, 28, 0.15));
     border-bottom: 1px solid var(--preto-15, rgba(28, 28, 28, 0.15));
-    background: var(--verde-60-claro, #9EC2AE);
 }
+
 
 #decrement{
     border-radius: 50px 0 0 50px;
     border-top: 1px solid var(--preto-15, rgba(28, 28, 28, 0.15));
     border-bottom: 1px solid var(--preto-15, rgba(28, 28, 28, 0.15));
     border-left: 1px solid var(--preto-15, rgba(28, 28, 28, 0.15));
-    background: var(--verde-60-claro, #9EC2AE);
 }
 
 /*Trocar usuario*/

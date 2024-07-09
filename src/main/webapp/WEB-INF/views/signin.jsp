@@ -60,4 +60,7 @@
     </form>
 </div>
 </body>
+
+<script src="<%=request.getContextPath()%>/js/input.js"></script>
+
 </html>

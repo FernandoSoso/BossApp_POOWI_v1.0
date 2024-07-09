@@ -20,7 +20,7 @@ public class FreteDAO {
         PreparedStatement stmt = null;
 
         try{
-            String query = "SELECT * FROM frete LIMIT 15 OFFSET ?";
+            String query = "SELECT * FROM frete LIMIT 16 OFFSET ?";
 
             stmt = db.getConexao().prepareStatement(query);
             stmt.setInt(1, offset);

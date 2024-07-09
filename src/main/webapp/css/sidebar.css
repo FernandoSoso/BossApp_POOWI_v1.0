@@ -43,6 +43,15 @@
     text-decoration: none;
     gap: 10px;
 }
+.sidebar-item:hover {
+    background-color: var(--verde-20-escuro);
+}
+
+.sidebar-item-active {
+    background-color: var(--verde-40-escuro);
+    pointer-events: none;
+    cursor: not-allowed;
+}
 
 .sidebar-item-svg{
     width: 50px;
@@ -55,9 +64,6 @@
     text-transform: uppercase;
 }
 
-.sidebar-item:hover {
-    background-color: var(--verde-20-escuro);
-}
 
 .sidebar-exit{
     width: 100%;

@@ -21,18 +21,32 @@ public class MotoristaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String async = req.getParameter("async");
+        String codMotorista = req.getParameter("codMotorista");
 
         if ("true".equals(async)) {
             // Trate a requisição como assíncrona
-            String offset = req.getParameter("offset");
-            List<Motorista> listaMotoristas = new MotoristaService().selectAll(offset);
+            if (codMotorista != null) {
+                Motorista motorista = new MotoristaService().selectUnique(codMotorista);
+                List<Motorista> listaMotoristas = new ArrayList<>();
+                listaMotoristas.add(motorista);
+                String json = new Gson().toJson(listaMotoristas);
 
-            String json = new Gson().toJson(listaMotoristas);
+                resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
 
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
+                resp.getWriter().write(json);
+            }
+            else{
+                String offset = req.getParameter("offset");
+                List<Motorista> listaMotoristas = new MotoristaService().selectAll(offset);
 
-            resp.getWriter().write(json);
+                String json = new Gson().toJson(listaMotoristas);
+
+                resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
+
+                resp.getWriter().write(json);
+            }
         } else {
             // Redirecione para o servlet de motorista
             RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/motorista.jsp");
@@ -49,7 +63,7 @@ public class MotoristaServlet extends HttpServlet {
         String telefonePrincipal = req.getParameter("telefonePrincipal");
         String telefoneAlternativo = req.getParameter("telefoneAlternativo");
         String telefoneAlternativo2 = req.getParameter("telefoneAlternativo2");
-        String codCaminhao = req.getParameter("codCaminhao");
+        String codCaminhao = req.getParameter("caminhao");
 
         if (new MotoristaService().persist(operacao, codMotorista, nome, endereco, telefonePrincipal, telefoneAlternativo, telefoneAlternativo2, codCaminhao)){
             req.setAttribute("mensagem", "Operação realizada com sucesso!");
@@ -60,14 +74,6 @@ public class MotoristaServlet extends HttpServlet {
         }
 
         resp.sendRedirect(req.getContextPath() + "/motorista");
-    }
-
-    @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("motorista", new MotoristaService().selectUnique(Integer.parseInt(req.getParameter("codMotorista"))));
-
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/motorista.jsp");
-        rd.forward(req, resp);
     }
 
     @Override

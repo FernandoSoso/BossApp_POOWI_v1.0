@@ -21,7 +21,7 @@ public class CaminhaoDAO {
         PreparedStatement stmt = null;
 
         try{
-            String query = "SELECT * FROM caminhao limit 15 offset ?";
+            String query = "SELECT * FROM caminhao limit 16 offset ?";
 
             stmt = db.getConexao().prepareStatement(query);
             stmt.setInt(1, offset);

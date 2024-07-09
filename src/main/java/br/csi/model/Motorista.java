@@ -9,10 +9,11 @@ import java.util.Date;
 @Setter
 public class Motorista {
 
-    public Motorista() {
+    public Motorista(Integer cod) {
+        this.cod = cod;
     }
 
-    public Motorista(int cod, String nome, String endereco, String telefonePrincipal, String telefoneAlternativo, String telefoneAlternativo2) {
+    public Motorista(Integer cod, String nome, String endereco, String telefonePrincipal, String telefoneAlternativo, String telefoneAlternativo2) {
         this.cod = cod;
         this.nome = nome;
         this.endereco = endereco;
@@ -21,7 +22,7 @@ public class Motorista {
         this.telefoneAlternativo2 = telefoneAlternativo2;
     }
 
-    private int cod;
+    private Integer cod;
     private String nome;
     private String endereco;
     private String telefonePrincipal;

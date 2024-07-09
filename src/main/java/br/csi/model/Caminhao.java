@@ -9,10 +9,11 @@ import java.util.Date;
 @Setter
 public class Caminhao {
 
-    public Caminhao() {
+    public Caminhao(Integer cod) {
+        this.cod = cod;
     }
 
-    public Caminhao(int cod, String placa, String marca, String modelo, int ano, int capacidade, double percentualMotorista, String estado) {
+    public Caminhao(Integer cod, String placa, String marca, String modelo, Integer ano, Integer capacidade, Double percentualMotorista, String estado) {
         this.cod = cod;
         this.placa = placa;
         this.marca = marca;
@@ -23,7 +24,7 @@ public class Caminhao {
         this.estado = estado;
     }
 
-    private int cod;
+    private Integer cod;
     private String placa;
     private String marca;
     private String modelo;

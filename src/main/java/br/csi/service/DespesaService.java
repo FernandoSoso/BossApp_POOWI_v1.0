@@ -3,10 +3,10 @@ package br.csi.service;
 import br.csi.dao.DespesaDAO;
 import br.csi.dao.FreteDAO;
 import br.csi.model.Despesa;
+import br.csi.util.ParamConverter;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -14,82 +14,37 @@ public class DespesaService {
     private final DespesaDAO despesaDAO = new DespesaDAO();
     private final FreteDAO freteDAO = new FreteDAO();
 
+    private final ParamConverter paramConverter = new ParamConverter();
+
     public ArrayList<Despesa> selectAll(@NotNull String offset, @NotNull String codFrete){
-        int numOffset;
-        int numCodFrete;
+        Integer offsetNumber = paramConverter.convertStringToInt(offset);
+        Integer codFreteNumber = paramConverter.convertStringToInt(codFrete);
 
-        if (offset.isBlank()){
-            numOffset = 1;
-        }
-        else{
-            numOffset = Integer.parseInt(offset);
-        }
-
-        if (codFrete.isBlank()){
+        if (codFreteNumber == null){
             return null;
         }
-        else{
-            numCodFrete = Integer.parseInt(codFrete);
+        else if (codFreteNumber <= 0){
+            return null;
         }
 
-        return despesaDAO.selectAll(numCodFrete, numOffset);
+        return despesaDAO.selectAll(codFreteNumber, offsetNumber);
     }
 
-    public boolean persist(@NotNull String operacao, String cod, String tipo, String valor, String data_insercao, String codFrete) {
-        int numCod;
-        int numCodFrete;
-        double numValor;
-        Date data_insercao_date = null;
-
-        if (!validarCampos(operacao, tipo, valor, data_insercao)){
+    public boolean persist(@NotNull String operacao, String codDespesa, @NotNull String tipo, @NotNull String valor, String dataInsercao, @NotNull String codFrete) {
+        if (!validarCampos(operacao, tipo, valor, dataInsercao)){
             return false;
         }
 
-        if (cod == null){
-            numCod = -1;
-        }
-        else if (cod.isBlank()){
-            numCod = -1;
-        }
-        else{
-            numCod = Integer.parseInt(cod);
-        }
+        Integer codDespesaNumber = paramConverter.convertStringToInt(codDespesa);
+        Integer codFreteNumber = paramConverter.convertStringToInt(codFrete);
+        Double valorNumber = paramConverter.convertStringToDouble(valor);
+        Date dataInsercaoDate = paramConverter.convertStringToDate(dataInsercao);
 
-        if (codFrete == null){
-            numCodFrete = -1;
-        }
-        else if (codFrete.isBlank()){
-            numCodFrete = -1;
-        }
-        else{
-            numCodFrete = Integer.parseInt(codFrete);
-
-            if (freteDAO.selectUnique(numCodFrete) == null){
-                return false;
-            }
-        }
-
-        if (valor == null){
+        if (freteDAO.selectUnique(codFreteNumber) == null){
             return false;
         }
-        else if (valor.isBlank()){
-            return false;
-        }
-        else{
-            numValor = Double.parseDouble(valor);
-        }
 
-        if (data_insercao != null){
-            if (!data_insercao.isBlank()){
-                try {
-                    data_insercao_date = new Date(new SimpleDateFormat("dd/MM/yyyy").parse(data_insercao).getTime());
-                } catch (Exception e) {
-                    return false;
-                }
-            }
-        }
-
-        Despesa despesa = new Despesa(numCod, tipo, numValor, numCodFrete, data_insercao_date);
+        Despesa despesa = new Despesa(codDespesaNumber, tipo, valorNumber, codFreteNumber, dataInsercaoDate);
 
         if (operacao.equals("insert")){
             return despesaDAO.insert(despesa) > 0;
@@ -99,12 +54,14 @@ public class DespesaService {
         }
     }
 
-    public boolean delete(@NotNull String cod){
-        if (cod.isBlank()){
+    public boolean delete(@NotNull String codDespesa){
+        Integer codDespesaNumber = paramConverter.convertStringToInt(codDespesa);
+
+        if (codDespesaNumber == null || codDespesaNumber <= 0){
             return false;
         }
 
-        return despesaDAO.delete(Integer.parseInt(cod));
+        return despesaDAO.delete(codDespesaNumber);
     }
 
     private boolean validarCampos(String operacao, String tipo, String valor, String data){
@@ -114,10 +71,6 @@ public class DespesaService {
         else if (tipo == null || valor == null || data == null){
             return false;
         }
-        else if (valor.isBlank() || data.isBlank() || tipo.isBlank() || tipo.length() > 50){
-            return false;
-        }
-
-        return true;
+        else return !(valor.isBlank() && data.isBlank() && tipo.isBlank()) && tipo.length() <= 50;
     }
 }

@@ -65,15 +65,6 @@ public class CaminhaoServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String cod_caminhao = req.getParameter("codCaminhao");
-        req.setAttribute("caminhao", new CaminhaoService().selectUnique(cod_caminhao));
-
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/caminhao.jsp");
-        rd.forward(req, resp);
-    }
-
-    @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (new CaminhaoService().delete(req.getParameter("codCaminhao"))){
             req.setAttribute("mensagem", "Caminhão deletado com sucesso!");

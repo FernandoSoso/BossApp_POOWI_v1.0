@@ -19,7 +19,7 @@ public class DespesaDAO {
         PreparedStatement stmt = null;
 
         try{
-            String query = "SELECT * FROM despesa WHERE cod_frete = ? LIMIT 15 OFFSET ?";
+            String query = "SELECT * FROM despesa WHERE cod_frete = ? LIMIT 16 OFFSET ?";
 
             stmt = db.getConexao().prepareStatement(query);
 
