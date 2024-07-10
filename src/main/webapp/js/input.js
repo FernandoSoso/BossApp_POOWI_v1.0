@@ -1,16 +1,8 @@
 document.addEventListener('input', function(event) {
-    if (event.target.value !== '') {
-        event.target.classList.add('input-filled');
-    } else {
-        event.target.classList.remove('input-filled');
-    }
+    event.target.classList.toggle('input-filled', event.target.value !== '');
+
 });
 
 document.addEventListener('focusout', function(event){
-    if (!(event.target.value === '')){
-        event.target.classList.add('input-filled');
-    }
-    else{
-        event.target.classList.remove('input-filled');
-    }
+    event.target.classList.toggle('input-filled', event.target.value !== '');
 });

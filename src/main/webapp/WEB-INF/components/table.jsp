@@ -11,12 +11,6 @@
         </div>
         <div class="table-container">
             <div class="table-container-header">
-                <div class="table-container-header-search">
-                    <input type="text" id="search" class="table-container-header-search-input" placeholder="Pesquisar...">
-                    <button type="button" id="search-button" class="table-container-header-search-button">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
                 <jsp:include page="nav-buttons.jsp"/>
             </div>
             <div class="table-container-body">

@@ -40,6 +40,8 @@ public class Motorista {
                 ", telefonePrincipal='" + telefonePrincipal + '\'' +
                 ", telefoneAlternativo='" + telefoneAlternativo + '\'' +
                 ", telefoneAlternativo2='" + telefoneAlternativo2 + '\'' +
+                ", caminhao=" + caminhao +
+                ", dataCaminhao=" + dataCaminhao +
                 '}';
     }
 }

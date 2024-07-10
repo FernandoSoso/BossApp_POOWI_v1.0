@@ -1,76 +1,74 @@
 let offset = 0;
 let itens = 0;
 
-function inicializarPagina(entidade, tableTitleId, tableHeadId, tableBodyId, cols, colsNames, maxItens) {
-    document.getElementById(tableTitleId).innerHTML = entidade;
+function inicializarPagina(entidade, cols, colsNames, maxItens) {
+    document.getElementById('page-title').innerHTML = entidade;
 
     addCadastrarTableButtonEvent(entidade);
     atualizarSidebar(entidade);
-    preencherSelect();
-    inserirCabecalho(tableHeadId, colsNames);
-    atualizarTabela(entidade, tableBodyId, cols, maxItens);
+    fillSelects();
+    inserirCabecalho('table-header', colsNames);
+    atualizarTabela(entidade, 'table-body', cols, maxItens);
 
     document.getElementById(incrementId).addEventListener('click', function() {
-        incrementarOffset(entidade,tableBodyId, cols, maxItens);
+        incrementarOffset(entidade,'table-body', cols, maxItens);
     });
     document.getElementById(decrementId).addEventListener('click', function() {
-        decrementarOffset(entidade, tableBodyId, cols, maxItens);
+        decrementarOffset(entidade, 'table-body', cols, maxItens);
     });
 }
 
 function incrementarOffset(entidade, tableId, cols, maxItens) {
-    if (itens === maxItens) {
-        offset += maxItens;
-        atualizarTabela(entidade, tableId, cols);
-    }
-    else{
+    if (itens !== maxItens) {
         alert("Não há mais itens para serem exibidos!");
+        return;
     }
+    offset += maxItens;
+    atualizarTabela(entidade, tableId, cols, maxItens);
 }
 
 function decrementarOffset(entidade, tableId, cols, maxItens) {
-    if (offset > 0) {
-        offset -= maxItens;
-        itens = 0;
-        atualizarTabela(entidade, tableId, cols);
-    }
-    else{
+    if (offset <= 0) {
         alert("Não há mais itens para serem exibidos!");
+        return;
     }
+    offset -= maxItens;
+    itens = 0;
+    atualizarTabela(entidade, tableId, cols, maxItens);
 }
 
-function inserirCabecalho(headerId, cols){
-    document.getElementById(headerId).innerHTML = '';
+function inserirCabecalho(headerId, cols) {
+    const header = document.getElementById(headerId);
+    header.innerHTML = '';
 
-    let row = document.createElement('tr');
-    let cell = document.createElement('th');
-    row.appendChild(cell);
+    const row = document.createElement('tr');
+    row.appendChild(document.createElement('th'));
 
     cols.forEach(col => {
-        cell = document.createElement('th');
-        cell.appendChild(document.createTextNode(col.toUpperCase()));
+        const cell = document.createElement('th');
+        cell.textContent = col.toUpperCase();
         row.appendChild(cell);
     });
 
-    let scrollbarSpacer = document.createElement('th');
+    const scrollbarSpacer = document.createElement('th');
     scrollbarSpacer.id = "scrollbarSpacer";
-    scrollbarSpacer.style.width = "10px";
-    scrollbarSpacer.style.padding = "5px";
+    scrollbarSpacer.style.cssText = "width: 10px; padding: 5px;";
     row.appendChild(scrollbarSpacer);
 
-    document.getElementById(headerId).appendChild(row);
+    header.appendChild(row);
 }
 
-function atualizarTabela(entidade, tableId, cols) {
-    fetch(entidade + '?async=true&offset=' + offset, {method: 'GET'})
+function atualizarTabela(entidade, tableId, cols, maxItens) {
+    fetch(entidade + '?async=true&offset=' + offset + '&operacao=selectAll&limit='+(maxItens+1))
         .then(response => response.json())
         .then(data => {
             document.getElementById(tableId).innerHTML = '';
 
             if (data !== null) {
+                let auxItens = 0;
                 if (data.length !== 0){
                     data.forEach(json => {
-                        if (itens !== 15){
+                        if (auxItens !== maxItens){
                             let row = document.createElement('tr');
 
                             row.appendChild(addShowDetailsButton(entidade,json['cod']));
@@ -79,7 +77,7 @@ function atualizarTabela(entidade, tableId, cols) {
                                 cell = document.createElement('td');
                                 p = document.createElement('p');
 
-                                if (json[col] === null || json[col] === undefined || json[col] === -1 || json[col] === ""){
+                                if (!json[col]){
                                     p.appendChild(document.createTextNode("-"));
                                 }
                                 else{
@@ -92,7 +90,7 @@ function atualizarTabela(entidade, tableId, cols) {
                             document.getElementById(tableId).appendChild(row);
                         }
 
-                        itens++;
+                        auxItens++;
                     });
                 }
                 else{
@@ -100,155 +98,180 @@ function atualizarTabela(entidade, tableId, cols) {
                     h3.textContent = "Não há itens cadastrados para serem exibidos!";
                     document.getElementById(tableId).appendChild(h3);
                 }
-                atualizarNavButtons();
-            }
 
-            itens--;
+                atualizarNavButtons(auxItens);
+
+                if (auxItens === (maxItens+1)){
+                    itens = auxItens-1;
+                }
+                else {
+                    itens = auxItens;
+                }
+
+            }
         })
         .catch(error => console.error('Erro:', error));
 }
 
-function atualizarNavButtons(){
+function atualizarNavButtons(auxItens) {
+    const updateButtonState = (button, condition) => {
+        button.classList.toggle('nav-button-disabled', condition);
+        button.classList.toggle('nav-button-active', !condition);
+    };
 
-    let incrementButton = document.getElementById('increment');
-    let decrementButton = document.getElementById('decrement');
-
-    if (itens%16 !== 0 || itens === 0){
-        incrementButton.classList.add('nav-button-disabled');
-        if (incrementButton.classList.contains('nav-button-active')){
-            incrementButton.classList.remove('nav-button-active');
-        }
-    }
-    else{
-        incrementButton.classList.add('nav-button-active');
-        if (incrementButton.classList.contains('nav-button-disabled')){
-            incrementButton.classList.remove('nav-button-disabled');
-        }
-    }
-
-    if (offset === 0){
-        decrementButton.classList.add('nav-button-disabled');
-        if (decrementButton.classList.contains('nav-button-active')){
-            decrementButton.classList.remove('nav-button-active');
-        }
-    }
-    else{
-        decrementButton.classList.add('nav-button-active');
-        if (decrementButton.classList.contains('nav-button-disabled')){
-            decrementButton.classList.remove('nav-button-disabled');
-        }
-    }
+    updateButtonState(document.getElementById('increment'), auxItens % 16 !== 0 || auxItens === 0);
+    updateButtonState(document.getElementById('decrement'), offset === 0);
 }
 
-function addCadastrarTableButtonEvent(entidade){
-    document.getElementById('cadastrarTableButton').addEventListener('click', function() {
-        document.getElementById('header-modal-title').innerHTML = 'CADASTRAR ' + entidade.toUpperCase();
+function addCadastrarTableButtonEvent(entidade) {
+    document.getElementById('cadastrarTableButton').addEventListener('click', () => {
+        const modalTitle = document.getElementById('header-modal-title');
+        const persistButton = document.getElementById('persistButton');
+        const persistForm = document.getElementById('persistForm');
+        const inputs = document.querySelectorAll('#persistModal input, #persistModal select, #persistModal textarea');
 
-        document.getElementById('persistModal').querySelectorAll('input, select, textarea').forEach(input => {
+        modalTitle.innerHTML = `CADASTRAR ${entidade.toUpperCase()}`;
+        persistButton.innerHTML = 'CADASTRAR';
+        persistForm.href = entidade;
+        inputs.forEach(input => {
             input.value = '';
             input.classList.remove('input-filled');
-            if (input.tagName === 'SELECT'){
-                input.innerHTML = '';
-            }
         });
+        document.getElementById('operacao').value = 'insert';
     });
 }
 
-function addShowDetailsButton(entidade, rowCod){
-    // Adiciona botão de visualização
-    let cell = document.createElement('td');
-    let button = document.createElement('a');
-    let img = document.createElement('img');
-
-    img.src = "img/show-details.png";
-
-    button.appendChild(document.createTextNode("VISUALIZAR"));
-    button.appendChild(img);
-    button.classList.add('show-details-button');
-    button.setAttribute("data-toggle", "modal");
-    button.setAttribute("data-target", "#persistModal");
-    button.setAttribute("data-row-cod", rowCod);
-
-    button.addEventListener('click', addShowDetailsEvent);
-
+function addShowDetailsButton(entidade, rowCod) {
+    const cell = document.createElement('td');
+    const button = document.createElement('a');
+    button.innerHTML = `VISUALIZAR <img src="img/show-details.png">`;
+    button.className = 'show-details-button';
+    button.dataset.toggle = "modal";
+    button.dataset.target = "#showDetailsModal";
+    button.dataset.rowCod = rowCod;
+    button.addEventListener('click', addDetailsEvent);
     cell.appendChild(button);
-
     return cell;
 }
 
-function addShowDetailsEvent(event){
-    document.getElementById('header-modal-title').innerHTML = 'VISUALIZAR ' + entidade.toUpperCase();
+function addDetailsEvent(event){
+    const modalTitle = document.getElementById('showDetails-modal-title');
+    modalTitle.innerHTML = `VISUALIZAR ${entidade.toUpperCase()}`;
+    modalTitle.setAttribute('data-cod', event.currentTarget.getAttribute('data-row-cod'))
 
-    fetch(entidade + '?async=true&codMotorista=' + event.currentTarget.getAttribute('data-row-cod'))
+    fetch(`${entidade}?async=true&cod=${event.currentTarget.getAttribute('data-row-cod')}&operacao=selectUnique`)
         .then(response => response.json())
-        .then(dataUnique => {
-            if (dataUnique !== null){
-                dataUnique.forEach((json) => {
-                    for (let key in json){
-                        let element = document.getElementById(key);
-                        element.innerHTML = "";
-
-                        if ((typeof json[key]) === "object"){
-                            let option = document.createElement('option');
-                            option.selected = true;
-                            option.value = json[key]['cod'];
-
-                            if (key === "caminhao"){
-                                option.innerHTML = json[key]['placa'];
-                            }
-                            else if (key === "motorista"){
-                                option.innerHTML = json[key]['nome'];
-                            }
-
-                            element.appendChild(option)
-                            element.classList.add('input-filled');
-                        }
-                        else{
-                            element.value = json[key];
-                        }
-
-                        element.classList.add('input-filled');
-                    }
+        .then(json => {
+            if (json !== null){
+                document.getElementById('showDetailsModal').querySelectorAll('td p').forEach(cell => {
+                    cell.innerHTML = "-";
+                    cell.classList.add('empty-table-cell');
                 });
+                for (let key in json) {
+                    const addContent = (key, content) => {
+                        if (cell) {
+                            let cell = document.getElementById(`${key}-info-table`);
+                            if (cell){
+                                if (key === "estado") {
+                                    cell.classList.add('success-badge');
+                                }
+
+                                if (content) {
+                                    cell.innerHTML = content;
+                                    cell.classList.toggle('empty-table-cell');
+                                }
+                            }
+                        }
+                    }
+
+                    let content = json[key];
+
+                    if ((typeof content) === "object") {
+                        for (let subKey in content) {
+                            addContent(subKey, content[subKey]);
+                        }
+                    }
+                    else {
+                        addContent(key, content);
+                    }
+                }
             }
             else{
                 alert('Erro ao buscar dados');
             }
         });
+
+    let deleteButton = document.getElementById('showDetailsDeleteButton');
+    deleteButton.setAttribute('data-cod', event.currentTarget.getAttribute('data-row-cod'));
+    deleteButton.addEventListener('click', addDeleteButtonEvent);
+
+    let editButton = document.getElementById('showDetailsEditButton');
+    editButton.setAttribute('data-cod', event.currentTarget.getAttribute('data-row-cod'));
+    editButton.addEventListener('click', addEditButtonEvent);
 }
 
-function preencherSelect(){
-    document.querySelectorAll('select').forEach(select => {
+function addEditButtonEvent(event) {
+    const headerTitle = document.getElementById('header-modal-title');
+    const persistButton = document.getElementById('persistButton');
+    const persistForm = document.getElementById('persistForm');
+    const operationInput = document.getElementById('operacao');
+    const codInput = document.getElementById('cod');
+
+    headerTitle.innerHTML = `EDITAR ${entidade.toUpperCase()}`;
+    persistButton.innerHTML = 'EDITAR';
+    persistForm.href = `${entidade}?async=true`;
+    operationInput.value = 'update';
+    codInput.value = event.currentTarget.getAttribute('data-cod');
+
+    fetch(`${entidade}?async=true&cod=${event.currentTarget.getAttribute('data-cod')}&operacao=selectUnique`)
+        .then(response => response.json())
+        .then(json => {
+            if (json) {
+                Object.keys(json).forEach(key => {
+                    const element = document.getElementById(key);
+                    if (element) {
+                        if (element.tagName === 'SELECT' && element.classList.contains('static')) {
+                            element.value = json[key];
+                        }
+                        else {
+                            element.innerHTML = '';
+
+                            if (typeof json[key] === "object") {
+                                const option = new Option(json[key]['nome'] || json[key]['placa'], json[key]['cod'], true, true);
+                                element.add(option);
+                            } else {
+                                element.value = json[key];
+                            }
+                        }
+
+                        element.classList.add('input-filled');
+                    }
+                });
+            } else {
+                alert('Erro ao buscar dados');
+            }
+        })
+        .catch(error => console.error('Erro:', error));
+}
+
+function addDeleteButtonEvent(event) {
+    document.getElementById('deleteButton').href = `${entidade}?async=false&cod=${event.currentTarget.getAttribute('data-cod')}&operacao=delete`;
+}
+
+function fillSelects() {
+    document.querySelectorAll('select.dinamic').forEach(select => {
         if (select.id === 'caminhao' || select.id === 'motorista') {
-
-            select.addEventListener('click', function () {
-                let selectedOption = select.options[select.selectedIndex];
-                select.innerHTML = '';
-
-                let option = document.createElement('option');
-                option.value = '';
-                option.innerHTML = '';
-
-                select.appendChild(option);
-
-                fetch(select.id + '?async=true')
+            select.addEventListener('focus', () => {
+                const selectedOptionValue = select.value;
+                fetch(select.id + '?async=true&operacao=selectAll')
                     .then(response => response.json())
                     .then(data => {
-                        data.forEach(json => {
-                            option = document.createElement('option');
-                            option.value = json['cod'];
-                            if (select.id === 'caminhao') {
-                                option.innerHTML = json['placa'];
-                            } else if (select.id === 'motorista') {
-                                option.innerHTML = json['nome'];
-                            }
-
-                            if (selectedOption !== undefined && selectedOption.value === option.value) {
-                                option.selected = true;
-                            }
-
-                            select.appendChild(option);
-                        });
+                        select.innerHTML = '<option value=""></option>' + data.map(json => {
+                            const value = json['cod'];
+                            const text = select.id === 'caminhao' ? json['placa'] : json['nome'];
+                            const selected = value === selectedOptionValue ? ' selected' : '';
+                            return `<option value="${value}"${selected}>${text}</option>`;
+                        }).join('');
                     })
                     .catch(error => console.error('Erro:', error));
             });

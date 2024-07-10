@@ -14,16 +14,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MotoristaDAO {
-    public ArrayList<Motorista> selectAll(int offset) {
+    public ArrayList<Motorista> selectAll(int offset, int limit) {
         ConectaDB db = new ConectaDB();
         ArrayList<Motorista> todosMotoristas = new ArrayList<>();
         PreparedStatement stmt = null;
 
         try{
-            String query = "SELECT * FROM motorista LIMIT 16 OFFSET ?";
+            String query;
 
-            stmt = db.getConexao().prepareStatement(query);
-            stmt.setInt(1, offset);
+            if (limit > 0) {
+                query = "SELECT * FROM motorista LIMIT ? OFFSET ?";
+                stmt = db.getConexao().prepareStatement(query);
+                stmt.setInt(1, limit);
+                stmt.setInt(2, offset);
+            } else {
+                // Omit LIMIT clause when limit is 0
+                query = "SELECT * FROM motorista OFFSET ?";
+                stmt = db.getConexao().prepareStatement(query);
+                stmt.setInt(1, offset);
+            }
 
             ResultSet rs = stmt.executeQuery();
 

@@ -1,8 +1,6 @@
 package br.csi.controller;
 
-import br.csi.model.Despesa;
-import br.csi.model.Frete;
-import br.csi.service.DespesaService;
+import br.csi.util.Retorno;
 import com.google.gson.Gson;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -12,30 +10,50 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.List;
 
 import br.csi.service.FreteService;
-import org.jetbrains.annotations.NotNull;
 
 @WebServlet("/frete")
 public class FreteServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //Armazenamento dos parâmetros da requisição
         String async = req.getParameter("async");
+        String cod = req.getParameter("cod");
+        String operacao = req.getParameter("operacao");
+        String offset = req.getParameter("offset");
+        String limit = req.getParameter("limit");
 
+        // Se a requisição for assíncrona
         if ("true".equals(async)) {
-            // Trate a requisição como assíncrona
-            String offset = req.getParameter("offset");
-            List<Frete> listaFretes = new FreteService().selectAll(offset);
+            Object retorno = null;
 
-            String json = new Gson().toJson(listaFretes);
+            if ("selectUnique".equals(operacao)){
+                if (cod != null){
+                    retorno = new FreteService().selectUnique(cod);
+                }
+                else {
+                    retorno = new Retorno(true, "Erro: Código de caminhão inválido!");
+                }
+            }
+            else if ("selectAll".equals(operacao)){
+                retorno = new FreteService().selectAll(offset, limit);
+            }
+
+            String json = new Gson().toJson(retorno);
 
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
 
             resp.getWriter().write(json);
-        } else {
+        }
+        else if ("delete".equals(operacao)){
+            new FreteService().delete(cod);
+
+            resp.sendRedirect(req.getContextPath() + "/frete");
+        }
+        else {
             // Redirecione para o servlet de motorista
             RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/frete.jsp");
             rd.forward(req, resp);
@@ -44,8 +62,6 @@ public class FreteServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
         String operacao = req.getParameter("operacao");
         String codFrete = req.getParameter("codFrete");
         String origem = req.getParameter("origem");
@@ -56,29 +72,15 @@ public class FreteServlet extends HttpServlet {
         String peso = req.getParameter("peso");
         String observacao = req.getParameter("observacao");
         String estado = req.getParameter("estado");
-        String codMotorista = req.getParameter("codMotorista");
-        String codCaminhao = req.getParameter("codCaminhao");
+        String codMotorista = req.getParameter("motorista");
+        String codCaminhao = req.getParameter("caminhao");
 
         if (new FreteService().persist(operacao, codFrete, origem, origemData, destino, destinoData, valorTonelada, peso, observacao, estado, codMotorista, codCaminhao)){
+            System.out.println("Operação realizada com sucesso!");
             req.setAttribute("mensagem", "Operação realizada com sucesso!");
             req.setAttribute("erro", "false");
         } else {
-            req.setAttribute("mensagem", "Erro ao realizar operação!");
-            req.setAttribute("erro", "true");
-        }
-
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/frete.jsp");
-        rd.forward(req, resp);
-    }
-
-    @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String codFrete = req.getParameter("codFrete");
-
-        if (new FreteService().delete(codFrete)){
-            req.setAttribute("mensagem", "Operação realizada com sucesso!");
-            req.setAttribute("erro", "false");
-        } else {
+            System.out.println("Operação não realizada com sucesso!");
             req.setAttribute("mensagem", "Erro ao realizar operação!");
             req.setAttribute("erro", "true");
         }

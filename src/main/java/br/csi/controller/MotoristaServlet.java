@@ -1,7 +1,6 @@
 package br.csi.controller;
 
-import br.csi.model.Frete;
-import br.csi.model.Motorista;
+import br.csi.util.Retorno;
 import br.csi.service.MotoristaService;
 import com.google.gson.Gson;
 import jakarta.servlet.RequestDispatcher;
@@ -12,42 +11,48 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("/motorista")
 public class MotoristaServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //Armazenamento dos parâmetros da requisição
         String async = req.getParameter("async");
-        String codMotorista = req.getParameter("codMotorista");
+        String cod = req.getParameter("cod");
+        String operacao = req.getParameter("operacao");
+        String offset = req.getParameter("offset");
+        String limit = req.getParameter("limit");
 
+        // Se a requisição for assíncrona
         if ("true".equals(async)) {
-            // Trate a requisição como assíncrona
-            if (codMotorista != null) {
-                Motorista motorista = new MotoristaService().selectUnique(codMotorista);
-                List<Motorista> listaMotoristas = new ArrayList<>();
-                listaMotoristas.add(motorista);
-                String json = new Gson().toJson(listaMotoristas);
+            Object retorno = null;
 
-                resp.setContentType("application/json");
-                resp.setCharacterEncoding("UTF-8");
-
-                resp.getWriter().write(json);
+            if ("selectUnique".equals(operacao)){
+                if (cod != null){
+                    retorno = new MotoristaService().selectUnique(cod);
+                }
+                else {
+                    retorno = new Retorno(true, "Erro: Código de motorista inválido!");
+                }
             }
-            else{
-                String offset = req.getParameter("offset");
-                List<Motorista> listaMotoristas = new MotoristaService().selectAll(offset);
-
-                String json = new Gson().toJson(listaMotoristas);
-
-                resp.setContentType("application/json");
-                resp.setCharacterEncoding("UTF-8");
-
-                resp.getWriter().write(json);
+            else if ("selectAll".equals(operacao)){
+                retorno = new MotoristaService().selectAll(offset, limit);
             }
-        } else {
+
+            String json = new Gson().toJson(retorno);
+
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+
+            resp.getWriter().write(json);
+        }
+        else if ("delete".equals(operacao)){
+            new MotoristaService().delete(cod);
+
+            resp.sendRedirect(req.getContextPath() + "/motorista");
+        }
+        else {
             // Redirecione para o servlet de motorista
             RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/motorista.jsp");
             rd.forward(req, resp);
@@ -57,7 +62,7 @@ public class MotoristaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String operacao = req.getParameter("operacao");
-        String codMotorista = req.getParameter("codMotorista");
+        String codMotorista = req.getParameter("cod");
         String nome = req.getParameter("nome");
         String endereco = req.getParameter("endereco");
         String telefonePrincipal = req.getParameter("telefonePrincipal");
@@ -75,18 +80,4 @@ public class MotoristaServlet extends HttpServlet {
 
         resp.sendRedirect(req.getContextPath() + "/motorista");
     }
-
-    @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (new MotoristaService().delete(req.getParameter("codMotorista"))){
-            req.setAttribute("mensagem", "Motorista deletado com sucesso!");
-            req.setAttribute("erro", "false");
-        } else {
-            req.setAttribute("mensagem", "Erro ao deletar motorista!");
-            req.setAttribute("erro", "true");
-        }
-
-        resp.sendRedirect(req.getContextPath() + "/motorista");
-    }
-
 }

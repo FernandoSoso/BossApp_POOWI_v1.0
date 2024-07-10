@@ -14970,7 +14970,8 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibrary
 2024-06-11 05:16:56,888 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) WFLYJCA0018: Started Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
 2024-06-11 05:16:56,894 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 1201) WFLYUT0021: Registered web context: '/BossApp_POOWI' for server 'default-server'
 2024-06-11 05:16:56,901 INFO  [org.jboss.as.server] (management-handler-thread - 6) WFLYSRV0010: Deployed "BossApp_POOWI" (runtime-name : "BossApp_POOWI.war")
-2024-06-11 05:17:03,209 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: null Telefone Alternativo: gdfhj Telefone Alternativo 2: ghdj CodCaminhão: null
+2024-06-11 05:17:03,209 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: null Telefone Alternativo: gdfhj Telefone Alternativo 2: ghdj CodCaminhão: null
+
 2024-06-11 05:17:03,210 ERROR [io.undertow.request] (default task-8) UT005023: Exception handling request to /BossApp_POOWI/motorista: java.lang.IllegalArgumentException: Argument for @NotNull parameter 'nome' of br/csi/service/MotoristaService.persist must not be null
 	at deployment.BossApp_POOWI.war//br.csi.service.MotoristaService.$$$reportNull$$$0(MotoristaService.java)
 	at deployment.BossApp_POOWI.war//br.csi.service.MotoristaService.persist(MotoristaService.java)
@@ -15171,7 +15172,8 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibrary
 2024-06-11 05:18:42,578 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0018: Started Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
 2024-06-11 05:18:42,584 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 1213) WFLYUT0021: Registered web context: '/BossApp_POOWI' for server 'default-server'
 2024-06-11 05:18:42,593 INFO  [org.jboss.as.server] (management-handler-thread - 6) WFLYSRV0010: Deployed "BossApp_POOWI" (runtime-name : "BossApp_POOWI.war")
-2024-06-11 05:18:51,831 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: null Telefone Alternativo: gdfhj Telefone Alternativo 2: ghdj CodCaminhão: null
+2024-06-11 05:18:51,831 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: null Telefone Alternativo: gdfhj Telefone Alternativo 2: ghdj CodCaminhão: null
+
 2024-06-11 05:18:51,833 ERROR [io.undertow.request] (default task-8) UT005023: Exception handling request to /BossApp_POOWI/motorista: java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "telefonePrincipal" is null
 	at deployment.BossApp_POOWI.war//br.csi.service.MotoristaService.validarCampos(MotoristaService.java:140)
 	at deployment.BossApp_POOWI.war//br.csi.service.MotoristaService.persist(MotoristaService.java:53)
@@ -15372,7 +15374,8 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibrary
 2024-06-11 05:19:57,305 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) WFLYJCA0018: Started Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
 2024-06-11 05:19:57,310 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 1230) WFLYUT0021: Registered web context: '/BossApp_POOWI' for server 'default-server'
 2024-06-11 05:19:57,318 INFO  [org.jboss.as.server] (management-handler-thread - 6) WFLYSRV0010: Deployed "BossApp_POOWI" (runtime-name : "BossApp_POOWI.war")
-2024-06-11 05:20:00,724 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: null Telefone Alternativo: gdfhj Telefone Alternativo 2: ghdj CodCaminhão: null
+2024-06-11 05:20:00,724 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: null Telefone Alternativo: gdfhj Telefone Alternativo 2: ghdj CodCaminhão: null
+
 2024-06-11 05:20:00,726 ERROR [io.undertow.request] (default task-8) UT005023: Exception handling request to /BossApp_POOWI/motorista: java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "telefonePrincipal" is null
 	at deployment.BossApp_POOWI.war//br.csi.service.MotoristaService.validarCampos(MotoristaService.java:140)
 	at deployment.BossApp_POOWI.war//br.csi.service.MotoristaService.persist(MotoristaService.java:53)
@@ -15422,7 +15425,8 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibrary
 	at org.jboss.xnio@3.8.15.Final//org.xnio.XnioWorker$WorkerThreadFactory$1$1.run(XnioWorker.java:1282)
 	at java.base/java.lang.Thread.run(Thread.java:1570)
 
-2024-06-11 05:20:06,624 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: null Telefone Alternativo: gdfhj Telefone Alternativo 2: ghdj CodCaminhão: null
+2024-06-11 05:20:06,624 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: null Telefone Alternativo: gdfhj Telefone Alternativo 2: ghdj CodCaminhão: null
+
 2024-06-11 05:20:06,625 ERROR [io.undertow.request] (default task-8) UT005023: Exception handling request to /BossApp_POOWI/motorista: java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "telefonePrincipal" is null
 	at deployment.BossApp_POOWI.war//br.csi.service.MotoristaService.validarCampos(MotoristaService.java:140)
 	at deployment.BossApp_POOWI.war//br.csi.service.MotoristaService.persist(MotoristaService.java:53)
@@ -15472,8 +15476,10 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibrary
 	at org.jboss.xnio@3.8.15.Final//org.xnio.XnioWorker$WorkerThreadFactory$1$1.run(XnioWorker.java:1282)
 	at java.base/java.lang.Thread.run(Thread.java:1570)
 
-2024-06-11 05:20:13,350 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: 99999999000 Telefone Alternativo: gdfhj Telefone Alternativo 2: ghdj CodCaminhão: null
-2024-06-11 05:21:18,499 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: 99999999000 Telefone Alternativo: Ã§ Telefone Alternativo 2: Ã§ CodCaminhão: null
+2024-06-11 05:20:13,350 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: 99999999000 Telefone Alternativo: gdfhj Telefone Alternativo 2: ghdj CodCaminhão: null
+
+2024-06-11 05:21:18,499 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: 99999999000 Telefone Alternativo: Ã§ Telefone Alternativo 2: Ã§ CodCaminhão: null
+
 2024-06-11 05:25:02,485 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0019: Stopped Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
 2024-06-11 05:25:02,485 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 1230) WFLYUT0022: Unregistered web context: '/BossApp_POOWI' from server 'default-server'
 2024-06-11 05:25:02,492 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-8) WFLYSRV0028: Stopped deployment BossApp_POOWI (runtime-name: BossApp_POOWI.war) in 7ms
@@ -15625,7 +15631,8 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibrary
 2024-06-11 05:25:02,644 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0018: Started Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
 2024-06-11 05:25:02,650 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 1241) WFLYUT0021: Registered web context: '/BossApp_POOWI' for server 'default-server'
 2024-06-11 05:25:02,660 INFO  [org.jboss.as.server] (management-handler-thread - 6) WFLYSRV0010: Deployed "BossApp_POOWI" (runtime-name : "BossApp_POOWI.war")
-2024-06-11 05:25:12,582 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: 99999999000 Telefone Alternativo: Ã§ Telefone Alternativo 2: Ã§ CodCaminhão: null
+2024-06-11 05:25:12,582 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: 99999999000 Telefone Alternativo: Ã§ Telefone Alternativo 2: Ã§ CodCaminhão: null
+
 2024-06-11 05:25:56,315 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) WFLYJCA0019: Stopped Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
 2024-06-11 05:25:56,315 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 1243) WFLYUT0022: Unregistered web context: '/BossApp_POOWI' from server 'default-server'
 2024-06-11 05:25:56,322 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) WFLYSRV0028: Stopped deployment BossApp_POOWI (runtime-name: BossApp_POOWI.war) in 6ms
@@ -15777,7 +15784,8 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibrary
 2024-06-11 05:25:56,488 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) WFLYJCA0018: Started Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
 2024-06-11 05:25:56,494 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 1257) WFLYUT0021: Registered web context: '/BossApp_POOWI' for server 'default-server'
 2024-06-11 05:25:56,502 INFO  [org.jboss.as.server] (management-handler-thread - 6) WFLYSRV0010: Deployed "BossApp_POOWI" (runtime-name : "BossApp_POOWI.war")
-2024-06-11 05:26:03,862 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: 99999999000 Telefone Alternativo:  Telefone Alternativo 2:  CodCaminhão: null
+2024-06-11 05:26:03,862 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: 99999999000 Telefone Alternativo:  Telefone Alternativo 2:  CodCaminhão: null
+
 2024-06-11 05:26:03,893 ERROR [io.undertow.request] (default task-8) UT005023: Exception handling request to /BossApp_POOWI/motorista: java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "codCaminhao" is null
 	at deployment.BossApp_POOWI.war//br.csi.service.MotoristaService.gerarRelacionamento(MotoristaService.java:151)
 	at deployment.BossApp_POOWI.war//br.csi.service.MotoristaService.persist(MotoristaService.java:83)
@@ -15978,7 +15986,8 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibrary
 2024-06-11 05:28:14,033 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0018: Started Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
 2024-06-11 05:28:14,038 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 1269) WFLYUT0021: Registered web context: '/BossApp_POOWI' for server 'default-server'
 2024-06-11 05:28:14,047 INFO  [org.jboss.as.server] (management-handler-thread - 6) WFLYSRV0010: Deployed "BossApp_POOWI" (runtime-name : "BossApp_POOWI.war")
-2024-06-11 05:28:18,135 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: 99999999000 Telefone Alternativo:  Telefone Alternativo 2:  CodCaminhão: null
+2024-06-11 05:28:18,135 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: 99999999000 Telefone Alternativo:  Telefone Alternativo 2:  CodCaminhão: null
+
 2024-06-11 05:28:18,197 ERROR [io.undertow.request] (default task-8) UT005023: Exception handling request to /BossApp_POOWI/motorista: java.lang.NullPointerException: Cannot invoke "String.isBlank()" because "codCaminhao" is null
 	at deployment.BossApp_POOWI.war//br.csi.service.MotoristaService.gerarRelacionamento(MotoristaService.java:152)
 	at deployment.BossApp_POOWI.war//br.csi.service.MotoristaService.persist(MotoristaService.java:83)
@@ -16179,9 +16188,12 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibrary
 2024-06-11 05:30:16,229 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0018: Started Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
 2024-06-11 05:30:16,236 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 1278) WFLYUT0021: Registered web context: '/BossApp_POOWI' for server 'default-server'
 2024-06-11 05:30:16,243 INFO  [org.jboss.as.server] (management-handler-thread - 6) WFLYSRV0010: Deployed "BossApp_POOWI" (runtime-name : "BossApp_POOWI.war")
-2024-06-11 05:30:24,225 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: 99999999000 Telefone Alternativo:  Telefone Alternativo 2:  CodCaminhão: null
-2024-06-11 05:30:54,484 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa Endereço:  Telefone Principal: a Telefone Alternativo:  Telefone Alternativo 2:  CodCaminhão: null
-2024-06-11 05:31:57,697 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: Fernando Soso Girardi Endereço:  Telefone Principal: 54984005463 Telefone Alternativo:  Telefone Alternativo 2:  CodCaminhão: null
+2024-06-11 05:30:24,225 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: teste Endereço: dghj Telefone Principal: 99999999000 Telefone Alternativo:  Telefone Alternativo 2:  CodCaminhão: null
+
+2024-06-11 05:30:54,484 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa Endereço:  Telefone Principal: a Telefone Alternativo:  Telefone Alternativo 2:  CodCaminhão: null
+
+2024-06-11 05:31:57,697 INFO  [stdout] (default task-8) Operação: insert CodMotorista: null Nome: Fernando Soso Girardi Endereço:  Telefone Principal: 54984005463 Telefone Alternativo:  Telefone Alternativo 2:  CodCaminhão: null
+
 2024-06-11 05:33:22,576 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0019: Stopped Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
 2024-06-11 05:33:22,576 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 1283) WFLYUT0022: Unregistered web context: '/BossApp_POOWI' from server 'default-server'
 2024-06-11 05:33:22,582 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-6) WFLYSRV0028: Stopped deployment BossApp_POOWI (runtime-name: BossApp_POOWI.war) in 6ms
@@ -17278,7 +17290,8 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibrary
 2024-06-11 05:53:52,994 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) WFLYJCA0018: Started Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
 2024-06-11 05:53:53,004 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 130) WFLYUT0021: Registered web context: '/BossApp_POOWI' for server 'default-server'
 2024-06-11 05:53:53,013 INFO  [org.jboss.as.server] (management-handler-thread - 1) WFLYSRV0010: Deployed "BossApp_POOWI" (runtime-name : "BossApp_POOWI.war")
-2024-06-11 05:54:33,236 INFO  [stdout] (default task-2) Operação: insert CodMotorista: null Nome: kj Endereço: kj Telefone Principal: mj Telefone Alternativo:  Telefone Alternativo 2:  CodCaminhão: null
+2024-06-11 05:54:33,236 INFO  [stdout] (default task-2) Operação: insert CodMotorista: null Nome: kj Endereço: kj Telefone Principal: mj Telefone Alternativo:  Telefone Alternativo 2:  CodCaminhão: null
+
 2024-06-11 05:55:05,291 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0019: Stopped Driver service with driver-name = BossApp_POOWI.war_org.postgresql.Driver_42_7
 2024-06-11 05:55:05,291 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 130) WFLYUT0022: Unregistered web context: '/BossApp_POOWI' from server 'default-server'
 2024-06-11 05:55:05,301 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) WFLYSRV0028: Stopped deployment BossApp_POOWI (runtime-name: BossApp_POOWI.war) in 10ms
@@ -17441,7 +17454,7 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibrary
 	at deployment.BossApp_POOWI.war//org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:155)
 	at deployment.BossApp_POOWI.war//br.csi.dao.UsuarioDAO.insert(UsuarioDAO.java:146)
 	at deployment.BossApp_POOWI.war//br.csi.service.UsuarioService.cadastrar(UsuarioService.java:36)
-	at deployment.BossApp_POOWI.war//br.csi.controller.SigninServlet.doPost(SigninServlet.java:29)
+	at deployment.BossApp_POOWI.war//br.csi.controller.UsuarioServlet.doPost(SigninServlet.java:29)
 	at jakarta.servlet.api@6.0.0//jakarta.servlet.http.HttpServlet.service(HttpServlet.java:547)
 	at jakarta.servlet.api@6.0.0//jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614)
 	at io.undertow.servlet@2.3.13.Final//io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:74)
@@ -17650,7 +17663,7 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibrary
 	at deployment.BossApp_POOWI.war//org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:155)
 	at deployment.BossApp_POOWI.war//br.csi.dao.UsuarioDAO.insert(UsuarioDAO.java:147)
 	at deployment.BossApp_POOWI.war//br.csi.service.UsuarioService.cadastrar(UsuarioService.java:36)
-	at deployment.BossApp_POOWI.war//br.csi.controller.SigninServlet.doPost(SigninServlet.java:29)
+	at deployment.BossApp_POOWI.war//br.csi.controller.UsuarioServlet.doPost(SigninServlet.java:29)
 	at jakarta.servlet.api@6.0.0//jakarta.servlet.http.HttpServlet.service(HttpServlet.java:547)
 	at jakarta.servlet.api@6.0.0//jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614)
 	at io.undertow.servlet@2.3.13.Final//io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:74)
@@ -17708,7 +17721,7 @@ Caused by: java.lang.ClassNotFoundException: javax.servlet.jsp.tagext.TagLibrary
 	at deployment.BossApp_POOWI.war//org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:155)
 	at deployment.BossApp_POOWI.war//br.csi.dao.UsuarioDAO.insert(UsuarioDAO.java:147)
 	at deployment.BossApp_POOWI.war//br.csi.service.UsuarioService.cadastrar(UsuarioService.java:36)
-	at deployment.BossApp_POOWI.war//br.csi.controller.SigninServlet.doPost(SigninServlet.java:29)
+	at deployment.BossApp_POOWI.war//br.csi.controller.UsuarioServlet.doPost(SigninServlet.java:29)
 	at jakarta.servlet.api@6.0.0//jakarta.servlet.http.HttpServlet.service(HttpServlet.java:547)
 	at jakarta.servlet.api@6.0.0//jakarta.servlet.http.HttpServlet.service(HttpServlet.java:614)
 	at io.undertow.servlet@2.3.13.Final//io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:74)

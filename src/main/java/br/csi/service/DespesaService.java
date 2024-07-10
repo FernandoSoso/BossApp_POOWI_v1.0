@@ -71,6 +71,6 @@ public class DespesaService {
         else if (tipo == null || valor == null || data == null){
             return false;
         }
-        else return !(valor.isBlank() && data.isBlank() && tipo.isBlank()) && tipo.length() <= 50;
+        else return !(valor.isBlank() && data.isBlank() && tipo.isBlank()) && tipo.length() <= 25;
     }
 }

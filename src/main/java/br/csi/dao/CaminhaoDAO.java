@@ -15,17 +15,57 @@ import java.util.logging.Logger;
 
 public class CaminhaoDAO {
 
-    public ArrayList<Caminhao> selectAll(int offset) {
+    public boolean existsPlaca (@NotNull String placa) {
+        ConectaDB db = new ConectaDB();
+        PreparedStatement stmt = null;
+
+        try {
+            String query = "SELECT * FROM caminhao WHERE placa = ?";
+
+            stmt = db.getConexao().prepareStatement(query);
+
+            stmt.setString(1, placa);
+
+            ResultSet rs = stmt.executeQuery();
+
+            return rs.next();
+        } catch (SQLException e) {
+            Logger logger = Logger.getLogger(this.getClass().getName());
+            logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
+        } finally {
+            db.closeConexao();
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    Logger logger = Logger.getLogger(this.getClass().getName());
+                    logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public ArrayList<Caminhao> selectAll(int offset, int limit) {
         ConectaDB db = new ConectaDB();
         ArrayList<Caminhao> todosCaminhoes = new ArrayList<>();
         PreparedStatement stmt = null;
 
         try{
-            String query = "SELECT * FROM caminhao limit 16 offset ?";
+            String query;
 
-            stmt = db.getConexao().prepareStatement(query);
-            stmt.setInt(1, offset);
-
+            if (limit > 0) {
+                query = "SELECT * FROM caminhao LIMIT ? OFFSET ?";
+                stmt = db.getConexao().prepareStatement(query);
+                stmt.setInt(1, limit);
+                stmt.setInt(2, offset);
+            } else {
+                // Omit LIMIT clause when limit is 0
+                query = "SELECT * FROM caminhao OFFSET ?";
+                stmt = db.getConexao().prepareStatement(query);
+                stmt.setInt(1, offset);
+            }
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()){

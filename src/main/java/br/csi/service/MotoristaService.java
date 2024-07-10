@@ -16,15 +16,14 @@ public class MotoristaService {
     private final Motorista_CaminhaoDAO motorista_caminhaoDAO = new Motorista_CaminhaoDAO();
     private final ParamConverter paramConverter = new ParamConverter();
 
-    public ArrayList<Motorista> selectAll(String offset) {
+    public ArrayList<Motorista> selectAll(String offset, String limit) {
         Integer offsetNumber = paramConverter.convertStringToInt(offset);
+        Integer limitNumber = paramConverter.convertStringToInt(limit);
 
-        if (offsetNumber == null){
-            return null;
-        }
-        else {
-            return motoristaDAO.selectAll(offsetNumber);
-        }
+        offsetNumber = offsetNumber == null ? 0 : offsetNumber;
+        limitNumber = limitNumber == null ? 0 : limitNumber;
+
+        return motoristaDAO.selectAll(offsetNumber, limitNumber);
     }
 
     public Motorista selectUnique(@NotNull String codMotorista) {
@@ -36,12 +35,19 @@ public class MotoristaService {
         else{
             Motorista motorista = motoristaDAO.selectUnique(codMotoristaNumber);
 
-            Motorista_Caminhao relacao = motorista_caminhaoDAO.selectByCod_motorista(motorista.getCod());
+            if (motorista != null){
+                Motorista_Caminhao relacao = motorista_caminhaoDAO.selectByCod_motorista(motorista.getCod());
 
-            if (relacao != null){
-                motorista.setCaminhao(new CaminhaoDAO().selectUnique(relacao.getCodCaminhao()));
+                if (relacao != null){
+                    motorista.setCaminhao(new CaminhaoDAO().selectUnique(relacao.getCodCaminhao()));
+                    motorista.setDataCaminhao(relacao.getDataInicio());
+                }
+
+                return motorista;
             }
-            return motorista;
+            else {
+                return null;
+            }
         }
     }
 
@@ -61,13 +67,21 @@ public class MotoristaService {
         Motorista motorista = new Motorista(codMotoristaNumber,nome, endereco, telefonePrincipal, telefoneAlternativo, telefoneAlternativo2);
 
         if (operacao.equals("update")){
-            return motoristaDAO.update(motorista);
+            if (motorista.getCod() == null || motoristaDAO.selectUnique(motorista.getCod()) == null){
+                throw new IllegalArgumentException("Motorista não encontrado");
+            }
+
+            if (motoristaDAO.update(motorista)){
+                return gerarRelacionamento(codMotoristaNumber, codCaminhaoNumber);
+            }
         }
         else if (operacao.equals("insert")){
-            return motoristaDAO.insert(motorista) < 0;
+            codMotoristaNumber = motoristaDAO.insert(motorista);
+
+            return gerarRelacionamento(codMotoristaNumber, codCaminhaoNumber);
         }
 
-        return gerarRelacionamento(codMotoristaNumber, codCaminhaoNumber);
+        return false;
     }
 
 
@@ -128,7 +142,9 @@ public class MotoristaService {
         else if (nome.isBlank() || telefonePrincipal.isBlank() ){
             return false;
         }
-        else return endereco.length() <= 100 && telefoneAlternativo.length() <= 15 && telefoneAlternativo2.length() <= 15
+        else{
+            return endereco.length() <= 75 && telefoneAlternativo.length() <= 15 && telefoneAlternativo2.length() <= 15
                     && telefonePrincipal.length() <= 15;
+        }
     }
 }

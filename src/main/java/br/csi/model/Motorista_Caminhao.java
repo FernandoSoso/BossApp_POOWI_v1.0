@@ -24,4 +24,13 @@ public class Motorista_Caminhao {
     private final int codMotorista;
     private final int codCaminhao;
     private Date dataInicio;
+
+    @Override
+    public String toString() {
+        return "Motorista_Caminhao{" +
+                "codMotorista=" + codMotorista +
+                ", codCaminhao=" + codCaminhao +
+                ", dataInicio=" + dataInicio +
+                '}';
+    }
 }

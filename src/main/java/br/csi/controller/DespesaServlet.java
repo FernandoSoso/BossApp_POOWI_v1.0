@@ -50,4 +50,17 @@ public class DespesaServlet extends HttpServlet {
             req.setAttribute("erro", "true");
         }
     }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String codDespesa = req.getParameter("codDespesa");
+
+        if (new DespesaService().delete(codDespesa)){
+            req.setAttribute("mensagem", "Operação realizada com sucesso!");
+            req.setAttribute("erro", "false");
+        } else {
+            req.setAttribute("mensagem", "Erro ao realizar operação!");
+            req.setAttribute("erro", "true");
+        }
+    }
 }

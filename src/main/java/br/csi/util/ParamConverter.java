@@ -15,30 +15,13 @@ public class ParamConverter {
      */
     public Integer convertStringToInt(String value){
         if (value == null){
-            return null;
+            return 0;
         }
         else if (value.isBlank()){
-            return null;
+            return 0;
         }
         else {
-            return Integer.parseInt(value);
-        }
-    }
-
-    /**
-     * Converte uma string para um double (pode retornar valores nulos).
-     * @param value String a ser convertida.
-     * @return Double convertido.
-     */
-    public Double convertStringToDoubleNullable(String value){
-        if (value == null){
-            return null;
-        }
-        else if (value.isBlank()){
-            return null;
-        }
-        else {
-            return Double.parseDouble(value);
+            return Integer.parseInt(value.trim());
         }
     }
 
@@ -55,7 +38,7 @@ public class ParamConverter {
             return 0.0;
         }
         else {
-            return Double.parseDouble(value);
+            return Double.parseDouble(value.trim());
         }
     }
 
@@ -72,7 +55,7 @@ public class ParamConverter {
             return null;
         }
         else {
-            return value;
+            return value.trim();
         }
     }
 
@@ -90,7 +73,7 @@ public class ParamConverter {
         }
         else {
             try {
-                return new java.sql.Date(new SimpleDateFormat("dd/MM/yyyy").parse(value).getTime());
+                return new java.sql.Date(new SimpleDateFormat("dd/MM/yyyy").parse(value.trim()).getTime());
             } catch (Exception e) {
                 return null;
             }

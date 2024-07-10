@@ -14,16 +14,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FreteDAO {
-    public ArrayList<Frete> selectAll(int offset) {
+    public ArrayList<Frete> selectAll(int offset, int limit) {
         ConectaDB db = new ConectaDB();
         ArrayList<Frete> todosFretes = new ArrayList<>();
         PreparedStatement stmt = null;
 
         try{
-            String query = "SELECT * FROM frete LIMIT 16 OFFSET ?";
+            String query;
 
-            stmt = db.getConexao().prepareStatement(query);
-            stmt.setInt(1, offset);
+            if (limit > 0) {
+                query = "SELECT * FROM frete LIMIT ? OFFSET ?";
+                stmt = db.getConexao().prepareStatement(query);
+                stmt.setInt(1, limit);
+                stmt.setInt(2, offset);
+            } else {
+                // Omit LIMIT clause when limit is 0
+                query = "SELECT * FROM frete OFFSET ?";
+                stmt = db.getConexao().prepareStatement(query);
+                stmt.setInt(1, offset);
+            }
 
             ResultSet rs = stmt.executeQuery();
 
@@ -39,8 +48,8 @@ public class FreteDAO {
                                 rs.getDouble("peso"),
                                 rs.getString("observacao"),
                                 rs.getString("estado"),
-                                new Motorista(rs.getInt("cod_motorista"), null, null, null, null, null),
-                                new Caminhao(rs.getInt("cod_caminhao"), null, null, null, 0, 0, 0, null)
+                                new Motorista(rs.getInt("cod_motorista")),
+                                new Caminhao(rs.getInt("cod_caminhao"))
                         );
                 todosFretes.add(frete);
             }
@@ -85,8 +94,8 @@ public class FreteDAO {
                                 rs.getDouble("peso"),
                                 rs.getString("observacao"),
                                 rs.getString("estado"),
-                                new Motorista(rs.getInt("cod_motorista"), null, null, null, null, null),
-                                new Caminhao(rs.getInt("cod_caminhao"), null, null, null, 0, 0, 0, null)
+                                new Motorista(rs.getInt("cod_motorista")),
+                                new Caminhao(rs.getInt("cod_caminhao"))
                         );
             }
         } catch (SQLException e) {
@@ -111,19 +120,21 @@ public class FreteDAO {
         PreparedStatement stmt = null;
 
         try{
-            String query = "INSERT INTO frete (origem, origem_data, destino, destino_data, valor_tonelada, peso, observacao, estado, cod_motorista, cod_caminhao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO frete (origem, origem_data, destino, destino_data, valor_tonelada, peso, observacao, estado, cod_motorista, cod_caminhao, parte_motorista, valor_liquido) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             stmt = db.getConexao().prepareStatement(query);
             stmt.setString(1, frete.getOrigem());
-            stmt.setDate(2, (Date) frete.getOrigem_data());
+            stmt.setDate(2, (Date) frete.getOrigemData());
             stmt.setString(3, frete.getDestino());
-            stmt.setDate(4, (Date) frete.getDestino_data());
-            stmt.setDouble(5, frete.getValor_tonelada());
+            stmt.setDate(4, (Date) frete.getDestinoData());
+            stmt.setDouble(5, frete.getValorTonelada());
             stmt.setDouble(6, frete.getPeso());
             stmt.setString(7, frete.getObservacao());
             stmt.setString(8, frete.getEstado());
             stmt.setInt(9, frete.getMotorista().getCod());
             stmt.setInt(10, frete.getCaminhao().getCod());
+            stmt.setDouble(11, frete.getParteMotorista());
+            stmt.setDouble(12, frete.getValorLiquido());
 
             int linhasAfetadas = stmt.executeUpdate();
 
@@ -162,10 +173,10 @@ public class FreteDAO {
 
             stmt = db.getConexao().prepareStatement(query);
             stmt.setString(1, frete.getOrigem());
-            stmt.setDate(2, (Date) frete.getOrigem_data());
+            stmt.setDate(2, (Date) frete.getOrigemData());
             stmt.setString(3, frete.getDestino());
-            stmt.setDate(4, (Date) frete.getDestino_data());
-            stmt.setDouble(5, frete.getValor_tonelada());
+            stmt.setDate(4, (Date) frete.getDestinoData());
+            stmt.setDouble(5, frete.getValorTonelada());
             stmt.setDouble(6, frete.getPeso());
             stmt.setString(7, frete.getObservacao());
             stmt.setString(8, frete.getEstado());

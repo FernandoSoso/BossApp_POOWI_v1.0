@@ -23,9 +23,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body id="user-body">
-<a href="signin" class="tradeUser" >
-    Cadastrar-se
-</a>
 <div class="user-container">
     <div class="user-image">
         <%--            <img src="img/user.png" alt="Imagem de login">--%>
@@ -51,7 +48,7 @@
                 <label for="lembrar" class="input-checkbox-label">Lembrar acesso</label>
             </div>
         </div>
-        <button type="submit" class="cadastrar-button">Entrar</button>
+        <button type="submit" class="persistButton">Entrar</button>
     </form>
 </div>
 </body>
