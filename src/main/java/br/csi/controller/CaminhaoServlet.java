@@ -59,12 +59,7 @@ public class CaminhaoServlet extends HttpServlet {
             }
         }
         catch (Exception e){
-            String json = new Gson().toJson(new Retorno(e.getMessage()));
-
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
-
-            resp.getWriter().write(json);
+            resp.sendRedirect(req.getContextPath() + "/caminhao");
         }
 
     }

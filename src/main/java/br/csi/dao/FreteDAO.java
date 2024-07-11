@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FreteDAO {
+
     public ArrayList<Frete> selectAll(int offset, int limit) {
         ConectaDB db = new ConectaDB();
         ArrayList<Frete> todosFretes = new ArrayList<>();

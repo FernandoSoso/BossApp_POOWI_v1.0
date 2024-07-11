@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
 <div class="sidebar">
-    <a style="text-decoration: none" href="home?async=false">
+    <a style="text-decoration: none">
         <div class="logo">
             <img src="<%=request.getContextPath()%>/img/logo.png" alt="Logo do aplicativo">
         </div>

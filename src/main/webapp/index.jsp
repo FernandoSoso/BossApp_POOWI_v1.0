@@ -26,14 +26,6 @@
 </head>
 <body id="user-body">
 
-<%
-    if (request.getAttribute("erro") != null) {
-        out.println("<div class='alert alert-danger' role='alert'>");
-        out.println("<p>Email ou senha inválidos</p>");
-        out.println("</div>");
-    }
-%>
-
 <div class="user-container">
     <div class="user-image">
         <%--            <img src="img/user.png" alt="Imagem de login">--%>
@@ -60,5 +52,15 @@
 </body>
 
 <script src="./js/input.js"></script>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const erro = new URLSearchParams(window.location.search).get('erro');
+        if (erro) {
+            alert('Email ou senha inválidos');
+        }
+    });
+</script>
 
 </html>

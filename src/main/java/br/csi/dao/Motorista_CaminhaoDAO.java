@@ -131,41 +131,6 @@ public class Motorista_CaminhaoDAO {
         return false;
     }
 
-    public boolean update(Motorista_Caminhao relacao) {
-        ConectaDB db = new ConectaDB();
-        PreparedStatement stmt = null;
-
-        try {
-            String query = "UPDATE motorista_caminhao SET data_inicio = ? " +
-                    "WHERE cod_motorista = ? AND cod_caminhao = ?";
-
-            stmt = db.getConexao().prepareStatement(query);
-
-            stmt.setDate(1, Date.valueOf(LocalDate.now()));
-            stmt.setInt(2, relacao.getCodMotorista());
-            stmt.setInt(3, relacao.getCodCaminhao());
-
-            int linhasAfetadas = stmt.executeUpdate();
-
-            return linhasAfetadas > 0;
-        } catch (SQLException e) {
-            Logger logger = Logger.getLogger(this.getClass().getName());
-            logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
-        } finally {
-            db.closeConexao();
-            if (stmt != null) {
-                try {
-                    stmt.close();
-                } catch (SQLException e) {
-                    Logger logger = Logger.getLogger(this.getClass().getName());
-                    logger.log(Level.SEVERE, "Erro ao acessar o banco de dados", e);
-                }
-            }
-        }
-
-        return false;
-    }
-
     public boolean delete(Motorista_Caminhao relacao) {
         ConectaDB db = new ConectaDB();
         PreparedStatement stmt = null;

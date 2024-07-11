@@ -104,18 +104,18 @@ public class CaminhaoService {
         Integer codCaminhaoNumber = paramConverter.convertStringToInt(codCaminhao);
 
         if (codCaminhaoNumber == null || codCaminhaoNumber <= 0){
-            return false;
+            throw new IllegalArgumentException("Código de caminhão inválido");
         }
         else {
             if (caminhaoDAO.selectUnique(codCaminhaoNumber) == null){
                 throw new IllegalArgumentException("Caminhão não encontrado");
             }
             else{
-                Motorista_Caminhao relacao = motorista_caminhaoDAO.selectByCod_motorista(codCaminhaoNumber);
+                Motorista_Caminhao relacao = motorista_caminhaoDAO.selectByCod_caminhao(codCaminhaoNumber);
 
                 if (relacao != null){
                     if (!motorista_caminhaoDAO.delete(relacao)) {
-                        return false;
+                        throw new IllegalArgumentException("Erro ao deletar relacionamento");
                     }
                 }
 
