@@ -1,7 +1,6 @@
 package br.csi.service;
 
 import br.csi.dao.CaminhaoDAO;
-import br.csi.dao.DespesaDAO;
 import br.csi.dao.FreteDAO;
 import br.csi.dao.MotoristaDAO;
 import br.csi.model.Caminhao;
@@ -11,7 +10,6 @@ import br.csi.util.ParamConverter;
 import br.csi.util.Round;
 import org.jetbrains.annotations.NotNull;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
@@ -42,7 +40,7 @@ public class FreteService {
         Integer codFreteNumber = paramConverter.convertStringToInt(codFrete);
 
         if (codFreteNumber == null || codFreteNumber <= 0){
-            return null;
+            throw new IllegalArgumentException("Código de frete inválido");
         }
 
         Frete frete = freteDAO.selectUnique(codFreteNumber);
@@ -60,30 +58,26 @@ public class FreteService {
         return frete;
     }
 
-    public boolean persist(@NotNull String operacao, String codFrete, @NotNull String origem, String origem_data, @NotNull String destino,
-                           String destino_data, @NotNull String valorTonelada, @NotNull String peso, String observacao, @NotNull  String estado,
+    public boolean persist(@NotNull String operacao, String codFrete, @NotNull String origem, @NotNull String destino,
+                           @NotNull String valorTonelada, @NotNull String peso, String observacao, @NotNull  String estado,
                            @NotNull String codMotorista, @NotNull String codCaminhao) {
 
-        if (!validarCampos(operacao, origem, destino, valorTonelada, peso, observacao, estado, codMotorista, codCaminhao)){
-            System.out.println("Erro: Campos inválidos!");
-            return false;
-        }
+        validarCampos(operacao, origem, destino, valorTonelada, peso, observacao, estado, codMotorista, codCaminhao);
 
         Integer codFreteNumber = paramConverter.convertStringToInt(codFrete);
         Integer codMotoristaNumber = paramConverter.convertStringToInt(codMotorista);
         Integer codCaminhaoNumber = paramConverter.convertStringToInt(codCaminhao);
         Double valorToneladaNumber = paramConverter.convertStringToDouble(valorTonelada);
         Double pesoNumber = paramConverter.convertStringToDouble(peso);
-        Date origemDataDate = paramConverter.convertStringToDate(origem_data);
-        Date destinoDataDate = paramConverter.convertStringToDate(destino_data);
         observacao = paramConverter.convertBlankStringToNull(observacao);
 
         Caminhao caminhao = new Caminhao(codCaminhaoNumber);
         Motorista motorista = new Motorista(codMotoristaNumber);
-        Frete frete = new Frete(codFreteNumber, origem, origemDataDate, destino, destinoDataDate, valorToneladaNumber, pesoNumber, observacao, estado, motorista, caminhao);
+        Frete frete = new Frete(codFreteNumber, origem, destino, valorToneladaNumber, pesoNumber, observacao, estado, motorista, caminhao);
 
         if (operacao.equals("update")){
             Frete freteAntigo = freteDAO.selectUnique(frete.getCod());
+
             if (freteAntigo == null){
                 throw new IllegalArgumentException("Frete não encontrado");
             }
@@ -106,7 +100,9 @@ public class FreteService {
             frete.setParteMotorista(Round.roundUp(frete.getValorBruto() * caminhao.getPercentualMotorista(), 2));
             frete.setValorLiquido(frete.getValorBruto() - frete.getParteMotorista());
 
-            return freteDAO.insert(frete) >= 0;
+            int codFreteInserted = freteDAO.insert(frete);
+
+            return codFreteInserted >= 0;
         }
 
         return true;
@@ -116,11 +112,11 @@ public class FreteService {
         Integer codFreteNumber = paramConverter.convertStringToInt(codFrete);
 
         if (codFreteNumber == null || codFreteNumber <= 0){
-            return false;
+            throw new IllegalArgumentException("Código de frete inválido");
         }
         else{
             if (freteDAO.selectUnique(codFreteNumber) == null){
-                throw new IllegalArgumentException("Motorista não encontrado");
+                throw new IllegalArgumentException("Frete não encontrado");
             }
             else{
                     return freteDAO.delete(codFreteNumber);
@@ -129,16 +125,18 @@ public class FreteService {
     }
 
 
-    private boolean validarCampos(String operacao, String origem, String destino, String valorTonelada,
+    private void validarCampos(String operacao, String origem, String destino, String valorTonelada,
                                   String peso, String observacao, String estado, String codMotorista, String codCaminhao){
         if (!(operacao.equals("insert") || operacao.equals("update"))) {
-            return false;
+            throw new IllegalArgumentException("Operação inválida!");
         }
         else if (origem.isBlank() || origem.length() > 35 || destino.isBlank() || destino.length() > 35 || observacao.length() > 256
                 || estado.length() > 25 || estado.isBlank() || codMotorista.isBlank() || codCaminhao.isBlank() ||
                 valorTonelada.isBlank() || peso.isBlank()){
-            return false;
+            throw new IllegalArgumentException("Campos obrigatórios não preenchidos ou ultrapassaram o limite de caracteres!");
         }
-        else return "pendente".equalsIgnoreCase(estado) || "concluído".equalsIgnoreCase(estado);
+        else if (!("pendente".equalsIgnoreCase(estado) || "concluído".equalsIgnoreCase(estado))){
+            throw new IllegalArgumentException("Estado inválido!");
+        }
     }
 }

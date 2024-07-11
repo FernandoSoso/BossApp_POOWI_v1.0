@@ -26,48 +26,51 @@ public class FreteServlet extends HttpServlet {
         String limit = req.getParameter("limit");
 
         // Se a requisição for assíncrona
-        if ("true".equals(async)) {
-            Object retorno = null;
-
-            if ("selectUnique".equals(operacao)){
-                if (cod != null){
-                    retorno = new FreteService().selectUnique(cod);
+        try {
+            if ("true".equals(async)) {
+                Object retorno = null;
+                if ("selectUnique".equals(operacao)) {
+                    if (cod != null) {
+                        retorno = new FreteService().selectUnique(cod);
+                    } else {
+                        throw new Exception("Código de caminhão inválido!");
+                    }
+                } else if ("selectAll".equals(operacao)) {
+                    retorno = new FreteService().selectAll(offset, limit);
                 }
-                else {
-                    retorno = new Retorno(true, "Erro: Código de caminhão inválido!");
-                }
-            }
-            else if ("selectAll".equals(operacao)){
-                retorno = new FreteService().selectAll(offset, limit);
-            }
 
-            String json = new Gson().toJson(retorno);
+                String json = new Gson().toJson(retorno);
+
+                resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
+
+                resp.getWriter().write(json);
+            } else if ("delete".equals(operacao)) {
+                new FreteService().delete(cod);
+
+                resp.sendRedirect(req.getContextPath() + "/frete");
+            } else {
+                // Redirecione para o servlet de motorista
+                RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/frete.jsp");
+                rd.forward(req, resp);
+            }
+        }
+        catch (Exception e){
+            String json = new Gson().toJson(new Retorno(e.getMessage()));
 
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
 
             resp.getWriter().write(json);
         }
-        else if ("delete".equals(operacao)){
-            new FreteService().delete(cod);
-
-            resp.sendRedirect(req.getContextPath() + "/frete");
-        }
-        else {
-            // Redirecione para o servlet de motorista
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/frete.jsp");
-            rd.forward(req, resp);
-        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String operacao = req.getParameter("operacao");
-        String codFrete = req.getParameter("codFrete");
+        String codFrete = req.getParameter("cod");
         String origem = req.getParameter("origem");
-        String origemData = req.getParameter("origemData");
         String destino = req.getParameter("destino");
-        String destinoData = req.getParameter("destinoData");
         String valorTonelada = req.getParameter("valorTonelada");
         String peso = req.getParameter("peso");
         String observacao = req.getParameter("observacao");
@@ -75,17 +78,18 @@ public class FreteServlet extends HttpServlet {
         String codMotorista = req.getParameter("motorista");
         String codCaminhao = req.getParameter("caminhao");
 
-        if (new FreteService().persist(operacao, codFrete, origem, origemData, destino, destinoData, valorTonelada, peso, observacao, estado, codMotorista, codCaminhao)){
-            System.out.println("Operação realizada com sucesso!");
-            req.setAttribute("mensagem", "Operação realizada com sucesso!");
-            req.setAttribute("erro", "false");
-        } else {
-            System.out.println("Operação não realizada com sucesso!");
-            req.setAttribute("mensagem", "Erro ao realizar operação!");
-            req.setAttribute("erro", "true");
-        }
 
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/frete.jsp");
-        rd.forward(req, resp);
+        try {
+            new FreteService().persist(operacao, codFrete, origem, destino, valorTonelada, peso, observacao, estado, codMotorista, codCaminhao);
+
+            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/frete.jsp");
+            rd.forward(req, resp);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            req.setAttribute("erro", e.getMessage());
+
+            resp.sendRedirect(req.getContextPath() + "/frete");
+        }
     }
 }

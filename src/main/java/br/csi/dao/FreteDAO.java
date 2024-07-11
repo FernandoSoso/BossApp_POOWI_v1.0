@@ -5,10 +5,7 @@ import br.csi.model.Frete;
 import br.csi.model.Motorista;
 import br.csi.util.ConectaDB;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,15 +38,15 @@ public class FreteDAO {
                         new Frete(
                                 rs.getInt("cod"),
                                 rs.getString("origem"),
-                                rs.getDate("origem_data"),
                                 rs.getString("destino"),
-                                rs.getDate("destino_data"),
                                 rs.getDouble("valor_tonelada"),
                                 rs.getDouble("peso"),
                                 rs.getString("observacao"),
                                 rs.getString("estado"),
                                 new Motorista(rs.getInt("cod_motorista")),
-                                new Caminhao(rs.getInt("cod_caminhao"))
+                                new Caminhao(rs.getInt("cod_caminhao")),
+                                rs.getDouble("valor_liquido"),
+                                rs.getDouble("parte_motorista")
                         );
                 todosFretes.add(frete);
             }
@@ -87,15 +84,15 @@ public class FreteDAO {
                 return new  Frete(
                                 rs.getInt("cod"),
                                 rs.getString("origem"),
-                                rs.getDate("origem_data"),
                                 rs.getString("destino"),
-                                rs.getDate("destino_data"),
                                 rs.getDouble("valor_tonelada"),
                                 rs.getDouble("peso"),
                                 rs.getString("observacao"),
                                 rs.getString("estado"),
                                 new Motorista(rs.getInt("cod_motorista")),
-                                new Caminhao(rs.getInt("cod_caminhao"))
+                                new Caminhao(rs.getInt("cod_caminhao")),
+                                rs.getDouble("valor_liquido"),
+                                rs.getDouble("parte_motorista")
                         );
             }
         } catch (SQLException e) {
@@ -120,31 +117,33 @@ public class FreteDAO {
         PreparedStatement stmt = null;
 
         try{
-            String query = "INSERT INTO frete (origem, origem_data, destino, destino_data, valor_tonelada, peso, observacao, estado, cod_motorista, cod_caminhao, parte_motorista, valor_liquido) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO frete (origem, destino, valor_tonelada, peso, observacao, estado, cod_motorista, cod_caminhao, parte_motorista, valor_liquido) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-            stmt = db.getConexao().prepareStatement(query);
+            stmt = db.getConexao().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+
             stmt.setString(1, frete.getOrigem());
-            stmt.setDate(2, (Date) frete.getOrigemData());
-            stmt.setString(3, frete.getDestino());
-            stmt.setDate(4, (Date) frete.getDestinoData());
-            stmt.setDouble(5, frete.getValorTonelada());
-            stmt.setDouble(6, frete.getPeso());
-            stmt.setString(7, frete.getObservacao());
-            stmt.setString(8, frete.getEstado());
-            stmt.setInt(9, frete.getMotorista().getCod());
-            stmt.setInt(10, frete.getCaminhao().getCod());
-            stmt.setDouble(11, frete.getParteMotorista());
-            stmt.setDouble(12, frete.getValorLiquido());
+            stmt.setString(2, frete.getDestino());
+            stmt.setDouble(3, frete.getValorTonelada());
+            stmt.setDouble(4, frete.getPeso());
+            stmt.setString(5, frete.getObservacao());
+            stmt.setString(6, frete.getEstado());
+            stmt.setInt(7, frete.getMotorista().getCod());
+            stmt.setInt(8, frete.getCaminhao().getCod());
+            stmt.setDouble(9, frete.getParteMotorista());
+            stmt.setDouble(10, frete.getValorLiquido());
 
             int linhasAfetadas = stmt.executeUpdate();
 
-            if (linhasAfetadas == 0) {
-                return -1;
+            if(linhasAfetadas == 0){
+                throw new SQLException("Erro ao inserir frete. Nenhuma linha inserida.");
             }
 
-            ResultSet rs = stmt.getGeneratedKeys();
-            if (rs.next()) {
-                return rs.getInt(1);
+            ResultSet generatedKeys = stmt.getGeneratedKeys();
+
+            if (generatedKeys.next()) {
+                return generatedKeys.getInt(1);
+            } else {
+                throw new SQLException("Erro ao inserir frete, nenhum código foi retornado.");
             }
         } catch (SQLException e) {
             Logger logger = Logger.getLogger(this.getClass().getName());
@@ -169,20 +168,18 @@ public class FreteDAO {
         PreparedStatement stmt = null;
 
         try{
-            String query = "UPDATE frete SET origem = ?, origem_data = ?, destino = ?, destino_data = ?, valor_tonelada = ?, peso = ?, observacao = ?, estado = ?, cod_motorista = ?, cod_caminhao = ? WHERE cod = ?";
+            String query = "UPDATE frete SET origem = ?, destino = ?, valor_tonelada = ?, peso = ?, observacao = ?, estado = ?, cod_motorista = ?, cod_caminhao = ? WHERE cod = ?";
 
             stmt = db.getConexao().prepareStatement(query);
             stmt.setString(1, frete.getOrigem());
-            stmt.setDate(2, (Date) frete.getOrigemData());
-            stmt.setString(3, frete.getDestino());
-            stmt.setDate(4, (Date) frete.getDestinoData());
-            stmt.setDouble(5, frete.getValorTonelada());
-            stmt.setDouble(6, frete.getPeso());
-            stmt.setString(7, frete.getObservacao());
-            stmt.setString(8, frete.getEstado());
-            stmt.setInt(9, frete.getMotorista().getCod());
-            stmt.setInt(10, frete.getCaminhao().getCod());
-            stmt.setInt(11, frete.getCod());
+            stmt.setString(2, frete.getDestino());
+            stmt.setDouble(3, frete.getValorTonelada());
+            stmt.setDouble(4, frete.getPeso());
+            stmt.setString(5, frete.getObservacao());
+            stmt.setString(6, frete.getEstado());
+            stmt.setInt(7, frete.getMotorista().getCod());
+            stmt.setInt(8, frete.getCaminhao().getCod());
+            stmt.setInt(9, frete.getCod());
 
             int linhasAfetadas = stmt.executeUpdate();
 

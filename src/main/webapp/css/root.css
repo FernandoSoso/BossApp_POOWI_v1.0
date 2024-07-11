@@ -36,6 +36,7 @@
     --vermelho-40-claro: #ce7979;
     --vermelho-20: rgba(182, 40, 40, 0.2);
     --vermelho-40: rgba(182, 40, 40, 0.4);
+    --vermelho-60: rgba(182, 40, 40, 0.6);
     --azul: #3393c5;
     --azul-20-escuro: #2f7ca4;
     --azul-40-escuro: #2a6381;
@@ -55,4 +56,9 @@
     /*Fontes*/
     --fonte-titulo: 'Rubik', sans-serif;
     --fonte-texto: 'Poppins', sans-serif;
+}
+
+p{
+    word-break: break-all;
+    margin: 0;
 }

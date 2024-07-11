@@ -77,8 +77,7 @@ public class CaminhaoDAO {
                                 rs.getString("modelo"),
                                 rs.getInt("ano"),
                                 rs.getInt("capacidade"),
-                                rs.getDouble("percentual_motorista"),
-                                rs.getString("estado")
+                                rs.getDouble("percentual_motorista")
                         );
                 todosCaminhoes.add(caminhao);
             }
@@ -122,8 +121,7 @@ public class CaminhaoDAO {
                         rs.getString("modelo"),
                         rs.getInt("ano"),
                         rs.getInt("capacidade"),
-                        rs.getDouble("percentual_motorista"),
-                        rs.getString("estado")
+                        rs.getDouble("percentual_motorista")
                 );
             }
             else {
@@ -153,8 +151,8 @@ public class CaminhaoDAO {
 
         try {
             String query = "Insert into caminhao " +
-                    "(placa, marca, modelo, ano, capacidade, percentual_motorista, estado) " +
-                    "values (?, ?, ?, ?, ?, ?, ?)";
+                    "(placa, marca, modelo, ano, capacidade, percentual_motorista) " +
+                    "values (?, ?, ?, ?, ?, ?)";
 
             stmt = db.getConexao().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
@@ -164,7 +162,6 @@ public class CaminhaoDAO {
             stmt.setInt(4, caminhao.getAno());
             stmt.setInt(5, caminhao.getCapacidade());
             stmt.setDouble(6, caminhao.getPercentualMotorista());
-            stmt.setString(7, caminhao.getEstado());
 
             int linhasAfetadas = stmt.executeUpdate();
 
@@ -202,7 +199,7 @@ public class CaminhaoDAO {
         PreparedStatement stmt = null;
 
         try {
-            String query = "UPDATE caminhao SET placa = ?, marca = ?, modelo = ?, ano = ?, capacidade = ?, percentual_motorista = ?, estado = ? WHERE cod = ?";
+            String query = "UPDATE caminhao SET placa = ?, marca = ?, modelo = ?, ano = ?, capacidade = ?, percentual_motorista = ? WHERE cod = ?";
 
             stmt = db.getConexao().prepareStatement(query);
 
@@ -212,8 +209,7 @@ public class CaminhaoDAO {
             stmt.setInt(4, caminhao.getAno());
             stmt.setInt(5, caminhao.getCapacidade());
             stmt.setDouble(6, caminhao.getPercentualMotorista());
-            stmt.setString(7, caminhao.getEstado());
-            stmt.setInt(8, caminhao.getCod());
+            stmt.setInt(7, caminhao.getCod());
 
             int linhasAfetadas = stmt.executeUpdate();
 

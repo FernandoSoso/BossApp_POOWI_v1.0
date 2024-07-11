@@ -28,7 +28,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body id="page-body">
-
+<jsp:include page="../components/authCheck.jsp"/>
+<jsp:include page="../components/warning-popup.jsp"/>
 <jsp:include page="../components/sidebar.jsp"/>
 <jsp:include page="../components/table.jsp"/>
 
@@ -64,13 +65,11 @@
                                 <th>Ano</th>
                                 <th>Capacidade</th>
                                 <th>Percentual do Motorista</th>
-                                <th>Estado</th>
                             </tr>
                             <tr>
                                 <td><p id="ano-info-table"></p></td>
-                                <td><p id="capacidade-info-table"></p></td>
-                                <td><p id="percentualMotorista-info-table"></p></td>
-                                <td><p id="estado-caminhao-info-table"></p></td>
+                                <td><p id="capacidade-info-table" data-type="peso"></p></td>
+                                <td><p id="percentualMotorista-info-table" data-type="porcentagem"></p></td>
                             </tr>
                         </table>
                     </div>
@@ -119,13 +118,11 @@
                 </button>
             </div>
             <div class="body-modal">
-                <form action="caminhao" method="post" class="body-modal-form" id="persistForm">
+                <form class="body-modal-form" id="persistForm">
                     <h6 class="required-warning">
                         Campos com<span class="required">&nbsp;*&nbsp;</span>são obrigatórios!
                     </h6>
                     <div class="form-input-area">
-                        <input type="hidden" value="" name="operacao" id="operacao">
-                        <input type="hidden" value="" name="cod" id="cod">
                         <div class="input-wrapper">
                             <div class="input-wrapper-title">
                                 Identificação
@@ -168,14 +165,6 @@
                                     <input class="input-text" type="number" id="capacidade" name="capacidade"  min="0" max="99999" maxlength="5">
                                     <label class="input-label" for="capacidade">Capacidade</label>
                                 </div>
-                                <div class="input-container">
-                                    <select id="estado" class="input-select static"  name="estado" required>
-                                        <option value="" selected></option>
-                                        <option value="disponível">Disponível</option>
-                                        <option value="indisponível">Indisponível</option>
-                                    </select>
-                                    <label class="input-label" for="estado"><span class="required">*&nbsp;</span>Estado do Caminhão</label>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -205,8 +194,7 @@
         "marca",
         "modelo",
         "ano",
-        "capacidade",
-        "estado",
+        "capacidade"
     ];
 
     const colsNames = [
@@ -214,8 +202,7 @@
         "marca",
         "modelo",
         "ano",
-        "capacidade",
-        "estado",
+        "capacidade"
     ];
 
     const maxItens = 15;

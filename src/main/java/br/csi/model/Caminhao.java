@@ -13,7 +13,7 @@ public class Caminhao {
         this.cod = cod;
     }
 
-    public Caminhao(Integer cod, String placa, String marca, String modelo, Integer ano, Integer capacidade, Double percentualMotorista, String estado) {
+    public Caminhao(Integer cod, String placa, String marca, String modelo, Integer ano, Integer capacidade, Double percentualMotorista) {
         this.cod = cod;
         this.placa = placa;
         this.marca = marca;
@@ -21,7 +21,6 @@ public class Caminhao {
         this.ano = ano;
         this.capacidade = capacidade;
         this.percentualMotorista = percentualMotorista;
-        this.estado = estado;
     }
 
     private Integer cod;
@@ -31,7 +30,6 @@ public class Caminhao {
     private Integer ano;
     private Integer capacidade;
     private Double percentualMotorista;
-    private String estado;
     private Motorista motorista;
     private Date dataMotorista;
 
@@ -46,7 +44,6 @@ public class Caminhao {
                 ", ano=" + ano +
                 ", capacidade=" + capacidade +
                 ", percentualMotorista=" + percentualMotorista +
-                ", status='" + estado + '\'' +
                 ", motorista=" + motorista +
                 '}';
     }

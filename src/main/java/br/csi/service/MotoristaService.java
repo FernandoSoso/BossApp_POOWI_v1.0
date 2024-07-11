@@ -46,7 +46,7 @@ public class MotoristaService {
                 return motorista;
             }
             else {
-                return null;
+                throw new IllegalArgumentException("Motorista não encontrado");
             }
         }
     }
@@ -54,9 +54,7 @@ public class MotoristaService {
     public boolean persist(@NotNull String operacao, String codMotorista, @NotNull String nome,  String endereco,
                            String telefonePrincipal, @NotNull String telefoneAlternativo, String telefoneAlternativo2,
                            String codCaminhao) {
-        if (!validarCampos(operacao,nome, endereco, telefonePrincipal, telefoneAlternativo, telefoneAlternativo2)){
-            return false;
-        }
+        validarCampos(operacao,nome, endereco, telefonePrincipal, telefoneAlternativo, telefoneAlternativo2);
 
         Integer codMotoristaNumber = paramConverter.convertStringToInt(codMotorista);
         Integer codCaminhaoNumber = paramConverter.convertStringToInt(codCaminhao);
@@ -89,7 +87,7 @@ public class MotoristaService {
         Integer codMotoristaNumber = paramConverter.convertStringToInt(codMotorista);
 
         if (codMotoristaNumber == null || codMotoristaNumber <= 0){
-            return false;
+            throw new IllegalArgumentException("Código de motorista inválido");
         }
         else{
             if (motoristaDAO.selectUnique(codMotoristaNumber) == null){
@@ -100,7 +98,7 @@ public class MotoristaService {
 
                 if (relacao != null){
                     if (!motorista_caminhaoDAO.delete(relacao)) {
-                        return false;
+                        throw new IllegalArgumentException("Erro ao deletar relacionamento");
                     }
                 }
 
@@ -135,16 +133,16 @@ public class MotoristaService {
         }
     }
 
-    private boolean validarCampos(String operacao,String nome, String endereco, String telefonePrincipal, String telefoneAlternativo, String telefoneAlternativo2){
+    private void validarCampos(String operacao,String nome, String endereco, String telefonePrincipal, String telefoneAlternativo, String telefoneAlternativo2){
         if (!(operacao.equals("insert") || operacao.equals("update"))) {
-            return false;
+            throw new IllegalArgumentException("Operação inválida");
         }
         else if (nome.isBlank() || telefonePrincipal.isBlank() ){
-            return false;
+            throw new IllegalArgumentException("Campos obrigatórios não preenchidos");
         }
-        else{
-            return endereco.length() <= 75 && telefoneAlternativo.length() <= 15 && telefoneAlternativo2.length() <= 15
-                    && telefonePrincipal.length() <= 15;
+        else if (!(endereco.length() <= 75 && telefoneAlternativo.length() <= 15 && telefoneAlternativo2.length() <= 15
+                && telefonePrincipal.length() <= 15)){
+            throw new IllegalArgumentException("Tamanho máximo de caracteres ultrapassado em algum(s) campo(s)");
         }
     }
 }

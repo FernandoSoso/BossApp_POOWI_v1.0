@@ -23,39 +23,50 @@ public class CaminhaoServlet extends HttpServlet {
         String offset = req.getParameter("offset");
         String limit = req.getParameter("limit");
 
-        // Se a requisição for assíncrona
-        if ("true".equals(async)) {
-            Object retorno = null;
+        try {
+            // Se a requisição for assíncrona
+            if ("true".equals(async)) {
+                Object retorno = null;
 
-            if ("selectUnique".equals(operacao)){
-                if (cod != null){
-                    retorno = new CaminhaoService().selectUnique(cod);
+                if ("selectUnique".equals(operacao)){
+                    if (cod != null){
+                        retorno = new CaminhaoService().selectUnique(cod);
+                    }
+                    else {
+                        throw new Exception("Código de caminhão inválido!");
+                    }
                 }
-                else {
-                    retorno = new Retorno(true, "Erro: Código de caminhão inválido!");
+                else if ("selectAll".equals(operacao)){
+                    retorno = new CaminhaoService().selectAll(offset, limit);
                 }
-            }
-            else if ("selectAll".equals(operacao)){
-                retorno = new CaminhaoService().selectAll(offset, limit);
-            }
 
-            String json = new Gson().toJson(retorno);
+                String json = new Gson().toJson(retorno);
+
+                resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
+
+                resp.getWriter().write(json);
+            }
+            else if ("delete".equals(operacao)){
+                new CaminhaoService().delete(cod);
+
+                resp.sendRedirect(req.getContextPath() + "/caminhao");
+            }
+            else {
+                // Redirecione para o servlet de motorista
+                RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/caminhao.jsp");
+                rd.forward(req, resp);
+            }
+        }
+        catch (Exception e){
+            String json = new Gson().toJson(new Retorno(e.getMessage()));
 
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
 
             resp.getWriter().write(json);
         }
-        else if ("delete".equals(operacao)){
-            new CaminhaoService().delete(cod);
 
-            resp.sendRedirect(req.getContextPath() + "/caminhao");
-        }
-        else {
-            // Redirecione para o servlet de motorista
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/caminhao.jsp");
-            rd.forward(req, resp);
-        }
     }
 
     @Override
@@ -68,16 +79,18 @@ public class CaminhaoServlet extends HttpServlet {
         String ano = req.getParameter("ano");
         String capacidade = req.getParameter("capacidade");
         String percentualMotorista = req.getParameter("percentualMotorista");
-        String estado = req.getParameter("estado");
         String codMotorista = req.getParameter("motorista");
 
         try{
-            new CaminhaoService().persist(operacao,codCaminhao,placa, modelo, marca, ano, capacidade, percentualMotorista, estado, codMotorista);
+            new CaminhaoService().persist(operacao,codCaminhao,placa, modelo, marca, ano, capacidade, percentualMotorista, codMotorista);
+
+            resp.sendRedirect(req.getContextPath() + "/caminhao");
         }
-        catch (IllegalArgumentException e){
+        catch (Exception e){
+            e.printStackTrace();
             req.setAttribute("erro", e.getMessage());
+
+            resp.sendRedirect(req.getContextPath() + "/frete");
         }
-        
-        resp.sendRedirect(req.getContextPath() + "/caminhao");
     }
 }

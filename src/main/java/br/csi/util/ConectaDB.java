@@ -12,7 +12,7 @@ public class ConectaDB {
         try{
             Class.forName("org.postgresql.Driver");
             this.conexao = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/AppBoss_POOWI",
+                    "jdbc:postgresql://localhost:5432/teste",
                     "postgres",
                     "1234");
 

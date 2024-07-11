@@ -24,38 +24,45 @@ public class MotoristaServlet extends HttpServlet {
         String offset = req.getParameter("offset");
         String limit = req.getParameter("limit");
 
-        // Se a requisição for assíncrona
-        if ("true".equals(async)) {
-            Object retorno = null;
+        try {
+            // Se a requisição for assíncrona
+            if ("true".equals(async)) {
+                Object retorno = null;
 
-            if ("selectUnique".equals(operacao)){
-                if (cod != null){
-                    retorno = new MotoristaService().selectUnique(cod);
+                if ("selectUnique".equals(operacao)) {
+                    if (cod != null) {
+                        retorno = new MotoristaService().selectUnique(cod);
+                    } else {
+                        throw new Exception("Código de motorista inválido!");
+                    }
+                } else if ("selectAll".equals(operacao)) {
+                    retorno = new MotoristaService().selectAll(offset, limit);
                 }
-                else {
-                    retorno = new Retorno(true, "Erro: Código de motorista inválido!");
-                }
-            }
-            else if ("selectAll".equals(operacao)){
-                retorno = new MotoristaService().selectAll(offset, limit);
-            }
 
-            String json = new Gson().toJson(retorno);
+                String json = new Gson().toJson(retorno);
+
+                resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
+
+                resp.getWriter().write(json);
+            } else if ("delete".equals(operacao)) {
+                new MotoristaService().delete(cod);
+
+                resp.sendRedirect(req.getContextPath() + "/motorista");
+            } else {
+                // Redirecione para o servlet de motorista
+                RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/motorista.jsp");
+                rd.forward(req, resp);
+            }
+        }
+
+        catch (Exception e){
+            String json = new Gson().toJson(new Retorno(e.getMessage()));
 
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
 
             resp.getWriter().write(json);
-        }
-        else if ("delete".equals(operacao)){
-            new MotoristaService().delete(cod);
-
-            resp.sendRedirect(req.getContextPath() + "/motorista");
-        }
-        else {
-            // Redirecione para o servlet de motorista
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/views/motorista.jsp");
-            rd.forward(req, resp);
         }
     }
 
@@ -70,14 +77,18 @@ public class MotoristaServlet extends HttpServlet {
         String telefoneAlternativo2 = req.getParameter("telefoneAlternativo2");
         String codCaminhao = req.getParameter("caminhao");
 
-        if (new MotoristaService().persist(operacao, codMotorista, nome, endereco, telefonePrincipal, telefoneAlternativo, telefoneAlternativo2, codCaminhao)){
-            req.setAttribute("mensagem", "Operação realizada com sucesso!");
-            req.setAttribute("erro", "false");
-        } else {
-            req.setAttribute("mensagem", "Erro ao realizar operação!");
-            req.setAttribute("erro", "true");
+        try {
+            new MotoristaService().persist(operacao, codMotorista, nome, endereco, telefonePrincipal, telefoneAlternativo, telefoneAlternativo2, codCaminhao);
+
+            resp.sendRedirect(req.getContextPath() + "/motorista");
+        }
+        catch (Exception e){
+            e.printStackTrace();
+
+            req.setAttribute("erro", e.getMessage());
+
+            resp.sendRedirect(req.getContextPath() + "/frete");
         }
 
-        resp.sendRedirect(req.getContextPath() + "/motorista");
     }
 }

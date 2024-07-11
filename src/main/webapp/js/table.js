@@ -1,6 +1,25 @@
 let offset = 0;
 let itens = 0;
 
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const erro = urlParams.get('erro');
+    if (erro) {
+        showPopup(erro);
+    }
+});
+
+function showPopup(message) {
+    document.getElementById('warning-popup-message').innerText = `Erro: ${message}`;
+    document.getElementById('warning-popup').style.opacity = '1';
+    document.getElementById('warning-popup').style.visibility = 'visible';
+    setTimeout(function() {
+        document.getElementById('warning-popup').style.opacity = '0';
+        document.getElementById('warning-popup').style.visibility = 'hidden';
+    }, 5000);
+}
+
 function inicializarPagina(entidade, cols, colsNames, maxItens) {
     document.getElementById('page-title').innerHTML = entidade;
 
@@ -20,7 +39,7 @@ function inicializarPagina(entidade, cols, colsNames, maxItens) {
 
 function incrementarOffset(entidade, tableId, cols, maxItens) {
     if (itens !== maxItens) {
-        alert("Não há mais itens para serem exibidos!");
+        showPopup("Não há mais itens para serem exibidos!");
         return;
     }
     offset += maxItens;
@@ -29,7 +48,7 @@ function incrementarOffset(entidade, tableId, cols, maxItens) {
 
 function decrementarOffset(entidade, tableId, cols, maxItens) {
     if (offset <= 0) {
-        alert("Não há mais itens para serem exibidos!");
+        showPopup("Não há mais itens para serem exibidos!");
         return;
     }
     offset -= maxItens;
@@ -62,55 +81,59 @@ function atualizarTabela(entidade, tableId, cols, maxItens) {
     fetch(entidade + '?async=true&offset=' + offset + '&operacao=selectAll&limit='+(maxItens+1))
         .then(response => response.json())
         .then(data => {
-            document.getElementById(tableId).innerHTML = '';
+            if (data['erro']){
+                showPopup(data['erro']);
+            }
+            else {
+                document.getElementById(tableId).innerHTML = '';
 
-            if (data !== null) {
-                let auxItens = 0;
-                if (data.length !== 0){
-                    data.forEach(json => {
-                        if (auxItens !== maxItens){
-                            let row = document.createElement('tr');
+                if (data !== null) {
+                    let auxItens = 0;
+                    if (data.length !== 0) {
+                        data.forEach(json => {
+                            if (auxItens !== maxItens) {
+                                let row = document.createElement('tr');
 
-                            row.appendChild(addShowDetailsButton(entidade,json['cod']));
+                                row.appendChild(addShowDetailsButton(entidade, json['cod']));
 
-                            cols.forEach(col => {
-                                cell = document.createElement('td');
-                                p = document.createElement('p');
+                                cols.forEach(col => {
+                                    cell = document.createElement('td');
+                                    p = document.createElement('p');
 
-                                if (!json[col]){
-                                    p.appendChild(document.createTextNode("-"));
-                                }
-                                else{
-                                    p.appendChild(document.createTextNode(json[col]));
-                                }
-                                p.style.overflow = "overlay";
-                                cell.appendChild(p);
-                                row.appendChild(cell);
-                            });
-                            document.getElementById(tableId).appendChild(row);
-                        }
+                                    if (!json[col]) {
+                                        p.appendChild(document.createTextNode("-"));
+                                        p.classList.toggle('empty-table-cell', true);
+                                    } else {
+                                        p.appendChild(document.createTextNode(json[col]));
+                                    }
+                                    p.style.overflow = "overlay";
+                                    cell.appendChild(p);
+                                    row.appendChild(cell);
+                                });
+                                document.getElementById(tableId).appendChild(row);
+                            }
 
-                        auxItens++;
-                    });
+                            auxItens++;
+                        });
+                    } else {
+                        let h3 = document.createElement('H3');
+                        h3.textContent = "Não há itens cadastrados para serem exibidos!";
+                        document.getElementById(tableId).appendChild(h3);
+                    }
+
+                    atualizarNavButtons(auxItens);
+
+                    if (auxItens === (maxItens + 1)) {
+                        itens = auxItens - 1;
+                    } else {
+                        itens = auxItens;
+                    }
                 }
-                else{
-                    let h3 = document.createElement('H3');
-                    h3.textContent = "Não há itens cadastrados para serem exibidos!";
-                    document.getElementById(tableId).appendChild(h3);
-                }
-
-                atualizarNavButtons(auxItens);
-
-                if (auxItens === (maxItens+1)){
-                    itens = auxItens-1;
-                }
-                else {
-                    itens = auxItens;
-                }
-
             }
         })
-        .catch(error => console.error('Erro:', error));
+        .catch(error => {
+            console.error('Erro na requisição:', error);
+        });
 }
 
 function atualizarNavButtons(auxItens) {
@@ -132,12 +155,12 @@ function addCadastrarTableButtonEvent(entidade) {
 
         modalTitle.innerHTML = `CADASTRAR ${entidade.toUpperCase()}`;
         persistButton.innerHTML = 'CADASTRAR';
-        persistForm.href = entidade;
+        persistForm.action = `${entidade}?operacao=insert`;
+        persistForm.method = 'POST';
         inputs.forEach(input => {
             input.value = '';
             input.classList.remove('input-filled');
         });
-        document.getElementById('operacao').value = 'insert';
     });
 }
 
@@ -163,41 +186,75 @@ function addDetailsEvent(event){
         .then(response => response.json())
         .then(json => {
             if (json !== null){
-                document.getElementById('showDetailsModal').querySelectorAll('td p').forEach(cell => {
-                    cell.innerHTML = "-";
-                    cell.classList.add('empty-table-cell');
-                });
-                for (let key in json) {
-                    const addContent = (key, content) => {
-                        if (cell) {
+                if (json['erro']){
+                    showPopup(json['erro']);
+                }
+                else{
+                    document.getElementById('showDetailsModal').querySelectorAll('td p').forEach(cell => {
+                        cell.innerHTML = "-";
+                        cell.classList.add('empty-table-cell');
+                    });
+                    for (let key in json) {
+                        const addContent = (key, content) => {
                             let cell = document.getElementById(`${key}-info-table`);
+
+
                             if (cell){
                                 if (key === "estado") {
                                     cell.classList.add('success-badge');
                                 }
 
                                 if (content) {
-                                    cell.innerHTML = content;
+                                    let valor;
+                                    if (!cell.getAttribute('data-type')) {
+                                        valor = content;
+                                    }
+                                    else{
+                                        valor = parseFloat(content).toFixed(2);
+                                        valor = valor.replace('.', ','); // Substitui o ponto decimal por vírgula
+                                        valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Adiciona pontos como separadores de milhar
+                                        valor = valor.replace(/,([^,]*)$/, '.$1'); // Substitui a última vírgula por um ponto
+
+                                        switch (cell.getAttribute('data-type')) {
+                                            case 'dinheiro':
+                                                valor = `R$ ${valor}`;
+                                                break;
+                                            case 'porcentagem':
+                                                valor = `${valor}%`;
+                                                break;
+                                            case 'valorTonelada':
+                                                valor = `R$ ${valor} /TON`;
+                                                break;
+                                            case 'peso':
+                                                valor = `${valor} KG`;
+                                                break;
+                                            default:
+                                                valor = content;
+                                                break;
+                                        }
+                                    }
+
+                                    cell.innerHTML = valor;
                                     cell.classList.toggle('empty-table-cell');
                                 }
                             }
                         }
-                    }
 
-                    let content = json[key];
+                        let content = json[key];
 
-                    if ((typeof content) === "object") {
-                        for (let subKey in content) {
-                            addContent(subKey, content[subKey]);
+                        if ((typeof content) === "object") {
+                            for (let subKey in content) {
+                                addContent(subKey, content[subKey]);
+                            }
                         }
-                    }
-                    else {
-                        addContent(key, content);
+                        else {
+                            addContent(key, content);
+                        }
                     }
                 }
             }
             else{
-                alert('Erro ao buscar dados');
+                showPopup('Erro ao buscar dados');
             }
         });
 
@@ -214,44 +271,48 @@ function addEditButtonEvent(event) {
     const headerTitle = document.getElementById('header-modal-title');
     const persistButton = document.getElementById('persistButton');
     const persistForm = document.getElementById('persistForm');
-    const operationInput = document.getElementById('operacao');
-    const codInput = document.getElementById('cod');
 
     headerTitle.innerHTML = `EDITAR ${entidade.toUpperCase()}`;
     persistButton.innerHTML = 'EDITAR';
-    persistForm.href = `${entidade}?async=true`;
-    operationInput.value = 'update';
-    codInput.value = event.currentTarget.getAttribute('data-cod');
+    persistForm.action = `${entidade}?operacao=update&cod=${event.currentTarget.getAttribute('data-cod')}`;
+    persistForm.method = 'POST';
 
     fetch(`${entidade}?async=true&cod=${event.currentTarget.getAttribute('data-cod')}&operacao=selectUnique`)
         .then(response => response.json())
         .then(json => {
             if (json) {
-                Object.keys(json).forEach(key => {
-                    const element = document.getElementById(key);
-                    if (element) {
-                        if (element.tagName === 'SELECT' && element.classList.contains('static')) {
-                            element.value = json[key];
-                        }
-                        else {
-                            element.innerHTML = '';
-
-                            if (typeof json[key] === "object") {
-                                const option = new Option(json[key]['nome'] || json[key]['placa'], json[key]['cod'], true, true);
-                                element.add(option);
-                            } else {
+                if (json['erro']){
+                    showPopup(json['erro']);
+                }
+                else {
+                    Object.keys(json).forEach(key => {
+                        const element = document.getElementById(key);
+                        if (element) {
+                            if (element.tagName === 'SELECT' && element.classList.contains('static')) {
                                 element.value = json[key];
                             }
-                        }
+                            else {
+                                element.innerHTML = '';
 
-                        element.classList.add('input-filled');
-                    }
-                });
+                                if (typeof json[key] === "object") {
+                                    const option = new Option(json[key]['nome'] || json[key]['placa'], json[key]['cod'], true, true);
+                                    element.add(option);
+                                } else {
+                                    element.value = json[key];
+                                }
+                            }
+
+                            element.classList.add('input-filled');
+                        }
+                    });
+                }
             } else {
-                alert('Erro ao buscar dados');
+                showPopup('Erro ao buscar dados');
             }
         })
-        .catch(error => console.error('Erro:', error));
+        .catch(error => {
+            console.error('Erro na requisição:', error);
+        });
 }
 
 function addDeleteButtonEvent(event) {
@@ -266,14 +327,21 @@ function fillSelects() {
                 fetch(select.id + '?async=true&operacao=selectAll')
                     .then(response => response.json())
                     .then(data => {
-                        select.innerHTML = '<option value=""></option>' + data.map(json => {
-                            const value = json['cod'];
-                            const text = select.id === 'caminhao' ? json['placa'] : json['nome'];
-                            const selected = value === selectedOptionValue ? ' selected' : '';
-                            return `<option value="${value}"${selected}>${text}</option>`;
-                        }).join('');
+                        if (data['erro']){
+                            showPopup(data['erro']);
+                        }
+                        else{
+                            select.innerHTML = '<option value=""></option>' + data.map(json => {
+                                const value = json['cod'];
+                                const text = select.id === 'caminhao' ? json['placa'] : json['nome'];
+                                const selected = value === selectedOptionValue ? ' selected' : '';
+                                return `<option value="${value}"${selected}>${text}</option>`;
+                            }).join('');
+                        }
                     })
-                    .catch(error => console.error('Erro:', error));
+                    .catch(error => {
+                        console.error('Erro na requisição:', error);
+                    });
             });
         }
     });

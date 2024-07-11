@@ -30,6 +30,7 @@
 </head>
 <body id="page-body">
 
+<jsp:include page="../components/warning-popup.jsp"/>
 <jsp:include page="../components/sidebar.jsp"/>
 <jsp:include page="../components/table.jsp"/>
 
@@ -47,29 +48,31 @@
             </div>
             <div class="body-modal">
                 <div class="info-container">
-                    <table class="showDetailsTable">
-                        <tr>
-                            <th>Caminhão Utilizado</th>
-                        </tr>
-                        <tr>
-                            <th>Placa</th>
-                        </tr>
-                        <tr>
-                            <td><p id="placa-info-table"></p></td>
-                        </tr>
-                    </table>
+                    <div class="info-content">
+                        <h6 class="uniqueItemTitle">
+                            Caminhão Utilizado
+                        </h6>
+                        <table class="showDetailsTable">
+                            <tr>
+                                <th class="last-info-content">Placa</th>
+                            </tr>
+                            <tr>
+                                <td class="last-info-content"><p id="placa-info-table"></p></td>
+                            </tr>
+                        </table>
 
-                    <table class="showDetailsTable">
-                        <tr>
-                            <th>Motorista Responsável</th>
-                        </tr>
-                        <tr>
-                            <th>Nome</th>
-                        </tr>
-                        <tr>
-                            <td><p id="nome-info-table"></p></td>
-                        </tr>
-                    </table>
+                        <h6 class="uniqueItemTitle">
+                            Motorista Responsável
+                        </h6>
+                        <table class="showDetailsTable">
+                            <tr>
+                                <th class="last-info-content">Nome</th>
+                            </tr>
+                            <tr>
+                                <td class="last-info-content"><p id="nome-info-table"></p></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
                 <div class="info-container">
                     <div class="info-content">
@@ -77,40 +80,42 @@
                             <tr>
                                 <th>Origem</th>
                                 <th>Destino</th>
-                                <th>Estado</th>
+                                <th class="last-info-content">Estado</th>
                             </tr>
                             <tr>
-                                <td><p id="origem-info-table"></p><br><p id="origemData-info-table"></p></td>
-                                <td><p id="destino-table"></p><br><p id="destinoData-info-table"></p></td>
-                                <td><p id="estado-frete-info-table"></p></td>
+                                <td><p id="origem-info-table"></p></td>
+                                <td><p id="destino-info-table"></p></td>
+                                <td class="last-info-content"><p id="estado-info-table"></p></td>
                             </tr>
                         </table>
                         <table class="showDetailsTable">
                             <tr>
                                 <th>Peso</th>
-                                <th>Valor/Tonelada</th>
+                                <th class="last-info-content">Valor/Tonelada</th>
                             </tr>
                             <tr>
-                                <td><p id="peso-info-table"></p></td>
-                                <td>R$ <p id="valorTonelada-info-table"></p>/TON</td>
+                                <td><p id="peso-info-table" data-type="peso"></p></td>
+                                <td class="last-info-content"><p id="valorTonelada-info-table" data-type="valorTonelada"></p></td>
                             </tr>
                         </table>
                         <table class="showDetailsTable">
                             <tr>
                                 <th>Valor Bruto</th>
                                 <th>Valor Liquido</th>
-                                <th>Parte Motorista</th>
+                                <th class="last-info-content">Parte Motorista</th>
                             </tr>
                             <tr>
-                                <td>R$ <p id="valorLiquido-info-table"></p></td>
-                                <td>R$ <p id="valorBruto-info-table"></p></td>
-                                <td>R$ <p id="parteMotorista-info-table"></p></td>
+                                <td><p id="valorLiquido-info-table" data-type="dinheiro"></p></td>
+                                <td><p id="valorBruto-info-table" data-type="dinheiro"></p></td>
+                                <td class="last-info-content"><p id="parteMotorista-info-table" data-type="dinheiro"></p></td>
                             </tr>
                         </table>
-                        <h6 class="observacaoTitle">
-                            Observação
-                        </h6>
-                        <p id="observacao-info-table" class="observacao-container"></p>
+                        <div style="width: 100%;">
+                            <h6 class="uniqueItemTitle">
+                                Observação
+                            </h6>
+                            <p id="observacao-info-table" class="observacao-container"></p>
+                        </div>
                     </div>
                 </div>
                 <div class="info-container">
@@ -138,13 +143,11 @@
                 </button>
             </div>
             <div class="body-modal">
-                <form action="frete" method="post" class="body-modal-form" id="persistForm">
+                <form class="body-modal-form" id="persistForm">
                     <h6 class="required-warning">
                         Campos com<span class="required">&nbsp;*&nbsp;</span>são obrigatórios!
                     </h6>
                     <div class="form-input-area">
-                        <input type="hidden" value="" name="operacao" id="operacao">
-                        <input type="hidden" value="" name="cod" id="cod">
                         <div class="input-wrapper">
                             <div class="input-wrapper-title">
                                 Localidades
@@ -155,16 +158,8 @@
                                     <label class="input-label" for="origem"><span class="required">*&nbsp;</span>Origem</label>
                                 </div>
                                 <div class="input-container">
-                                    <input class="input-date" type="date" id="origemData" name="origemData">
-                                    <label class="input-label" for="origemData">Data de saída</label>
-                                </div>
-                                <div class="input-container">
                                     <input class="input-text" type="text" id="destino" name="destino" maxlength="35" required>
                                     <label class="input-label" for="destino"><span class="required">*&nbsp;</span>Destino</label>
-                                </div>
-                                <div class="input-container">
-                                    <input class="input-date" type="date" id="destinoData" name="destinoData">
-                                    <label class="input-label" for="destinoData">Data de chegada</label>
                                 </div>
                             </div>
                         </div>
@@ -194,18 +189,18 @@
                             </div>
                             <div class="input-wrapper-inputs">
                                 <div class="input-container">
-                                    <input class="input-text" type="number" id="peso" name="peso" min="0" max="99999" step="0.01" maxlength="5" required>
+                                    <input class="input-text" type="number" id="peso" name="peso" min="1000" max="99999" step="0.01" maxlength="5" required>
                                     <label class="input-label" for="peso"><span class="required">*&nbsp;</span>Peso (KG)</label>
                                 </div>
                                 <div class="input-container">
-                                    <input class="input-text" type="number" id="valorTonelada" name="valorTonelada" min="0" max="9999999" step="0.01" maxlength="7" required>
+                                    <input class="input-text" type="number" id="valorTonelada" name="valorTonelada" min="100" max="9999999" step="0.01" maxlength="7" required>
                                     <label class="input-label" for="valorTonelada"><span class="required">*&nbsp;</span>Valor/Tonelada (R$)</label>
                                 </div>
                                 <div class="input-container">
                                     <select id="estado" class="input-select static"  name="estado" required>
                                         <option value="" selected></option>
-                                        <option value="Pendente">Pendente</option>
-                                        <option value="Concluído">Concluído</option>
+                                        <option value="pendente">Pendente</option>
+                                        <option value="concluído">Concluído</option>
                                     </select>
                                     <label class="input-label" for="estado"><span class="required">*&nbsp;</span>Estado do Frete</label>
                                 </div>

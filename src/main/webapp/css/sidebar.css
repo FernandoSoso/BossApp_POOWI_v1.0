@@ -86,3 +86,34 @@
     width: 92px;
     height: 40px;
 }
+
+.sidebar-user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#user-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--branco, #F3F3F3);
+    text-align: center;
+    font-family: var(--fonte-titulo);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 15px; /* 107.143% */
+    text-transform: uppercase;
+
+    margin-bottom: 10px;
+}
+
+.sidebar-user svg{
+    width: 50px;
+    height: 50px;
+    fill: var(--branco, #F3F3F3);
+}

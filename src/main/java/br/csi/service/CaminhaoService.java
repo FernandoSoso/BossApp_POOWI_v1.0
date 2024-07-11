@@ -31,7 +31,7 @@ public class CaminhaoService {
         Integer codCaminhaoNumber = paramConverter.convertStringToInt(codCaminhao);
 
         if (codCaminhaoNumber == null || codCaminhaoNumber <= 0){
-            return null;
+            throw new IllegalArgumentException("Código de caminhão inválido");
         }
         else {
             Caminhao caminhao = caminhaoDAO.selectUnique(codCaminhaoNumber);
@@ -48,16 +48,14 @@ public class CaminhaoService {
                 return caminhao;
             }
             else {
-                return null;
+                throw new IllegalArgumentException("Caminhão não encontrado");
             }
         }
     }
 
     public boolean persist(@NotNull String operacao, String codCaminhao,@NotNull String placa, String marca, String modelo,
-                           String ano, String capacidade, @NotNull String percentualMotorista, @NotNull String estado, String codMotorista) {
-        if (!validarCampos(operacao,placa, marca, modelo, ano, capacidade, percentualMotorista, estado)){
-            throw new IllegalArgumentException("Campos inválidos");
-        }
+                           String ano, String capacidade, @NotNull String percentualMotorista, String codMotorista) {
+        validarCampos(operacao,placa, marca, modelo, ano, capacidade, percentualMotorista);
 
         Integer codCaminhaoNumber = paramConverter.convertStringToInt(codCaminhao);
         Integer codMotoristaNumber = paramConverter.convertStringToInt(codMotorista);
@@ -67,7 +65,7 @@ public class CaminhaoService {
         marca = paramConverter.convertBlankStringToNull(marca);
         modelo = paramConverter.convertBlankStringToNull(modelo);
 
-        Caminhao caminhao = new Caminhao(codCaminhaoNumber, placa, marca, modelo, anoNumber, capacidadeNumber, percentualMotoristaNumber, estado);
+        Caminhao caminhao = new Caminhao(codCaminhaoNumber, placa, marca, modelo, anoNumber, capacidadeNumber, percentualMotoristaNumber);
 
         if (operacao.equals("update")){
             Caminhao caminhaoAntigo = caminhaoDAO.selectUnique(caminhao.getCod());
@@ -80,7 +78,6 @@ public class CaminhaoService {
                         throw new IllegalArgumentException("Placa já cadastrada");
                     }
                 }
-
 
                 if (!caminhaoDAO.update(caminhao)){
                     return gerarRelacionamento(codCaminhaoNumber, codMotoristaNumber);
@@ -96,9 +93,6 @@ public class CaminhaoService {
             }
 
             return gerarRelacionamento(codCaminhaoNumber, codMotoristaNumber);
-        }
-        else{
-            throw new IllegalArgumentException("Operação inválida");
         }
 
         return false;
@@ -155,15 +149,17 @@ public class CaminhaoService {
         }
     }
 
-    private boolean validarCampos(String operacao,String placa, String marca, String modelo, String ano, String capacidade, String percentualMotorista, String estado){
+    private void validarCampos(String operacao,String placa, String marca, String modelo, String ano, String capacidade, String percentualMotorista){
         if (!(operacao.equals("insert") || operacao.equals("update"))) {
-            return false;
+            throw new IllegalArgumentException("Operação inválida");
         }
         else if (placa.isBlank()){
-            return false;
+            throw new IllegalArgumentException("Placa inválida");
         }
-        else {
-            return placa.length() <= 11 && marca.length() <= 25 && modelo.length() <= 25 && ano.length() <= 4 && capacidade.length() <= 5
-                    && percentualMotorista.length() <= 5 && estado.length() <= 25;}
+        else if (!(placa.length() == 11 && marca.length() <= 25 && modelo.length() <= 25 && ano.length() <= 4 && capacidade.length() <= 5
+                    && percentualMotorista.length() <= 5)){
+
+            throw new IllegalArgumentException("Tamanho máximo de caracteres ultrapassado em algum(s) campo(s)");
+        }
     }
 }
