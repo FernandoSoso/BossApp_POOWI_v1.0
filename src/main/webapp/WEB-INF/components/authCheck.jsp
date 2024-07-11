@@ -5,7 +5,3 @@
 <c:if test="${sessionScope.usuario == null}">
     <meta http-equiv="refresh" content="0; url=login" />
 </c:if>
-
-<c:if test="${sessionScope.usuario != null}">
-    <meta http-equiv="refresh" content="0; url=home" />
-</c:if>
